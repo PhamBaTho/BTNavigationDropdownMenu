@@ -12,18 +12,10 @@
 		2E0695281B25A3EE00EEB891 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E0695261B25A3EE00EEB891 /* Main.storyboard */; };
 		2E06952A1B25A3EE00EEB891 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E0695291B25A3EE00EEB891 /* Images.xcassets */; };
 		2E06952D1B25A3EE00EEB891 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E06952B1B25A3EE00EEB891 /* LaunchScreen.xib */; };
-		2E0695391B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0695381B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.swift */; };
+		2E0695441B25FBC600EEB891 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0695431B25FBC600EEB891 /* BTNavigationDropdownMenu.swift */; };
+		2EA89D721B2D879F00759D16 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA89D711B2D879F00759D16 /* BTTableView.swift */; };
+		2EA89D741B2D8B3700759D16 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA89D731B2D8B3700759D16 /* BTTableViewCell.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2E0695331B25A3EE00EEB891 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E0695151B25A3EE00EEB891 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2E06951C1B25A3EE00EEB891;
-			remoteInfo = BTNavigationDropdownMenu;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2E06951D1B25A3EE00EEB891 /* BTNavigationDropdownMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BTNavigationDropdownMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,20 +25,13 @@
 		2E0695271B25A3EE00EEB891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E0695291B25A3EE00EEB891 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2E06952C1B25A3EE00EEB891 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		2E0695321B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTNavigationDropdownMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E0695371B25A3EE00EEB891 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E0695381B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenuTests.swift; sourceTree = "<group>"; };
+		2E0695431B25FBC600EEB891 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		2EA89D711B2D879F00759D16 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableView.swift; sourceTree = "<group>"; };
+		2EA89D731B2D8B3700759D16 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2E06951A1B25A3EE00EEB891 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2E06952F1B25A3EE00EEB891 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,8 +44,7 @@
 		2E0695141B25A3EE00EEB891 = {
 			isa = PBXGroup;
 			children = (
-				2E06951F1B25A3EE00EEB891 /* BTNavigationDropdownMenu */,
-				2E0695351B25A3EE00EEB891 /* BTNavigationDropdownMenuTests */,
+				2E06951F1B25A3EE00EEB891 /* Demo */,
 				2E06951E1B25A3EE00EEB891 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,12 +53,11 @@
 			isa = PBXGroup;
 			children = (
 				2E06951D1B25A3EE00EEB891 /* BTNavigationDropdownMenu.app */,
-				2E0695321B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2E06951F1B25A3EE00EEB891 /* BTNavigationDropdownMenu */ = {
+		2E06951F1B25A3EE00EEB891 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				2E0695221B25A3EE00EEB891 /* AppDelegate.swift */,
@@ -83,7 +66,9 @@
 				2E0695291B25A3EE00EEB891 /* Images.xcassets */,
 				2E06952B1B25A3EE00EEB891 /* LaunchScreen.xib */,
 				2E0695201B25A3EE00EEB891 /* Supporting Files */,
+				2E0695421B25A4DD00EEB891 /* BTNavigationDropdownMenu */,
 			);
+			name = Demo;
 			path = BTNavigationDropdownMenu;
 			sourceTree = "<group>";
 		};
@@ -95,21 +80,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E0695351B25A3EE00EEB891 /* BTNavigationDropdownMenuTests */ = {
+		2E0695421B25A4DD00EEB891 /* BTNavigationDropdownMenu */ = {
 			isa = PBXGroup;
 			children = (
-				2E0695381B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.swift */,
-				2E0695361B25A3EE00EEB891 /* Supporting Files */,
+				2E0695431B25FBC600EEB891 /* BTNavigationDropdownMenu.swift */,
+				2EA89D711B2D879F00759D16 /* BTTableView.swift */,
+				2EA89D731B2D8B3700759D16 /* BTTableViewCell.swift */,
 			);
-			path = BTNavigationDropdownMenuTests;
-			sourceTree = "<group>";
-		};
-		2E0695361B25A3EE00EEB891 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				2E0695371B25A3EE00EEB891 /* Info.plist */,
-			);
-			name = "Supporting Files";
+			name = BTNavigationDropdownMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,24 +110,6 @@
 			productReference = 2E06951D1B25A3EE00EEB891 /* BTNavigationDropdownMenu.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2E0695311B25A3EE00EEB891 /* BTNavigationDropdownMenuTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2E06953F1B25A3EE00EEB891 /* Build configuration list for PBXNativeTarget "BTNavigationDropdownMenuTests" */;
-			buildPhases = (
-				2E06952E1B25A3EE00EEB891 /* Sources */,
-				2E06952F1B25A3EE00EEB891 /* Frameworks */,
-				2E0695301B25A3EE00EEB891 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2E0695341B25A3EE00EEB891 /* PBXTargetDependency */,
-			);
-			name = BTNavigationDropdownMenuTests;
-			productName = BTNavigationDropdownMenuTests;
-			productReference = 2E0695321B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,10 +121,6 @@
 				TargetAttributes = {
 					2E06951C1B25A3EE00EEB891 = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					2E0695311B25A3EE00EEB891 = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 2E06951C1B25A3EE00EEB891;
 					};
 				};
 			};
@@ -182,7 +138,6 @@
 			projectRoot = "";
 			targets = (
 				2E06951C1B25A3EE00EEB891 /* BTNavigationDropdownMenu */,
-				2E0695311B25A3EE00EEB891 /* BTNavigationDropdownMenuTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,13 +153,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2E0695301B25A3EE00EEB891 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -213,27 +161,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E0695251B25A3EE00EEB891 /* ViewController.swift in Sources */,
+				2EA89D741B2D8B3700759D16 /* BTTableViewCell.swift in Sources */,
+				2EA89D721B2D879F00759D16 /* BTTableView.swift in Sources */,
 				2E0695231B25A3EE00EEB891 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2E06952E1B25A3EE00EEB891 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2E0695391B25A3EE00EEB891 /* BTNavigationDropdownMenuTests.swift in Sources */,
+				2E0695441B25FBC600EEB891 /* BTNavigationDropdownMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2E0695341B25A3EE00EEB891 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2E06951C1B25A3EE00EEB891 /* BTNavigationDropdownMenu */;
-			targetProxy = 2E0695331B25A3EE00EEB891 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2E0695261B25A3EE00EEB891 /* Main.storyboard */ = {
@@ -356,40 +291,6 @@
 			};
 			name = Release;
 		};
-		2E0695401B25A3EE00EEB891 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BTNavigationDropdownMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTNavigationDropdownMenu.app/BTNavigationDropdownMenu";
-			};
-			name = Debug;
-		};
-		2E0695411B25A3EE00EEB891 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BTNavigationDropdownMenuTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BTNavigationDropdownMenu.app/BTNavigationDropdownMenu";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,14 +310,7 @@
 				2E06953E1B25A3EE00EEB891 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		2E06953F1B25A3EE00EEB891 /* Build configuration list for PBXNativeTarget "BTNavigationDropdownMenuTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2E0695401B25A3EE00EEB891 /* Debug */,
-				2E0695411B25A3EE00EEB891 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
