@@ -10,19 +10,39 @@ import UIKit
 
 class BTTableViewCell: UITableViewCell {
     
+    var checkmarkIcon: UIImageView!
+    
+    var setSelectedClosure: (() -> ())?
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.backgroundColor = UIColor.redColor()
-        self.textLabel?.textAlignment = NSTextAlignment.Center
         
-        var separator = BTTableCellContentView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.contentView.frame.height))
-        println(UIScreen.mainScreen().bounds.width)
+        let cellContentFrame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.contentView.frame.height)
+        self.contentView.backgroundColor = BTNavigationDropdownMenu.cellBackgroundColor
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        self.textLabel?.textAlignment = NSTextAlignment.Left
+        self.textLabel?.textColor = BTNavigationDropdownMenu.cellTextLabelColor
+        self.textLabel?.font = BTNavigationDropdownMenu.cellTextLabelFont
+        
+        // Checkmark icon
+        self.checkmarkIcon = UIImageView(frame: CGRectMake(UIScreen.mainScreen().bounds.width - 40, (self.contentView.frame.height - 30)/2, 30, 30))
+        self.checkmarkIcon.hidden = true
+        self.checkmarkIcon.image = UIImage(named: "checkmark_icon")
+        self.checkmarkIcon.contentMode = UIViewContentMode.ScaleAspectFill
+        self.contentView.addSubview(self.checkmarkIcon)
+        
+        // Separator for cell
+        let separator = BTTableCellContentView(frame: cellContentFrame)
         separator.backgroundColor = UIColor.clearColor()
         self.contentView.addSubview(separator)
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }
 

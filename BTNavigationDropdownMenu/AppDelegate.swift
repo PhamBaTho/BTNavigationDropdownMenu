@@ -15,17 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let nav = UINavigationController()
-        let vc = ViewController()
+        let navigationViewController = UINavigationController()
+        let viewController = ViewController()
         
         // Push the vc onto the nav
-        nav.pushViewController(vc, animated: false)
+        navigationViewController.pushViewController(viewController, animated: false)
         
         // Set the window’s root view controller
-        self.window!.rootViewController = nav
+        self.window!.rootViewController = navigationViewController
         
         // Present the window
         self.window!.makeKeyAndVisible()
+        
+        //
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         return true
     }
 
