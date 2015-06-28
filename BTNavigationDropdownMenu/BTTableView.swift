@@ -10,22 +10,24 @@ import UIKit
 
 class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var items: [AnyObject]!
+    var _items: [AnyObject]!
+    var _selectedIndexPath: Int!
     
-    var selectedIndexPath: Int!
-    
+    // Public properties
     var hideTableHandler: (() -> ())?
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     init(frame: CGRect, items: [AnyObject]) {
         super.init(frame: frame, style: UITableViewStyle.Plain)
         
-        self.items = items
-        self.selectedIndexPath = 0
+        // Init private properties
+        self._items = items
+        self._selectedIndexPath = 0
         
+        // Setup table view
         self.delegate = self
         self.dataSource = self
         self.backgroundColor = UIColor.clearColor()
@@ -33,6 +35,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.tableFooterView = UIView(frame: CGRectZero)
 
+        // Table view header
         var headerView = UIView(frame: CGRectMake(0, 0, self.frame.width, 300))
         headerView.backgroundColor = BTNavigationDropdownMenu.cellBackgroundColor
         self.tableHeaderView = headerView
@@ -44,13 +47,17 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return self._items.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return BTNavigationDropdownMenu.cellHeight
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        cell.textLabel!.text = self.items[indexPath.row] as? String
-        if indexPath.row == selectedIndexPath {
+        cell.textLabel!.text = self._items[indexPath.row] as? String
+        if indexPath.row == _selectedIndexPath {
             cell.checkmarkIcon.hidden = false
         } else {
             cell.checkmarkIcon.hidden = true
@@ -60,7 +67,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     // Table view delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedIndexPath = indexPath.row
+        _selectedIndexPath = indexPath.row
         self.hideTableHandler!()
         self.reloadData()
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! BTTableViewCell
