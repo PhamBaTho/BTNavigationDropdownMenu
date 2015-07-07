@@ -16,7 +16,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
         self.selectedCellLabel.text = items.first
-        self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.translucent = false
         UINavigationBar.appearance().translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 240.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
