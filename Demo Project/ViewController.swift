@@ -10,10 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var selectedCellLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
-        
+        self.selectedCellLabel.text = items.first
         self.view.backgroundColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.translucent = false
         UINavigationBar.appearance().translucent = false
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             println("Did select item at index: \(indexPath)")
             menuView.setMenuTitle("\(items[indexPath])")
+            self.selectedCellLabel.text = items[indexPath]
         }
         
         self.navigationItem.titleView = menuView

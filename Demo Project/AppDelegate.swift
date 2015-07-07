@@ -15,19 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let navigationViewController = UINavigationController()
-        let viewController = ViewController()
-        
-        // Push the vc onto the nav
-        navigationViewController.pushViewController(viewController, animated: false)
-        
-        // Set the window’s root view controller
-        self.window!.rootViewController = navigationViewController
-        
-        // Present the window
-        self.window!.makeKeyAndVisible()
-        
-        //
+        // Set white status bar
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         return true
     }
