@@ -6,7 +6,7 @@ The dropdown menu is typically used inside the navigation bar to display a list 
 
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/DemoProject.gif)
 
-ON PROGRESS. 
+ON PROGRESS.
 
 TO-DO: 
 - Write documentation
