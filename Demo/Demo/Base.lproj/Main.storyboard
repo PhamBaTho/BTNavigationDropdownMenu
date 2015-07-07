@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BTNavigationDropdownMenu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -31,7 +31,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="B2m-EM-oU4"/>
                     <connections>
-                        <outlet property="selectedCellLabel" destination="Jc6-f8-1fo" id="Fvd-hL-ISt"/>
+                        <outlet property="selectedCellLabel" destination="Jc6-f8-1fo" id="old-2u-sHY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

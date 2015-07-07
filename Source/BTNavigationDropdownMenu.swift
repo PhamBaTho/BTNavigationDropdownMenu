@@ -272,14 +272,22 @@ class BTConfiguration {
     }
     
     func defaultValue() {
+        // Path for image
+        let bundle = NSBundle(forClass: BTConfiguration.self)
+        let url = bundle.URLForResource("BTNavigationDropdownMenu", withExtension: "bundle")
+        let imageBundle = NSBundle(URL: url!)
+        let checkMarkImagePath = imageBundle?.pathForResource("checkmark_icon", ofType: "png")
+        let arrowImagePath = imageBundle?.pathForResource("arrow_down_icon", ofType: "png")
+
+        // Default values
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.whiteColor()
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.cellTextLabelColor = UIColor.darkGrayColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.bounceOffset = -5
-        self.checkMarkImage = UIImage(named: "checkmark_icon")
-        self.arrowImage = UIImage(named: "arrow_down_icon.png")
+        self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
+        self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
         self.animationDuration = 0.3
         self.maskBackgroundColor = UIColor.blackColor()

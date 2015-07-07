@@ -27,9 +27,7 @@ class ViewController: UIViewController {
         menuView.cellSelectionColor = UIColor(red: 210.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
         menuView.cellTextLabelColor = UIColor.whiteColor()
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Medium", size: 17)
-        menuView.checkMarkImage = UIImage(named: "checkmark_icon")
         menuView.arrowPadding = 15
-        menuView.arrowImage = UIImage(named: "arrow_down_icon.png")
         menuView.animationDuration = 0.3
         menuView.maskBackgroundColor = UIColor.blackColor()
         menuView.maskBackgroundOpacity = 0.3
