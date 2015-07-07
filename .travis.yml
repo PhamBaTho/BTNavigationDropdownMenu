@@ -1,3 +1,0 @@
-language: objective-c
-before_script: travis/before_script.sh
-script: travis/script.sh
