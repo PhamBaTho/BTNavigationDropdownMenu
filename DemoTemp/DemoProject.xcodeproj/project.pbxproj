@@ -89,8 +89,7 @@
 				2E06952B1B25A3EE00EEB891 /* LaunchScreen.xib */,
 				2E0695201B25A3EE00EEB891 /* Supporting Files */,
 			);
-			name = DemoProject;
-			path = "Demo Project";
+			path = DemoProject;
 			sourceTree = "<group>";
 		};
 		2E0695201B25A3EE00EEB891 /* Supporting Files */ = {
@@ -176,7 +175,6 @@
 				TargetAttributes = {
 					2E06951C1B25A3EE00EEB891 = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = Q47BC9T672;
 					};
 					2E44D6891B4C0D6A00C9C49E = {
 						CreatedOnToolsVersion = 6.4;
@@ -184,7 +182,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2E0695181B25A3EE00EEB891 /* Build configuration list for PBXProject "BTNavigationDropdownMenu" */;
+			buildConfigurationList = 2E0695181B25A3EE00EEB891 /* Build configuration list for PBXProject "DemoProject" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -361,7 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Demo Project/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -372,7 +370,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Demo Project/Supporting Files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/DemoProject/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -417,7 +415,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2E0695181B25A3EE00EEB891 /* Build configuration list for PBXProject "BTNavigationDropdownMenu" */ = {
+		2E0695181B25A3EE00EEB891 /* Build configuration list for PBXProject "DemoProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2E06953A1B25A3EE00EEB891 /* Debug */,
@@ -442,6 +440,7 @@
 				2E44D6941B4C0D6A00C9C49E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
