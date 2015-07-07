@@ -1,0 +1,4 @@
+language: objective-c
+script:
+  - xctool -project BTNavigationDropdownMenu.xcodeproj -scheme BTNavigationDropdownMenu -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -project BTNavigationDropdownMenu.xcodeproj -scheme BTNavigationDropdownMenu -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

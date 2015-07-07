@@ -28,34 +28,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E0695311B25A3EE00EEB891"
-               BuildableName = "BTNavigationDropdownMenuTests.xctest"
-               BlueprintName = "BTNavigationDropdownMenuTests"
-               ReferencedContainer = "container:BTNavigationDropdownMenu.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E44D67A1B4C0D4700C9C49E"
-               BuildableName = "BTNavigationDropdownMenu Tests.xctest"
-               BlueprintName = "BTNavigationDropdownMenu Tests"
-               ReferencedContainer = "container:BTNavigationDropdownMenu.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "2E44D6891B4C0D6A00C9C49E"
                BuildableName = "DemoProjectTests.xctest"
                BlueprintName = "DemoProjectTests"
@@ -70,26 +42,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E0695311B25A3EE00EEB891"
-               BuildableName = "BTNavigationDropdownMenuTests.xctest"
-               BlueprintName = "BTNavigationDropdownMenuTests"
-               ReferencedContainer = "container:BTNavigationDropdownMenu.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2E44D67A1B4C0D4700C9C49E"
-               BuildableName = "BTNavigationDropdownMenu Tests.xctest"
-               BlueprintName = "BTNavigationDropdownMenu Tests"
-               ReferencedContainer = "container:BTNavigationDropdownMenu.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
