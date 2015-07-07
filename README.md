@@ -7,3 +7,5 @@ ON PROGRESS.
 TO-DO: 
 - Write documentation
 - Add Cocoapods
+- Add Test
+- Add Travis CI
