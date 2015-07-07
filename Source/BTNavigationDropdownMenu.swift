@@ -341,7 +341,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
-        cell.textLabel!.text = self.items[indexPath.row] as? String
+        cell.textLabel?.text = self.items[indexPath.row] as? String
         if indexPath.row == selectedIndexPath {
             cell.checkmarkIcon.hidden = false
         } else {
@@ -355,14 +355,14 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         selectedIndexPath = indexPath.row
         self.selectRowAtIndexPathHandler!(indexPath: indexPath.row)
         self.reloadData()
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! BTTableViewCell
-        cell.contentView.backgroundColor = self.configuration.cellSelectionColor
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as? BTTableViewCell
+        cell?.contentView.backgroundColor = self.configuration.cellSelectionColor
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! BTTableViewCell
-        cell.checkmarkIcon.hidden = true
-        cell.contentView.backgroundColor = self.configuration.cellBackgroundColor
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as? BTTableViewCell
+        cell?.checkmarkIcon.hidden = true
+        cell?.contentView.backgroundColor = self.configuration.cellBackgroundColor
     }
 }
 
