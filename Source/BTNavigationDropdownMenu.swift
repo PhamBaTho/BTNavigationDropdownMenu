@@ -383,10 +383,10 @@ class BTTableViewCell: UITableViewCell {
         cellContentFrame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.configuration.cellHeight)
         self.contentView.backgroundColor = self.configuration.cellBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.textLabel?.textAlignment = NSTextAlignment.Left
-        self.textLabel?.textColor = self.configuration.cellTextLabelColor
-        self.textLabel?.font = self.configuration.cellTextLabelFont
-        self.textLabel?.frame = CGRectMake(20, 0, cellContentFrame.width, cellContentFrame.height)
+        self.textLabel!.textAlignment = NSTextAlignment.Left
+        self.textLabel!.textColor = self.configuration.cellTextLabelColor
+        self.textLabel!.font = self.configuration.cellTextLabelFont
+        self.textLabel!.frame = CGRectMake(20, 0, cellContentFrame.width, cellContentFrame.height)
         
         
         // Checkmark icon
