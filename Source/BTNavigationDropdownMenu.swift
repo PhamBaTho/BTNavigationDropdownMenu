@@ -114,10 +114,10 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    public var tableContainerView: UIView!
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
 
     // Private properties
+    private var tableContainerView: UIView!
     private var configuration: BTConfiguration!
     private var mainScreenBounds: CGRect!
     private var menuButton: UIButton!
@@ -133,12 +133,12 @@ public class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, title: String, items: [AnyObject]) {
+    init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView) {
         super.init(frame:frame)
         
         // Init properties
         self.configuration = BTConfiguration()
-        
+        self.tableContainerView = containerView
         self.navigationBarHeight = 44
         self.mainScreenBounds = UIScreen.mainScreen().bounds
         self.isShown = false

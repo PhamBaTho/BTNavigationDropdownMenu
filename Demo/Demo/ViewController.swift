@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 240.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        let menuView = BTNavigationDropdownMenu(frame:  CGRectMake(0.0, 0.0, 300, 44), title: items.first!, items: items)
+        let menuView = BTNavigationDropdownMenu(frame:  CGRectMake(0.0, 0.0, 300, 44), title: items.first!, items: items, containerView: self.view)
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor(red: 240.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
         menuView.cellSelectionColor = UIColor(red: 210.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
@@ -31,8 +31,7 @@ class ViewController: UIViewController {
         menuView.animationDuration = 0.3
         menuView.maskBackgroundColor = UIColor.blackColor()
         menuView.maskBackgroundOpacity = 0.3
-        menuView.bounceOffset = -5
-        menuView.tableContainerView = self.view
+        menuView.bounceOffset = -7
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             println("Did select item at index: \(indexPath)")
             menuView.setMenuTitle("\(items[indexPath])")
