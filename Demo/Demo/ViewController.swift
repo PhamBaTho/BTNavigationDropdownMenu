@@ -26,12 +26,12 @@ class ViewController: UIViewController {
         menuView.cellBackgroundColor = UIColor(red: 240.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
         menuView.cellSelectionColor = UIColor(red: 210.0/255.0, green:32.0/255.0, blue:60.0/255.0, alpha: 1.0)
         menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Medium", size: 17)
+        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.3
         menuView.maskBackgroundColor = UIColor.blackColor()
         menuView.maskBackgroundOpacity = 0.3
-        menuView.bounceOffset = -7
+        menuView.bounceOffset = 5
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             println("Did select item at index: \(indexPath)")
             menuView.setMenuTitle("\(items[indexPath])")

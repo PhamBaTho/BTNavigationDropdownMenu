@@ -36,21 +36,21 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // The color of the background
+    // The color of the cell background. Default is whiteColor()
     public var cellBackgroundColor: UIColor! {
         didSet {
             self.configuration.cellBackgroundColor = cellBackgroundColor
         }
     }
     
-    // The color of the text inside cell
+    // The color of the text inside cell. Default is darkGrayColor()
     public var cellTextLabelColor: UIColor! {
         didSet {
             self.configuration.cellTextLabelColor = cellTextLabelColor
         }
     }
     
-    // The font of the text inside cell
+    // The font of the text inside cell. Default is HelveticaNeue-Bold, size 19
     public var cellTextLabelFont: UIFont! {
         didSet {
             self.configuration.cellTextLabelFont = cellTextLabelFont
@@ -58,7 +58,7 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // The color of the cell when the cell is selected
+    // The color of the cell when the cell is selected. Default is lightGrayColor()
     public var cellSelectionColor: UIColor! {
         didSet {
             self.configuration.cellSelectionColor = cellSelectionColor
@@ -72,14 +72,14 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // The animation duration of showing/hiding menu
+    // The animation duration of showing/hiding menu. Default is 0.3
     public var animationDuration: NSTimeInterval! {
         didSet {
             self.configuration.animationDuration = animationDuration
         }
     }
     
-    // The value of bounce offset
+    // The value of bounce offset. Default is 10
     public var bounceOffset: CGFloat! {
         didSet {
             self.configuration.bounceOffset = bounceOffset
@@ -100,14 +100,14 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // The color of the mask layer
+    // The color of the mask layer. Default is blackColor()
     public var maskBackgroundColor: UIColor! {
         didSet {
             self.configuration.maskBackgroundColor = maskBackgroundColor
         }
     }
     
-    // The opacity of the mask layer
+    // The opacity of the mask layer. Default is 0.3
     public var maskBackgroundOpacity: CGFloat! {
         didSet {
             self.configuration.maskBackgroundOpacity = maskBackgroundOpacity
@@ -203,7 +203,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
         UIView.animateWithDuration(self.configuration.animationDuration, animations: {
             self.tableView.frame.origin.y = CGFloat(-300)
-            self.tableView.contentOffset = CGPointMake(0, self.configuration.bounceOffset);
+            self.tableView.contentOffset = CGPointMake(0, -self.configuration.bounceOffset);
             self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
             }, completion: { _ in
                 UIView.animateWithDuration(self.configuration.animationDuration/3, animations: {
@@ -282,14 +282,14 @@ class BTConfiguration {
         // Default values
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.whiteColor()
-        self.cellSelectionColor = UIColor.lightGrayColor()
         self.cellTextLabelColor = UIColor.darkGrayColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
-        self.bounceOffset = -5
+        self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
+        self.animationDuration = 0.3
+        self.bounceOffset = 10
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
-        self.animationDuration = 0.3
         self.maskBackgroundColor = UIColor.blackColor()
         self.maskBackgroundOpacity = 0.3
     }
