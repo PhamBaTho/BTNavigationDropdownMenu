@@ -34,7 +34,6 @@ class ViewController: UIViewController {
         menuView.bounceOffset = 5
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             println("Did select item at index: \(indexPath)")
-            menuView.setMenuTitle("\(items[indexPath])")
             self.selectedCellLabel.text = items[indexPath]
         }
         

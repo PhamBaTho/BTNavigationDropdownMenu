@@ -163,6 +163,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.tableView = BTTableView(frame: CGRectMake(mainScreenBounds.origin.x, mainScreenBounds.origin.y, mainScreenBounds.width, mainScreenBounds.height + 300 - 64), items: items, configuration: self.configuration)
         self.tableView.selectRowAtIndexPathHandler = { (indexPath: Int) -> () in
             self.didSelectItemAtIndexHandler!(indexPath: indexPath)
+            self.setMenuTitle("\(items[indexPath])")
             self.hideMenu()
             self.isShown = false
             self.layoutSubviews()
@@ -372,7 +373,6 @@ class BTTableViewCell: UITableViewCell {
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
     var configuration: BTConfiguration!
-    var setSelectedClosure: (() -> ())?
     
     init(style: UITableViewCellStyle, reuseIdentifier: String?, configuration: BTConfiguration) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
