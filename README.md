@@ -22,10 +22,22 @@ Start by creating an Array that contains strings as **elements of dropdown list*
 ```
 let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
-Create a **new instance** of BTNavigationDropdownMenu. The frame of this instance represents the touchable area of navigation title to show dropdown menu:
+Create a **new instance** of BTNavigationDropdownMenu. The frame of this instance represents **the touchable area** of navigation title to show dropdown menu:
 ```
 let menuView = BTNavigationDropdownMenu(frame:  CGRectMake(0.0, 0.0, 300, 44), title: items.first!, items: items, containerView: self.view)
 ```
+Set **title of navigation bar** as menuView:
+```
+self.navigationItem.titleView = menuView
+```
+Call BTNavigationDropdownMenu closure to get **the index of selected cell**:
+```
+menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            println("Did select item at index: \(indexPath)")
+            self.selectedCellLabel.text = items[indexPath]
+}
+```
+
 ### Customization
 Once you have assigned the items and frame for dropdown menu, you can custom the look and the feel of menu. You can override these properties for your favor:
 
