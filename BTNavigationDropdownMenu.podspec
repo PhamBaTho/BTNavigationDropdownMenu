@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "7.0"
   s.source       = { :git => "https://github.com/PhamBaTho/BTNavigationDropdownMenu.git", :tag => s.version.to_s }
   s.source_files  = "Source/*.swift"
-  s.resources = "Source/*.bundle"
+  s.resources = "Source/BTNavigationDropdownMenu.bundle/*png"
   s.requires_arc = true
   s.frameworks = "XCTest", "UIKit"
 end
