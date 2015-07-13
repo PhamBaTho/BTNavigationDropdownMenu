@@ -133,7 +133,7 @@ public class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView) {
+    public init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView) {
         super.init(frame:frame)
         
         // Init properties
