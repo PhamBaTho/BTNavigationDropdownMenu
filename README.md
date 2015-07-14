@@ -16,6 +16,11 @@ it, simply add the following line to your Podfile:
 ```ruby
 pod 'BTNavigationDropdownMenu'
 ```
+Go ahead and **import** BTNavigationDropdownMenu into your own Swift files 
+```swift
+import BTNavigationDropdownMenu
+```
+
 ## Usage:
 ### Subclassing
 Start by creating an Array that contains strings as **elements of dropdown list**:
@@ -66,11 +71,8 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 `maskBackgroundOpacity`  **- The opacity of the mask layer.** *Default is 0.3*
 
 ## Requirement
-- iOS 7.0+
+- iOS 8.0+
 - Xcode 6.1
 
 ## License
 BTNavigationDropdownMenu is available under the MIT License. See the [LICENSE](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/LICENSE) for details.
-
-## TO-DO: 
-- Add Cocoapods
