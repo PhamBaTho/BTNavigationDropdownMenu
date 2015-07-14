@@ -6,7 +6,7 @@
 ## Introduction:
 The elegant dropdown menu, written in **Swift**, appears underneath navigation bar to display a list of related items when a user click on the navigation title.
 
-![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/DemoProject.gif)
+![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/Demo.gif)
 
 ## Installation:
 
