@@ -16,6 +16,7 @@ The elegant dropdown menu, written in **Swift**, appears underneath navigation b
 it, simply add the following line to your Podfile:
 
 ```ruby
+use_frameworks!
 pod 'BTNavigationDropdownMenu'
 ```
 Go ahead and **import** BTNavigationDropdownMenu into your own Swift files 
