@@ -61,7 +61,7 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `checkMarkImage`  **- The checkmark icon of the cell.**
 
-`animationDuration`  **- The animation duration of showing/hiding menu.** *Default is 0.3s*
+`animationDuration`  **- The animation duration of showing/hiding menu.** *Default is 0.5s*
 
 `bounceOffset`  **- The value of bounce offset.** *Default is 10*
 
