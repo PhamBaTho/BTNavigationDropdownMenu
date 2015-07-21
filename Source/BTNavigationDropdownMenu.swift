@@ -90,9 +90,7 @@ public class BTNavigationDropdownMenu: UIView {
     public var arrowImage: UIImage! {
         didSet {
             self.configuration.arrowImage = arrowImage
-            if let menuArrow = self.menuArrow {
-                menuArrow.image = self.configuration.arrowImage
-            }
+            self.menuArrow.image = self.configuration.arrowImage
         }
     }
     
