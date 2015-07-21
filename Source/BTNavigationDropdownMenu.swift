@@ -90,6 +90,7 @@ public class BTNavigationDropdownMenu: UIView {
     public var arrowImage: UIImage! {
         didSet {
             self.configuration.arrowImage = arrowImage
+            self.menuArrow.image = self.configuration.arrowImage
         }
     }
     
@@ -173,7 +174,7 @@ public class BTNavigationDropdownMenu: UIView {
     override public func layoutSubviews() {
         self.menuTitle.sizeToFit()
         self.menuTitle.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
-        self.menuArrow.frame = CGRectMake(0, 0, 12, 7)
+        self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
     }
     
