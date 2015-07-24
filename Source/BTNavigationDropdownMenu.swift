@@ -426,7 +426,12 @@ class BTTableCellContentView: UIView {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetRGBStrokeColor(context, 0, 0, 0, 0.5)
+        // Set separator color of dropdown menu based on barStyle
+        if UINavigationBar.appearance().barStyle == UIBarStyle.Default {
+            CGContextSetRGBStrokeColor(context, 0, 0, 0, 0.4)
+        } else {
+            CGContextSetRGBStrokeColor(context, 1, 1, 1, 0.3)
+        }
         CGContextSetLineWidth(context, 1)
         CGContextMoveToPoint(context, 0, self.bounds.size.height)
         CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height)

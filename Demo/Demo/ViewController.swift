@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
         self.selectedCellLabel.text = items.first
         self.navigationController?.navigationBar.translucent = false
-        UINavigationBar.appearance().translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().barStyle = UIBarStyle.Default
         
         let menuView = BTNavigationDropdownMenu(frame:  CGRectMake(0.0, 0.0, 300, 44), title: items.first!, items: items, containerView: self.view)
         menuView.cellHeight = 50
