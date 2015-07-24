@@ -25,7 +25,7 @@ import BTNavigationDropdownMenu
 ```
 
 ## Usage:
-### Subclassing
+### Instantiating
 Start by creating an Array that contains strings as **elements of dropdown list**:
 ```swift
 let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
