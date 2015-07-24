@@ -78,13 +78,6 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.animationDuration = animationDuration
         }
     }
-    
-    // The value of bounce offset. Default is 10
-    public var bounceOffset: CGFloat! {
-        didSet {
-            self.configuration.bounceOffset = bounceOffset
-        }
-    }
 
     // The arrow next to navigation title
     public var arrowImage: UIImage! {
@@ -213,7 +206,6 @@ public class BTNavigationDropdownMenu: UIView {
             animations: {
                 self.tableView.frame.origin.y = CGFloat(-300)
                 self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
-                self.tableView.contentOffset = CGPointMake(0, 0)
             }, completion: nil
         )
     }
@@ -225,9 +217,19 @@ public class BTNavigationDropdownMenu: UIView {
         // Change background alpha
         self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
         
+        UIView.animateWithDuration(
+            self.configuration.animationDuration * 1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.5,
+            options: nil,
+            animations: {
+                self.tableView.frame.origin.y = CGFloat(-200)
+            }, completion: nil
+        )
+        
         // Animation
         UIView.animateWithDuration(self.configuration.animationDuration, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: {
-            self.tableView.contentOffset = CGPointMake(0, self.configuration.bounceOffset);
             self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
             self.backgroundView.alpha = 0
         }, completion: { _ in
@@ -271,7 +273,6 @@ class BTConfiguration {
     var animationDuration: NSTimeInterval!
     var maskBackgroundColor: UIColor!
     var maskBackgroundOpacity: CGFloat!
-    var bounceOffset: CGFloat!
     
     init() {
         self.defaultValue()
@@ -293,7 +294,6 @@ class BTConfiguration {
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
         self.animationDuration = 0.5
-        self.bounceOffset = 10
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
         self.maskBackgroundColor = UIColor.blackColor()
