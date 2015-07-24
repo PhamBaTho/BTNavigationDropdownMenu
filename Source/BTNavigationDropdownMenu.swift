@@ -203,15 +203,19 @@ public class BTNavigationDropdownMenu: UIView {
         
         // Animation
         self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
-        UIView.animateWithDuration(self.configuration.animationDuration, animations: {
-            self.tableView.frame.origin.y = CGFloat(-300)
-            self.tableView.contentOffset = CGPointMake(0, -self.configuration.bounceOffset);
-            self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
-            }, completion: { _ in
-                UIView.animateWithDuration(self.configuration.animationDuration/3, animations: {
-                    self.tableView.contentOffset = CGPointMake(0, 0)
-                })
-        })
+        
+        UIView.animateWithDuration(
+            self.configuration.animationDuration * 1.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0.5,
+            options: nil,
+            animations: {
+                self.tableView.frame.origin.y = CGFloat(-300)
+                self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
+                self.tableView.contentOffset = CGPointMake(0, 0)
+            }, completion: nil
+        )
     }
     
     func hideMenu() {
@@ -222,7 +226,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
         
         // Animation
-        UIView.animateWithDuration(self.configuration.animationDuration, delay: 0.15, options: UIViewAnimationOptions.TransitionNone, animations: {
+        UIView.animateWithDuration(self.configuration.animationDuration, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: {
             self.tableView.contentOffset = CGPointMake(0, self.configuration.bounceOffset);
             self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
             self.backgroundView.alpha = 0
@@ -288,7 +292,7 @@ class BTConfiguration {
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
-        self.animationDuration = 0.3
+        self.animationDuration = 0.5
         self.bounceOffset = 10
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
