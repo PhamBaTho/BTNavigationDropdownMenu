@@ -111,9 +111,10 @@ public class BTNavigationDropdownMenu: UIView {
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
 
     // Private properties
-    private var tableContainerView: UIView!
+//    private var tableContainerView: UIView!
+//    private var mainScreenBounds: CGRect!
+    
     private var configuration: BTConfiguration!
-    private var mainScreenBounds: CGRect!
     private var menuButton: UIButton!
     private var menuTitle: UILabel!
     private var menuArrow: UIImageView!
@@ -123,18 +124,18 @@ public class BTNavigationDropdownMenu: UIView {
     private var isShown: Bool!
     private var navigationBarHeight: CGFloat!
     
+    private var menuViewWrapper: UIView!
+    
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView) {
+    public init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView, padding: UIEdgeInsets = UIEdgeInsetsZero) {
         super.init(frame:frame)
         
         // Init properties
         self.configuration = BTConfiguration()
-        self.tableContainerView = containerView
         self.navigationBarHeight = 44
-        self.mainScreenBounds = UIScreen.mainScreen().bounds
         self.isShown = false
         self.items = items
         
@@ -153,8 +154,18 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
         self.menuButton.addSubview(self.menuArrow)
         
+        var containerBounds = containerView.bounds
+        
+        // Set up DropdownMenu
+        self.menuViewWrapper = UIView(frame: CGRectMake(containerBounds.origin.x + padding.left, padding.top, containerBounds.width - (padding.left + padding.right), containerBounds.height - (padding.top + padding.bottom)))
+        self.menuViewWrapper.clipsToBounds = true
+        
+        // Init background view (under table view)
+        self.backgroundView = UIView(frame: containerBounds)
+        self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
+        
         // Init table view
-        self.tableView = BTTableView(frame: CGRectMake(mainScreenBounds.origin.x, mainScreenBounds.origin.y, mainScreenBounds.width, mainScreenBounds.height + 300 - 64), items: items, configuration: self.configuration)
+        self.tableView = BTTableView(frame: CGRectMake(containerBounds.origin.x, containerBounds.origin.y, containerBounds.width, containerBounds.height + 300 - 64), items: items, configuration: self.configuration)
         self.tableView.selectRowAtIndexPathHandler = { (indexPath: Int) -> () in
             self.didSelectItemAtIndexHandler!(indexPath: indexPath)
             self.setMenuTitle("\(items[indexPath])")
@@ -162,6 +173,16 @@ public class BTNavigationDropdownMenu: UIView {
             self.isShown = false
             self.layoutSubviews()
         }
+        
+        // Add background view & table view to container view
+        self.menuViewWrapper.addSubview(self.backgroundView)
+        self.menuViewWrapper.addSubview(self.tableView)
+        
+        // Add Menu View to container view
+        containerView.addSubview(self.menuViewWrapper)
+        
+        // By default, hide menu view
+        self.menuViewWrapper.hidden = true
     }
     
     override public func layoutSubviews() {
@@ -177,25 +198,20 @@ public class BTNavigationDropdownMenu: UIView {
         headerView.backgroundColor = self.configuration.cellBackgroundColor
         self.tableView.tableHeaderView = headerView
         
-        // Reload data to dismiss highlight color of selected cell
-        self.tableView.reloadData()
-        
-        // Init background view (under table view)
-        self.backgroundView = UIView(frame: mainScreenBounds)
-        self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
-        
-        // Add background view & table view to container view
-        self.tableContainerView.addSubview(self.backgroundView)
-        self.tableContainerView.addSubview(self.tableView)
-        
         // Rotate arrow
         self.rotateArrow()
+        
+        // Visible menu view
+        self.menuViewWrapper.hidden = false
         
         // Change background alpha
         self.backgroundView.alpha = 0
         
         // Animation
         self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
+        
+        // Reload data to dismiss highlight color of selected cell
+        self.tableView.reloadData()
         
         UIView.animateWithDuration(
             self.configuration.animationDuration * 1.5,
@@ -233,8 +249,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
             self.backgroundView.alpha = 0
         }, completion: { _ in
-            self.tableView.removeFromSuperview()
-            self.backgroundView.removeFromSuperview()
+            self.menuViewWrapper.hidden = true
         })
     }
     
