@@ -77,10 +77,11 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 - iOS 8.0+
 - Xcode 6.1
 
-## Requirement
-### 0.1.3
-- Use usingSpringWithDamping instead of contentOffset for show/hide animation
-### 0.1.2
+## Changelog
+**0.1.3 (25-07-2015)**
+- Use `usingSpringWithDamping` instead of `contentOffset` for show/hide animation
+
+**0.1.2 (21-07-2015)**
 - Allow change of arrow image after creation of menu
 
 ## License
