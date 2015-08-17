@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         menuView.maskBackgroundColor = UIColor.blackColor()
         menuView.maskBackgroundOpacity = 0.3
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            println("Did select item at index: \(indexPath)")
+            print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
         }
         
