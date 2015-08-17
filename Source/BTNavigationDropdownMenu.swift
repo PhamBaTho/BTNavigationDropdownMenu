@@ -127,8 +127,7 @@ public class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView) {
-        super.init(frame:frame)
+    public init(title: String, items: [AnyObject], containerView:UIView) {
         
         // Init properties
         self.configuration = BTConfiguration()
@@ -137,6 +136,14 @@ public class BTNavigationDropdownMenu: UIView {
         self.mainScreenBounds = UIScreen.mainScreen().bounds
         self.isShown = false
         self.items = items
+        
+        // Get titleSize
+        let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
+
+        // Set frame
+        let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, self.navigationBarHeight)
+    
+        super.init(frame:frame)
         
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
