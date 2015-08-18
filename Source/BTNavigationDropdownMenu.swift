@@ -43,6 +43,12 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    public var cellSeparatorColor: UIColor! {
+        didSet {
+            self.configuration.cellSeparatorColor = cellSeparatorColor
+        }
+    }
+    
     // The color of the text inside cell. Default is darkGrayColor()
     public var cellTextLabelColor: UIColor! {
         didSet {
@@ -115,6 +121,8 @@ public class BTNavigationDropdownMenu: UIView {
 //    private var mainScreenBounds: CGRect!
     
     private var configuration: BTConfiguration!
+    private var topSeparator: UIView!
+    
     private var menuButton: UIButton!
     private var menuTitle: UILabel!
     private var menuArrow: UIImageView!
@@ -122,7 +130,9 @@ public class BTNavigationDropdownMenu: UIView {
     private var tableView: BTTableView!
     private var items: [AnyObject]!
     private var isShown: Bool!
+    
     private var navigationBarHeight: CGFloat!
+    private var applicationStatusBar: CGFloat!
     
     private var menuViewWrapper: UIView!
     
@@ -130,11 +140,12 @@ public class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(frame: CGRect, title: String, items: [AnyObject], containerView:UIView, padding: UIEdgeInsets = UIEdgeInsetsZero) {
+    public init(frame: CGRect, title: String, items: [AnyObject]) {
         super.init(frame:frame)
         
         // Init properties
         self.configuration = BTConfiguration()
+        self.applicationStatusBar = 20
         self.navigationBarHeight = 44
         self.isShown = false
         self.items = items
@@ -154,18 +165,22 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
         self.menuButton.addSubview(self.menuArrow)
         
-        var containerBounds = containerView.bounds
+        let window = UIApplication.sharedApplication().delegate!.window!!
+        var containerBounds = window.bounds
         
+        let paddingTop = (self.applicationStatusBar + self.navigationBarHeight)
         // Set up DropdownMenu
-        self.menuViewWrapper = UIView(frame: CGRectMake(containerBounds.origin.x + padding.left, padding.top, containerBounds.width - (padding.left + padding.right), containerBounds.height - (padding.top + padding.bottom)))
+        self.menuViewWrapper = UIView(frame: CGRectMake(containerBounds.origin.x, paddingTop, containerBounds.width, containerBounds.height - paddingTop))
         self.menuViewWrapper.clipsToBounds = true
         
+        let wrapperBounds = self.menuViewWrapper.bounds
         // Init background view (under table view)
-        self.backgroundView = UIView(frame: containerBounds)
+        self.backgroundView = UIView(frame: wrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         
         // Init table view
-        self.tableView = BTTableView(frame: CGRectMake(containerBounds.origin.x, containerBounds.origin.y, containerBounds.width, containerBounds.height + 300 - 64), items: items, configuration: self.configuration)
+        self.tableView = BTTableView(frame: CGRectMake(wrapperBounds.origin.x, wrapperBounds.origin.y + 0.5, wrapperBounds.width, wrapperBounds.height + 300), items: items, configuration: self.configuration)
+        
         self.tableView.selectRowAtIndexPathHandler = { (indexPath: Int) -> () in
             self.didSelectItemAtIndexHandler!(indexPath: indexPath)
             self.setMenuTitle("\(items[indexPath])")
@@ -178,8 +193,12 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuViewWrapper.addSubview(self.backgroundView)
         self.menuViewWrapper.addSubview(self.tableView)
         
+        // Add Line on top
+        self.topSeparator = UIView(frame: CGRectMake(0, 0, wrapperBounds.size.width, 0.5))
+        self.menuViewWrapper.addSubview(self.topSeparator)
+        
         // Add Menu View to container view
-        containerView.addSubview(self.menuViewWrapper)
+        window.addSubview(self.menuViewWrapper)
         
         // By default, hide menu view
         self.menuViewWrapper.hidden = true
@@ -192,11 +211,14 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
     }
     
+    
     func showMenu() {
         // Table view header
         var headerView = UIView(frame: CGRectMake(0, 0, self.frame.width, 300))
         headerView.backgroundColor = self.configuration.cellBackgroundColor
         self.tableView.tableHeaderView = headerView
+        
+        self.topSeparator.backgroundColor = self.configuration.cellSeparatorColor
         
         // Rotate arrow
         self.rotateArrow()
@@ -279,6 +301,7 @@ public class BTNavigationDropdownMenu: UIView {
 class BTConfiguration {
     var cellHeight: CGFloat!
     var cellBackgroundColor: UIColor!
+    var cellSeparatorColor: UIColor!
     var cellTextLabelColor: UIColor!
     var cellTextLabelFont: UIFont!
     var cellSelectionColor: UIColor!
@@ -418,7 +441,7 @@ class BTTableViewCell: UITableViewCell {
         
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
-        separator.backgroundColor = UIColor.clearColor()
+        separator.separatorColor = self.configuration.cellSeparatorColor
         self.contentView.addSubview(separator)
     }
     
@@ -434,23 +457,30 @@ class BTTableViewCell: UITableViewCell {
 
 // Content view of table view cell
 class BTTableCellContentView: UIView {
+    var separatorColor: UIColor = UIColor.blackColor()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.initialize()
     }
     
     required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        
+        self.initialize()
+    }
+    
+    func initialize() {
+        self.backgroundColor = UIColor.clearColor()
     }
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         let context = UIGraphicsGetCurrentContext()
+        
         // Set separator color of dropdown menu based on barStyle
-        if UINavigationBar.appearance().barStyle == UIBarStyle.Default {
-            CGContextSetRGBStrokeColor(context, 0, 0, 0, 0.4)
-        } else {
-            CGContextSetRGBStrokeColor(context, 1, 1, 1, 0.3)
-        }
+        CGContextSetStrokeColorWithColor(context, self.separatorColor.CGColor)
         CGContextSetLineWidth(context, 1)
         CGContextMoveToPoint(context, 0, self.bounds.size.height)
         CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height)
