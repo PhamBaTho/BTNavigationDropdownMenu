@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var selectedCellLabel: UILabel!
+    var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,8 +19,7 @@ class ViewController: UIViewController {
         self.selectedCellLabel.text = items.first
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().barStyle = UIBarStyle.Default
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         let menuView = BTNavigationDropdownMenu(title: items.first!, items: items, containerView: self.view)
         menuView.cellHeight = 50
@@ -32,8 +32,11 @@ class ViewController: UIViewController {
         menuView.maskBackgroundColor = UIColor.blackColor()
         menuView.maskBackgroundOpacity = 0.3
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            println("Did select item at index: \(indexPath)")
+            print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
+            
+            self.navigationItem.titleView = nil
+            self.navigationItem.titleView = self.menuView
         }
         
         self.navigationItem.titleView = menuView
