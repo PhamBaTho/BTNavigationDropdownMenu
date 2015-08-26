@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="s8W-fO-vqO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="s8W-fO-vqO">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -13,7 +14,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jc6-f8-1fo" userLabel="Label">
@@ -47,11 +48,11 @@
             </objects>
             <point key="canvasLocation" x="1433" y="356"/>
         </scene>
-        <!--Item-->
+        <!--Tab 1-->
         <scene sceneID="GTl-3t-6dt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5nB-CE-XEl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="60w-9J-6f0"/>
+                <navigationController title="Tab 1" automaticallyAdjustsScrollViewInsets="NO" id="5nB-CE-XEl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tab 1" id="60w-9J-6f0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yvl-Sk-d0l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -66,10 +67,10 @@
             </objects>
             <point key="canvasLocation" x="720" y="356"/>
         </scene>
-        <!--Item-->
+        <!--Tab 2-->
         <scene sceneID="vzF-qC-fr3">
             <objects>
-                <viewController id="bW5-PG-JQh" sceneMemberID="viewController">
+                <viewController title="Tab 2" id="bW5-PG-JQh" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sfp-WO-NhM"/>
                         <viewControllerLayoutGuide type="bottom" id="eQO-J5-ySf"/>
@@ -79,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="BSz-Fb-oZd"/>
+                    <tabBarItem key="tabBarItem" title="Tab 2" id="BSz-Fb-oZd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kz2-uR-app" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

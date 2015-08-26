@@ -34,9 +34,6 @@ class ViewController: UIViewController {
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
-            
-            self.navigationItem.titleView = nil
-            self.navigationItem.titleView = self.menuView
         }
         
         self.navigationItem.titleView = menuView
