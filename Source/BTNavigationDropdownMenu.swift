@@ -161,10 +161,6 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
-
-    // Private properties
-//    private var tableContainerView: UIView!
-//    private var mainScreenBounds: CGRect!
     
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
@@ -177,7 +173,7 @@ public class BTNavigationDropdownMenu: UIView {
     private var items: [AnyObject]!
     private var isShown: Bool!
     
-    private var menuViewWrapper: UIView!
+    private var menuWrapper: UIView!
     
     private var navigationController: UINavigationController?
     
@@ -187,22 +183,23 @@ public class BTNavigationDropdownMenu: UIView {
     
     public init(title: String, items: [AnyObject], containerView:UIView) {
         
+        // Navigation controller
         self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.BTTopMostViewController().navigationController
-
-        // Init properties
-        self.setupDefaultConfiguration()
+        
+        // Get titleSize
+        let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
+        
+        // Set frame
+        let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, (self.navigationController?.navigationBar.frame.height)!)
+        
+        super.init(frame:frame)
         
         self.isShown = false
         self.items = items
         
-        // Get titleSize
-        let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
+        // Init properties
+        self.setupDefaultConfiguration()
 
-        // Set frame
-        let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, self.navigationBarHeight)
-    
-        super.init(frame:frame)
-        
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: "menuButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -219,19 +216,20 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuButton.addSubview(self.menuArrow)
         
         let window = UIApplication.sharedApplication().delegate!.window!!
-        var containerBounds = window.bounds
+        let containerBounds = window.bounds
         
         // Set up DropdownMenu
-        self.menuViewWrapper = UIView(frame: CGRectMake(containerBounds.origin.x, 0, containerBounds.width, containerBounds.height))
-        self.menuViewWrapper.clipsToBounds = true
+        self.menuWrapper = UIView(frame: CGRectMake(containerBounds.origin.x, 0, containerBounds.width, containerBounds.height))
+        self.menuWrapper.clipsToBounds = true
         
-        let wrapperBounds = self.menuViewWrapper.bounds
+        let menuWrapperBounds = self.menuWrapper.bounds
+        
         // Init background view (under table view)
-        self.backgroundView = UIView(frame: wrapperBounds)
+        self.backgroundView = UIView(frame: menuWrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         
         // Init table view
-        self.tableView = BTTableView(frame: CGRectMake(wrapperBounds.origin.x, wrapperBounds.origin.y + 0.5, wrapperBounds.width, wrapperBounds.height + 300), items: items, configuration: self.configuration)
+        self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300), items: items, configuration: self.configuration)
         
         self.tableView.selectRowAtIndexPathHandler = { (indexPath: Int) -> () in
             self.didSelectItemAtIndexHandler!(indexPath: indexPath)
@@ -242,18 +240,18 @@ public class BTNavigationDropdownMenu: UIView {
         }
         
         // Add background view & table view to container view
-        self.menuViewWrapper.addSubview(self.backgroundView)
-        self.menuViewWrapper.addSubview(self.tableView)
+        self.menuWrapper.addSubview(self.backgroundView)
+        self.menuWrapper.addSubview(self.tableView)
         
         // Add Line on top
-        self.topSeparator = UIView(frame: CGRectMake(0, 0, wrapperBounds.size.width, 0.5))
-        self.menuViewWrapper.addSubview(self.topSeparator)
+        self.topSeparator = UIView(frame: CGRectMake(0, 0, menuWrapperBounds.size.width, 0.5))
+        self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
-        window.addSubview(self.menuViewWrapper)
+        window.addSubview(self.menuWrapper)
         
         // By default, hide menu view
-        self.menuViewWrapper.hidden = true
+        self.menuWrapper.hidden = true
     }
     
     func setupDefaultConfiguration() {
@@ -272,7 +270,7 @@ public class BTNavigationDropdownMenu: UIView {
     
     
     func showMenu() {
-        self.menuViewWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
+        self.menuWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
         
         // Table view header
         let headerView = UIView(frame: CGRectMake(0, 0, self.frame.width, 300))
@@ -285,7 +283,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.rotateArrow()
         
         // Visible menu view
-        self.menuViewWrapper.hidden = false
+        self.menuWrapper.hidden = false
         
         // Change background alpha
         self.backgroundView.alpha = 0
@@ -332,7 +330,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
             self.backgroundView.alpha = 0
         }, completion: { _ in
-            self.menuViewWrapper.hidden = true
+            self.menuWrapper.hidden = true
         })
     }
     
