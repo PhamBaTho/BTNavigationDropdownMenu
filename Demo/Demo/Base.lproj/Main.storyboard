@@ -78,13 +78,25 @@
                     <view key="view" contentMode="scaleToFill" id="nN6-1u-YNS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back to previous tab 😜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-KD-R5q">
+                                <rect key="frame" x="95.5" y="276.5" width="409" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="kgC-KD-R5q" firstAttribute="centerY" secondItem="nN6-1u-YNS" secondAttribute="centerY" id="9MX-hI-TaL"/>
+                            <constraint firstItem="kgC-KD-R5q" firstAttribute="centerX" secondItem="nN6-1u-YNS" secondAttribute="centerX" id="Gsl-Oj-JMq"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tab 2" id="BSz-Fb-oZd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kz2-uR-app" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="720" y="1154"/>
+            <point key="canvasLocation" x="678" y="1204"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Bh9-FN-aRD">

@@ -194,6 +194,8 @@ public class BTNavigationDropdownMenu: UIView {
         
         super.init(frame:frame)
         
+        self.navigationController?.view.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
+        
         self.isShown = false
         self.items = items
         
@@ -215,18 +217,18 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
         self.menuButton.addSubview(self.menuArrow)
         
-        let window = UIApplication.sharedApplication().delegate!.window!!
-        let containerBounds = window.bounds
+        let window = UIApplication.sharedApplication().keyWindow!
+        let menuWrapperBounds = window.bounds
         
         // Set up DropdownMenu
-        self.menuWrapper = UIView(frame: CGRectMake(containerBounds.origin.x, 0, containerBounds.width, containerBounds.height))
+        self.menuWrapper = UIView(frame: CGRectMake(menuWrapperBounds.origin.x, 0, menuWrapperBounds.width, menuWrapperBounds.height))
         self.menuWrapper.clipsToBounds = true
-        
-        let menuWrapperBounds = self.menuWrapper.bounds
+        self.menuWrapper.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
         
         // Init background view (under table view)
         self.backgroundView = UIView(frame: menuWrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
+        self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
         
         // Init table view
         self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300), items: items, configuration: self.configuration)
@@ -245,6 +247,7 @@ public class BTNavigationDropdownMenu: UIView {
         
         // Add Line on top
         self.topSeparator = UIView(frame: CGRectMake(0, 0, menuWrapperBounds.size.width, 0.5))
+        self.topSeparator.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
@@ -252,6 +255,14 @@ public class BTNavigationDropdownMenu: UIView {
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
+    }
+    
+    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "frame" {
+            // Set up DropdownMenu
+            self.menuWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
+            self.tableView.reloadData()
+        }
     }
     
     func setupDefaultConfiguration() {
@@ -448,11 +459,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row] as? String
-        if indexPath.row == selectedIndexPath {
-            cell.checkmarkIcon.hidden = false
-        } else {
-            cell.checkmarkIcon.hidden = true
-        }
+        cell.checkmarkIcon.hidden = (indexPath.row == selectedIndexPath) ? false : true
+        
         return cell
     }
     
@@ -485,7 +493,7 @@ class BTTableViewCell: UITableViewCell {
         self.configuration = configuration
         
         // Setup cell
-        cellContentFrame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, self.configuration.cellHeight)
+        cellContentFrame = CGRectMake(0, 0, (UIApplication.sharedApplication().keyWindow?.frame.width)!, self.configuration.cellHeight)
         self.contentView.backgroundColor = self.configuration.cellBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.None
         self.textLabel!.textAlignment = NSTextAlignment.Left
