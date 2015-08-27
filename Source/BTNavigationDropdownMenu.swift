@@ -162,9 +162,9 @@ public class BTNavigationDropdownMenu: UIView {
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     
+    private var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
-    
     private var menuButton: UIButton!
     private var menuTitle: UILabel!
     private var menuArrow: UIImageView!
@@ -172,10 +172,7 @@ public class BTNavigationDropdownMenu: UIView {
     private var tableView: BTTableView!
     private var items: [AnyObject]!
     private var isShown: Bool!
-    
     private var menuWrapper: UIView!
-    
-    private var navigationController: UINavigationController?
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -265,13 +262,6 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    func setupDefaultConfiguration() {
-        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
-        self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
-        self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
-        self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
-    }
-    
     override public func layoutSubviews() {
         self.menuTitle.sizeToFit()
         self.menuTitle.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
@@ -279,6 +269,12 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
     }
     
+    func setupDefaultConfiguration() {
+        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
+        self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
+        self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+    }
     
     func showMenu() {
         self.menuWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
