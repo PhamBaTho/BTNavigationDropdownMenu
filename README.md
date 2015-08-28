@@ -1,7 +1,7 @@
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/BTNavigationDropdownLogo.png)
 
 [![Pod Version](https://img.shields.io/cocoapods/v/BTNavigationDropdownMenu.svg?style=flat)](http://cocoadocs.org/docsets/BTNavigationDropdownMenu/)
-[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)
+<!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/LICENSE)
 ![Language](https://img.shields.io/badge/language-Swift-brightgreen.svg?style=flat)
 
@@ -30,9 +30,9 @@ Start by creating an Array that contains strings as **elements of dropdown list*
 ```swift
 let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
-Create a **new instance** of BTNavigationDropdownMenu. The frame of this instance represents **the touchable area** of navigation title to show dropdown menu:
+Create a **new instance** of BTNavigationDropdownMenu:
 ```swift
-let menuView = BTNavigationDropdownMenu(frame:  CGRectMake(0.0, 0.0, 300, 44), title: items.first!, items: items, containerView: self.view)
+let menuView = BTNavigationDropdownMenu(title: items.first!, items: items)
 ```
 Set **title of navigation bar** as menuView:
 ```swift
@@ -52,6 +52,8 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 `cellHeight` **- The height of the cell.** *Default is 50*
 
 `cellBackgroundColor` **- The color of the cell background.** *Default is whiteColor()*
+
+`cellSeparatorColor` **- The color of the cell separator.** *Default is darkGrayColor()*
 
 `cellTextLabelColor` **- The color of the text inside cell.** *Default is darkGrayColor()*
 
@@ -74,10 +76,21 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 `maskBackgroundOpacity`  **- The opacity of the mask layer.** *Default is 0.3*
 
 ## Requirement
-- iOS 8.0+
+- iOS 8.0+ (Cocoapods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
 - Xcode 6.1
 
 ## Changelog
+**0.1.6 (28-08-2015)**
+- No need to use containerView param when initializing menuView now
+
+**0.1.5 (27-08-2015)**
+- Support device orientation
+- Support Split View on iPad
+
+**0.1.4 (26-08-2015)**
+- Fixed issue [#5] (https://github.com/PhamBaTho/BTNavigationDropdownMenu/issues/5). The dropdown overlay appears overtop the tab bar now
+- Refactoring and clean up
+
 **0.1.3 (25-07-2015)**
 - Use `usingSpringWithDamping` instead of `contentOffset` for show/hide animation
 
