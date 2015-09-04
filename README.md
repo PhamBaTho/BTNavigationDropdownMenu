@@ -80,6 +80,9 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 - Xcode 6.1
 
 ## Changelog
+**0.1.7 (04-09-2015)**
+- Use optional for some properties that relating to navigation controller
+
 **0.1.6 (28-08-2015)**
 - No need to use containerView param when initializing menuView now
 
