@@ -365,13 +365,13 @@ public class BTNavigationDropdownMenu: UIView {
 
 // MARK: BTConfiguration
 class BTConfiguration {
-    var menuTitleColor: UIColor!
+    var menuTitleColor: UIColor?
     var cellHeight: CGFloat!
-    var cellBackgroundColor: UIColor!
-    var cellSeparatorColor: UIColor!
-    var cellTextLabelColor: UIColor!
+    var cellBackgroundColor: UIColor?
+    var cellSeparatorColor: UIColor?
+    var cellTextLabelColor: UIColor?
     var cellTextLabelFont: UIFont!
-    var cellSelectionColor: UIColor!
+    var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
@@ -507,7 +507,9 @@ class BTTableViewCell: UITableViewCell {
         
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
-        separator.separatorColor = self.configuration.cellSeparatorColor
+        if let cellSeparatorColor = self.configuration.cellSeparatorColor {
+            separator.separatorColor = cellSeparatorColor
+        }
         self.contentView.addSubview(separator)
     }
     
