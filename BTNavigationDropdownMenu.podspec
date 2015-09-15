@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BTNavigationDropdownMenu"
-  s.version      = "0.1.7"
+  s.version      = "0.1.8"
   s.summary      = "The elegent navigation dropdown menu"
   s.description  = <<-DESC
                    The elegant **dropdown menu**, written in **Swift**, appears underneath **navigation bar** to display a list of related items when a user click on the navigation title.
