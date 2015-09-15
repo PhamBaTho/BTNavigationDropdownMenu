@@ -181,13 +181,13 @@ public class BTNavigationDropdownMenu: UIView {
     public init(title: String, items: [AnyObject]) {
         
         // Navigation controller
-        self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.BTTopMostViewController().navigationController
+        self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.topMostViewController?.navigationController
         
         // Get titleSize
         let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
         
         // Set frame
-        let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, (self.navigationController?.navigationBar.frame.height)!)
+        let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, self.navigationController!.navigationBar.frame.height)
         
         super.init(frame:frame)
         
@@ -257,7 +257,7 @@ public class BTNavigationDropdownMenu: UIView {
     public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath == "frame" {
             // Set up DropdownMenu
-            self.menuWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
+            self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
             self.tableView.reloadData()
         }
     }
@@ -277,7 +277,7 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func showMenu() {
-        self.menuWrapper.frame.origin.y = (self.navigationController?.navigationBar.frame.maxY)!
+        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         
         // Table view header
         let headerView = UIView(frame: CGRectMake(0, 0, self.frame.width, 300))
@@ -557,17 +557,34 @@ class BTTableCellContentView: UIView {
 }
 
 extension UIViewController {
-    func BTTopMostViewController() -> UIViewController {
+    // Get ViewController in top present level
+    var topPresentedViewController: UIViewController? {
+            var target: UIViewController? = self
+            while (target?.presentedViewController != nil) {
+                target = target?.presentedViewController
+        }
+        return target
+    }
+    
+    // Get top VisibleViewController from ViewController stack in same present level.
+    // It should be visibleViewController if self is a UINavigationController instance
+    // It should be selectedViewController if self is a UITabBarController instance
+    var topVisibleViewController: UIViewController? {
         if let navigation = self as? UINavigationController {
             if let visibleViewController = navigation.visibleViewController {
-                return visibleViewController.BTTopMostViewController()
+                return visibleViewController.topVisibleViewController
             }
         }
         if let tab = self as? UITabBarController {
             if let selectedViewController = tab.selectedViewController {
-                return selectedViewController.BTTopMostViewController()
+                return selectedViewController.topVisibleViewController
             }
         }
         return self
+    }
+    
+    // Combine both topPresentedViewController and topVisibleViewController methods, to get top visible viewcontroller in top present level
+    var topMostViewController: UIViewController? {
+        return self.topPresentedViewController?.topVisibleViewController
     }
 }
