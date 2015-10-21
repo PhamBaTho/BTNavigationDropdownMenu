@@ -301,6 +301,8 @@ public class BTNavigationDropdownMenu: UIView {
         // Reload data to dismiss highlight color of selected cell
         self.tableView.reloadData()
         
+        self.menuWrapper.superview?.bringSubviewToFront(self.menuWrapper)
+        
         UIView.animateWithDuration(
             self.configuration.animationDuration * 1.5,
             delay: 0,
