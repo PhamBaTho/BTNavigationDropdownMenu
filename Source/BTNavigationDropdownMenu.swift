@@ -227,6 +227,9 @@ public class BTNavigationDropdownMenu: UIView {
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
         
+        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "hideMenu");
+        self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
+        
         // Init table view
         self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300), items: items, configuration: self.configuration)
         
@@ -234,7 +237,6 @@ public class BTNavigationDropdownMenu: UIView {
             self.didSelectItemAtIndexHandler!(indexPath: indexPath)
             self.setMenuTitle("\(items[indexPath])")
             self.hideMenu()
-            self.isShown = false
             self.layoutSubviews()
         }
         
@@ -279,6 +281,8 @@ public class BTNavigationDropdownMenu: UIView {
     func showMenu() {
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         
+        self.isShown = true
+        
         // Table view header
         let headerView = UIView(frame: CGRectMake(0, 0, self.frame.width, 300))
         headerView.backgroundColor = self.configuration.cellBackgroundColor
@@ -318,6 +322,8 @@ public class BTNavigationDropdownMenu: UIView {
         // Rotate arrow
         self.rotateArrow()
         
+        self.isShown = false
+        
         // Change background alpha
         self.backgroundView.alpha = self.configuration.maskBackgroundOpacity
         
@@ -354,11 +360,10 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func menuButtonTapped(sender: UIButton) {
-        self.isShown = !self.isShown
         if self.isShown == true {
-            self.showMenu()
-        } else {
             self.hideMenu()
+        } else {
+            self.showMenu()
         }
     }
 }
@@ -437,6 +442,15 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.separatorStyle = UITableViewCellSeparatorStyle.None
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.tableFooterView = UIView(frame: CGRectZero)
+    }
+    
+    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, withEvent: event)
+        if (hitView != nil && hitView!.isKindOfClass(BTTableCellContentView.self)) {
+            return hitView;
+        }
+        
+        return nil;
     }
     
     // Table view data source
