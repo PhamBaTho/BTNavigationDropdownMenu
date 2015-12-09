@@ -59,6 +59,8 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `cellTextLabelFont` **- The font of the text inside cell.** *Default is HelveticaNeue-Bold, size 19*
 
+`cellTextLabelAlignment` **- The alignment of the text inside cell.** *Default is .Left*
+
 `cellSelectionColor`  **- The color of the cell when the cell is selected.** *Default is lightGrayColor()*
 
 `checkMarkImage`  **- The checkmark icon of the cell.**
