@@ -360,11 +360,7 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func menuButtonTapped(sender: UIButton) {
-        if self.isShown == true {
-            self.hideMenu()
-        } else {
-            self.showMenu()
-        }
+        self.isShown == true ? hideMenu() : showMenu()
     }
 }
 
@@ -445,11 +441,9 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let hitView = super.hitTest(point, withEvent: event)
-        if (hitView != nil && hitView!.isKindOfClass(BTTableCellContentView.self)) {
-            return hitView;
+        if let hitView = super.hitTest(point, withEvent: event) where hitView.isKindOfClass(BTTableCellContentView.self) {
+            return hitView
         }
-        
         return nil;
     }
     
