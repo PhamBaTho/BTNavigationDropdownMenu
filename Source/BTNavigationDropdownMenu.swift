@@ -178,10 +178,14 @@ public class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(title: String, items: [AnyObject]) {
+    public init(navigationController: UINavigationController?, title: String, items: [AnyObject]) {
         
         // Navigation controller
-        self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.topMostViewController?.navigationController
+        if let navigationController = navigationController {
+            self.navigationController = navigationController
+        } else {
+            self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.topMostViewController?.navigationController
+        }
         
         // Get titleSize
         let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
