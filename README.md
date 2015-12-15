@@ -32,7 +32,7 @@ let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
 Create a **new instance** of BTNavigationDropdownMenu:
 ```swift
-let menuView = BTNavigationDropdownMenu(title: items.first!, items: items)
+let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
 ```
 Set **title of navigation bar** as menuView:
 ```swift
