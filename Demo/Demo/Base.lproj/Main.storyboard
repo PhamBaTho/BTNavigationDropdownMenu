@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="s8W-fO-vqO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="s8W-fO-vqO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -27,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.82999999999999996" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93729967948717952" green="0.93729967948717952" blue="0.93729967948717952" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="Jc6-f8-1fo" secondAttribute="centerY" id="1r2-Xq-cap"/>
                             <constraint firstAttribute="centerX" secondItem="Jc6-f8-1fo" secondAttribute="centerX" id="gO1-IZ-wQ5"/>
@@ -46,7 +47,7 @@
         <scene sceneID="GTl-3t-6dt">
             <objects>
                 <navigationController title="Tab 1" automaticallyAdjustsScrollViewInsets="NO" id="5nB-CE-XEl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tab 1" id="60w-9J-6f0"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="60w-9J-6f0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yvl-Sk-d0l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -73,20 +74,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Back to previous tab 😜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-KD-R5q">
-                                <rect key="frame" x="96" y="277" width="409" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good day 😉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-KD-R5q">
+                                <rect key="frame" x="50" y="286.5" width="500" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" red="1" green="0.6344769294" blue="0.20655745989999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93729967950000004" green="0.93729967950000004" blue="0.93729967950000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="kgC-KD-R5q" firstAttribute="leading" secondItem="nN6-1u-YNS" secondAttribute="leadingMargin" constant="30" id="8Fx-2i-PG8"/>
                             <constraint firstItem="kgC-KD-R5q" firstAttribute="centerY" secondItem="nN6-1u-YNS" secondAttribute="centerY" id="9MX-hI-TaL"/>
-                            <constraint firstItem="kgC-KD-R5q" firstAttribute="centerX" secondItem="nN6-1u-YNS" secondAttribute="centerX" id="Gsl-Oj-JMq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kgC-KD-R5q" secondAttribute="trailing" constant="30" id="ypy-aN-iIa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Tab 2" id="BSz-Fb-oZd"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="BSz-Fb-oZd"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kz2-uR-app" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
