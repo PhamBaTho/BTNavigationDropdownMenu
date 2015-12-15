@@ -82,6 +82,14 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 - Xcode 7.0, Swift 2.0
 
 ## Changelog
+**0.1.9 (15-12-2015)**
+- Passed navigationController when initializing
+- Added the alignment of the text inside cell
+- Fixed issue [#16](https://github.com/PhamBaTho/BTNavigationDropdownMenu/issues/16): Sometimes navigationController is nil
+
+**0.1.8 (15-09-2015)**
+- Fixed issue: Sometimes navigationController is nil
+ 
 **0.1.7 (04-09-2015)**
 - Use optional for some properties that relating to navigation controller
 
