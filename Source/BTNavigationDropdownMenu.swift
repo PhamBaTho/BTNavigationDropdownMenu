@@ -89,6 +89,16 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    // The alignment of the text inside cell. Default is .Left
+    public var cellTextLabelAlignment: NSTextAlignment! {
+        get {
+            return self.configuration.cellTextLabelAlignment
+        }
+        set(value) {
+            self.configuration.cellTextLabelAlignment = value
+        }
+    }
+    
     // The color of the cell when the cell is selected. Default is lightGrayColor()
     public var cellSelectionColor: UIColor! {
         get {
@@ -211,8 +221,8 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = title
         self.menuTitle.textColor = self.menuTitleColor
-        self.menuTitle.textAlignment = NSTextAlignment.Center
         self.menuTitle.font = self.configuration.cellTextLabelFont
+        self.menuTitle.textAlignment = self.configuration.cellTextLabelAlignment
         self.menuButton.addSubview(self.menuTitle)
         
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
@@ -348,8 +358,8 @@ public class BTNavigationDropdownMenu: UIView {
         UIView.animateWithDuration(self.configuration.animationDuration, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: {
             self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
             self.backgroundView.alpha = 0
-        }, completion: { _ in
-            self.menuWrapper.hidden = true
+            }, completion: { _ in
+                self.menuWrapper.hidden = true
         })
     }
     
@@ -358,7 +368,7 @@ public class BTNavigationDropdownMenu: UIView {
             if let selfie = self {
                 selfie.menuArrow.transform = CGAffineTransformRotate(selfie.menuArrow.transform, 180 * CGFloat(M_PI/180))
             }
-        })
+            })
     }
     
     func setMenuTitle(title: String) {
@@ -378,6 +388,7 @@ class BTConfiguration {
     var cellSeparatorColor: UIColor?
     var cellTextLabelColor: UIColor?
     var cellTextLabelFont: UIFont!
+    var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
     var arrowImage: UIImage!
@@ -405,6 +416,7 @@ class BTConfiguration {
         self.cellSeparatorColor = UIColor.darkGrayColor()
         self.cellTextLabelColor = UIColor.darkGrayColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
+        self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
         self.animationDuration = 0.5
@@ -492,6 +504,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 
 // MARK: Table view cell
 class BTTableViewCell: UITableViewCell {
+    let checkmarkIconWidth: CGFloat = 50
+    let horizontalMargin: CGFloat = 20
     
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
@@ -506,14 +520,25 @@ class BTTableViewCell: UITableViewCell {
         cellContentFrame = CGRectMake(0, 0, (UIApplication.sharedApplication().keyWindow?.frame.width)!, self.configuration.cellHeight)
         self.contentView.backgroundColor = self.configuration.cellBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        self.textLabel!.textAlignment = NSTextAlignment.Left
         self.textLabel!.textColor = self.configuration.cellTextLabelColor
         self.textLabel!.font = self.configuration.cellTextLabelFont
-        self.textLabel!.frame = CGRectMake(20, 0, cellContentFrame.width, cellContentFrame.height)
-        
+        self.textLabel!.textAlignment = self.configuration.cellTextLabelAlignment
+        if self.textLabel!.textAlignment == .Center {
+            self.textLabel!.frame = CGRectMake(0, 0, cellContentFrame.width, cellContentFrame.height)
+        } else if self.textLabel!.textAlignment == .Left {
+            self.textLabel!.frame = CGRectMake(horizontalMargin, 0, cellContentFrame.width, cellContentFrame.height)
+        } else {
+            self.textLabel!.frame = CGRectMake(-horizontalMargin, 0, cellContentFrame.width, cellContentFrame.height)
+        }
         
         // Checkmark icon
-        self.checkmarkIcon = UIImageView(frame: CGRectMake(cellContentFrame.width - 50, (cellContentFrame.height - 30)/2, 30, 30))
+        if self.textLabel!.textAlignment == .Center {
+            self.checkmarkIcon = UIImageView(frame: CGRectMake(cellContentFrame.width - checkmarkIconWidth, (cellContentFrame.height - 30)/2, 30, 30))
+        } else if self.textLabel!.textAlignment == .Left {
+            self.checkmarkIcon = UIImageView(frame: CGRectMake(cellContentFrame.width - checkmarkIconWidth, (cellContentFrame.height - 30)/2, 30, 30))
+        } else {
+            self.checkmarkIcon = UIImageView(frame: CGRectMake(horizontalMargin, (cellContentFrame.height - 30)/2, 30, 30))
+        }
         self.checkmarkIcon.hidden = true
         self.checkmarkIcon.image = self.configuration.checkMarkImage
         self.checkmarkIcon.contentMode = UIViewContentMode.ScaleAspectFill
@@ -573,9 +598,9 @@ class BTTableCellContentView: UIView {
 extension UIViewController {
     // Get ViewController in top present level
     var topPresentedViewController: UIViewController? {
-            var target: UIViewController? = self
-            while (target?.presentedViewController != nil) {
-                target = target?.presentedViewController
+        var target: UIViewController? = self
+        while (target?.presentedViewController != nil) {
+            target = target?.presentedViewController
         }
         return target
     }
