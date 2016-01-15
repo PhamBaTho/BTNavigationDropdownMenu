@@ -171,7 +171,8 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
-    
+    public var isShown: Bool!
+
     private var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
@@ -181,7 +182,6 @@ public class BTNavigationDropdownMenu: UIView {
     private var backgroundView: UIView!
     private var tableView: BTTableView!
     private var items: [AnyObject]!
-    private var isShown: Bool!
     private var menuWrapper: UIView!
     
     required public init?(coder aDecoder: NSCoder) {
@@ -288,6 +288,18 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuTitle.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
         self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
+    }
+    
+    public func show() {
+        if self.isShown == false {
+            self.showMenu()
+        }
+    }
+    
+    public func hide() {
+        if self.isShown == true {
+            self.hideMenu()
+        }
     }
     
     func setupDefaultConfiguration() {
