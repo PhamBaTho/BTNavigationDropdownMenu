@@ -119,6 +119,15 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    public var keepSelectedCellColor: Bool! {
+        get {
+            return self.configuration.keepSelectedCellColor
+        }
+        set(value) {
+            self.configuration.keepSelectedCellColor = value
+        }
+    }
+    
     // The animation duration of showing/hiding menu. Default is 0.3
     public var animationDuration: NSTimeInterval! {
         get {
@@ -128,7 +137,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.animationDuration = value
         }
     }
-
+    
     // The arrow next to navigation title
     public var arrowImage: UIImage! {
         get {
@@ -172,7 +181,7 @@ public class BTNavigationDropdownMenu: UIView {
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
-
+    
     private var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
@@ -217,7 +226,7 @@ public class BTNavigationDropdownMenu: UIView {
         
         // Init properties
         self.setupDefaultConfiguration()
-
+        
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: "menuButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -408,6 +417,7 @@ class BTConfiguration {
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
+    var keepSelectedCellColor: Bool!
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
     var animationDuration: NSTimeInterval!
@@ -425,7 +435,7 @@ class BTConfiguration {
         let imageBundle = NSBundle(URL: url!)
         let checkMarkImagePath = imageBundle?.pathForResource("checkmark_icon", ofType: "png")
         let arrowImagePath = imageBundle?.pathForResource("arrow_down_icon", ofType: "png")
-
+        
         // Default values
         self.menuTitleColor = UIColor.darkGrayColor()
         self.cellHeight = 50
@@ -436,6 +446,7 @@ class BTConfiguration {
         self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
+        self.keepSelectedCellColor = false
         self.animationDuration = 0.5
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
@@ -471,6 +482,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.dataSource = self
         self.backgroundColor = UIColor.clearColor()
         self.separatorStyle = UITableViewCellSeparatorStyle.None
+        //        self.separatorEffect = UIBlurEffect(style: .Light)
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -499,6 +511,9 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row] as? String
         cell.checkmarkIcon.hidden = (indexPath.row == selectedIndexPath) ? false : true
+        if self.configuration.keepSelectedCellColor == true {
+            cell.contentView.backgroundColor = (indexPath.row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
+        }
         
         return cell
     }
