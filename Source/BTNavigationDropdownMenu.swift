@@ -173,7 +173,7 @@ public class BTNavigationDropdownMenu: UIView {
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
 
-    private var navigationController: UINavigationController?
+    private weak var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
     private var menuButton: UIButton!
