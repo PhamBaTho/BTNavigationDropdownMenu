@@ -210,26 +210,24 @@ public class BTNavigationDropdownMenu: UIView {
         
         super.init(frame:frame)
         
-        self.navigationController?.view.addObserver(self, forKeyPath: "frame", options: .New, context: nil)
-        
         self.isShown = false
         self.items = items
         
         // Init properties
         self.setupDefaultConfiguration()
-
+        
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: "menuButtonTapped:", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(self.menuButton)
-        
+
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = title
         self.menuTitle.textColor = self.menuTitleColor
         self.menuTitle.font = self.configuration.cellTextLabelFont
         self.menuTitle.textAlignment = self.configuration.cellTextLabelAlignment
         self.menuButton.addSubview(self.menuTitle)
-        
+
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
         self.menuButton.addSubview(self.menuArrow)
         
@@ -239,12 +237,12 @@ public class BTNavigationDropdownMenu: UIView {
         // Set up DropdownMenu
         self.menuWrapper = UIView(frame: CGRectMake(menuWrapperBounds.origin.x, 0, menuWrapperBounds.width, menuWrapperBounds.height))
         self.menuWrapper.clipsToBounds = true
-        self.menuWrapper.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
+        self.menuWrapper.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight ]
         
         // Init background view (under table view)
         self.backgroundView = UIView(frame: menuWrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
-        self.backgroundView.autoresizingMask = UIViewAutoresizing.FlexibleWidth.union(UIViewAutoresizing.FlexibleHeight)
+        self.backgroundView.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight ]
         
         let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: "hideMenu");
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
@@ -252,11 +250,11 @@ public class BTNavigationDropdownMenu: UIView {
         // Init table view
         self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300), items: items, configuration: self.configuration)
         
-        self.tableView.selectRowAtIndexPathHandler = { (indexPath: Int) -> () in
-            self.didSelectItemAtIndexHandler!(indexPath: indexPath)
-            self.setMenuTitle("\(items[indexPath])")
-            self.hideMenu()
-            self.layoutSubviews()
+        self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
+            self?.didSelectItemAtIndexHandler!(indexPath: indexPath)
+            self?.setMenuTitle("\(items[indexPath])")
+            self?.hideMenu()
+            self?.layoutSubviews()
         }
         
         // Add background view & table view to container view
@@ -275,19 +273,13 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.hidden = true
     }
     
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if keyPath == "frame" {
-            // Set up DropdownMenu
-            self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
-            self.tableView.reloadData()
-        }
-    }
-    
     override public func layoutSubviews() {
         self.menuTitle.sizeToFit()
         self.menuTitle.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
         self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
+        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
+        self.tableView.reloadData()
     }
     
     public func show() {
