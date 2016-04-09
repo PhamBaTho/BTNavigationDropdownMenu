@@ -301,6 +301,14 @@ public class BTNavigationDropdownMenu: UIView {
             self.hideMenu()
         }
     }
+
+    public func toggle() {
+        if(self.isShown == true) {
+            self.hideMenu();
+        } else {
+            self.showMenu();
+        }
+    }
     
     func setupDefaultConfiguration() {
         self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
