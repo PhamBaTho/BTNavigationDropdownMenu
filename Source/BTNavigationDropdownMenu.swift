@@ -193,7 +193,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.init(navigationController: nil, title: title, items: items)
     }
     
-    public init(navigationController: UINavigationController?, title: String, items: [AnyObject]) {
+    public init(navigationController: UINavigationController? = nil, title: String, items: [AnyObject]) {
         
         // Navigation controller
         if let navigationController = navigationController {
