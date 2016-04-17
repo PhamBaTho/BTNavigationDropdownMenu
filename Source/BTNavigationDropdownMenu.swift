@@ -364,11 +364,17 @@ public class BTNavigationDropdownMenu: UIView {
         )
         
         // Animation
-        UIView.animateWithDuration(self.configuration.animationDuration, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: {
-            self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
-            self.backgroundView.alpha = 0
+        UIView.animateWithDuration(
+            self.configuration.animationDuration,
+            delay: 0,
+            options: UIViewAnimationOptions.TransitionNone,
+            animations: {
+                self.tableView.frame.origin.y = -CGFloat(self.items.count) * self.configuration.cellHeight - 300
+                self.backgroundView.alpha = 0
             }, completion: { _ in
-                self.menuWrapper.hidden = true
+                if self.isShown == false && self.tableView.frame.origin.y == -CGFloat(self.items.count) * self.configuration.cellHeight - 300 {
+                    self.menuWrapper.hidden = true
+                }
         })
     }
     
