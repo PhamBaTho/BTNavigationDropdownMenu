@@ -68,7 +68,7 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `cellSelectionColor`  **- The color of the cell when the cell is selected.** *Default is lightGrayColor()*
 
-`keepSelectedCellColor` **- The boolean value that decides if selected color of cell is visible when the menu is shown.** * Default is false*
+`keepSelectedCellColor` **- The boolean value that decides if selected color of cell is visible when the menu is shown.** *Default is false*
 
 `checkMarkImage`  **- The checkmark icon of the cell.**
 
