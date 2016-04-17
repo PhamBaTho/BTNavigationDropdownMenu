@@ -1,3 +1,9 @@
+## [0.3](https://github.com/PhamBaTho/BTNavigationDropdownMenu/releases/tag/0.3) (17-04-2016)
+- Add toggle() functions
+- Add keepSelectedCellColor property
+- Fixed issues [#41](https://github.com/PhamBaTho/BTNavigationDropdownMenu/issues/41)
+- Fixed issues [#38](https://github.com/PhamBaTho/BTNavigationDropdownMenu/issues/38)
+
 ## [0.2.1](https://github.com/PhamBaTho/BTNavigationDropdownMenu/releases/tag/0.2.1) (10-01-2016)
 - Public show() and hide() functions
 - Public isShown property
