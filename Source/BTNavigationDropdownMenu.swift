@@ -119,6 +119,15 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    public var keepSelectedCellColor: Bool! {
+        get {
+            return self.configuration.keepSelectedCellColor
+        }
+        set(value) {
+            self.configuration.keepSelectedCellColor = value
+        }
+    }
+    
     // The animation duration of showing/hiding menu. Default is 0.3
     public var animationDuration: NSTimeInterval! {
         get {
@@ -267,7 +276,12 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
-        window.addSubview(self.menuWrapper)
+        if let navController = self.navigationController {
+            navController.view.addSubview(self.menuWrapper)
+        } else {
+            window.addSubview(self.menuWrapper)
+        }
+        
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
@@ -276,6 +290,7 @@ public class BTNavigationDropdownMenu: UIView {
     override public func layoutSubviews() {
         self.menuTitle.sizeToFit()
         self.menuTitle.center = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+        self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPointMake(CGRectGetMaxX(self.menuTitle.frame) + self.configuration.arrowPadding, self.frame.size.height/2)
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
@@ -406,6 +421,7 @@ class BTConfiguration {
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
+    var keepSelectedCellColor: Bool!
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
     var animationDuration: NSTimeInterval!
@@ -434,6 +450,7 @@ class BTConfiguration {
         self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
+        self.keepSelectedCellColor = false
         self.animationDuration = 0.5
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
@@ -469,6 +486,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.dataSource = self
         self.backgroundColor = UIColor.clearColor()
         self.separatorStyle = UITableViewCellSeparatorStyle.None
+        //        self.separatorEffect = UIBlurEffect(style: .Light)
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.tableFooterView = UIView(frame: CGRectZero)
     }
@@ -497,6 +515,9 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row] as? String
         cell.checkmarkIcon.hidden = (indexPath.row == selectedIndexPath) ? false : true
+        if self.configuration.keepSelectedCellColor == true {
+            cell.contentView.backgroundColor = (indexPath.row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
+        }
         
         return cell
     }
