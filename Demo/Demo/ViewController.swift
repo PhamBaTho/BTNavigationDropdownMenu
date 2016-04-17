@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BTNavigationDropdownMenu
 
 class ViewController: UIViewController {
 
