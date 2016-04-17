@@ -81,7 +81,7 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 `maskBackgroundOpacity`  **- The opacity of the mask layer.** *Default is 0.3*
 
 ## Requirement
-- iOS 8.0+ (Cocoapods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
+- iOS 8.0+ (CocoaPods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
 - Xcode 7.0+, Swift 2.0+
 
 ## License
