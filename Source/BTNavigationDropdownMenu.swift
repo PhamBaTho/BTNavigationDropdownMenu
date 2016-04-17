@@ -276,12 +276,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
-        if let navController = self.navigationController {
-            navController.view.addSubview(self.menuWrapper)
-        } else {
-            window.addSubview(self.menuWrapper)
-        }
-        
+        window.addSubview(self.menuWrapper)
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
