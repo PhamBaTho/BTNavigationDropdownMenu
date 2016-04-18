@@ -22,7 +22,7 @@ Go ahead and **import** BTNavigationDropdownMenu into your own Swift files
 ```swift
 import BTNavigationDropdownMenu
 ```
-Note: This library mainly supports for **Xcode 7, Swift 2.0** and embedded frameworks. For older versions of XCode, use branch [swift-1.2](https://github.com/PhamBaTho/BTNavigationDropdownMenu/tree/swift-1.2)
+Note: This library mainly supports for **Xcode 7, Swift 2.0** and embedded frameworks.
 
 ## Usage:
 ### Instantiating
@@ -49,7 +49,7 @@ Use `menuView.show()` or `menuView.hide()` if you want to show or hide dropdown 
 
 Use `menuView.isShown` (Boolean type) property to check showing state of dropdown menu.
 
-Use `menuView.toggle` to toogle dropdown dropdown menu shown/hide. 
+Use `menuView.toggle()` to toogle dropdown dropdown menu shown/hide. 
 
 ### Customization
 Once you have assigned the items and frame for dropdown menu, you can custom the look and the feel of menu. You can override these properties for your favor:
