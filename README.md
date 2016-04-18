@@ -74,8 +74,6 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `animationDuration`  **- The animation duration of showing/hiding menu.** *Default is 0.5s*
 
-`bounceOffset`  **- The value of bounce offset.** *Default is 10*
-
 `arrowImage`  **- The arrow next to navigation title**
 
 `arrowPadding`  **- The padding between navigation title and arrow.** *Default is 15*
