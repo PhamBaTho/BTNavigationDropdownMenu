@@ -38,17 +38,17 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.menuTitleColor = value
         }
     }
-    
+
     // The height of the cell. Default is 50
-    public var cellHeight: CGFloat! {
+    public var cellHeight: NSNumber! {
         get {
-            return self.configuration.cellHeight
+            return Float(self.configuration.cellHeight)
         }
         set(value) {
-            self.configuration.cellHeight = value
+            self.configuration.cellHeight = CGFloat(value)
         }
     }
-    
+
     // The color of the cell background. Default is whiteColor()
     public var cellBackgroundColor: UIColor! {
         get {
