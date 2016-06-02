@@ -42,7 +42,7 @@ public class BTNavigationDropdownMenu: UIView {
     // The height of the cell. Default is 50
     public var cellHeight: NSNumber! {
         get {
-            return Float(self.configuration.cellHeight)
+            return CGFloat(self.configuration.cellHeight)
         }
         set(value) {
             self.configuration.cellHeight = CGFloat(value)
