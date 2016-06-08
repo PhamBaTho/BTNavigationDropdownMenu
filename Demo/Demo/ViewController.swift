@@ -22,7 +22,7 @@ class ViewController: UIViewController {
             BTItem(image: nil, title: "Most Popular"),
             BTItem(image: image, title: "Latest"),
             BTItem(image: nil, title: "Trending"),
-            BTItem(image: image, title: "Nearest"),
+            BTItem(image: image, title: "Nearest")
         ]
         
         self.selectedCellLabel.text = items.first?.title
