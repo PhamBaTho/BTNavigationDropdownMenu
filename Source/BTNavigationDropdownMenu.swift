@@ -190,7 +190,7 @@ public class BTNavigationDropdownMenu: UIView {
     private var menuArrow: UIImageView!
     private var backgroundView: UIView!
     private var tableView: BTTableView!
-    private var items: [AnyObject]!
+    private var items: [BTItem]!
     private var menuWrapper: UIView!
     
     required public init?(coder aDecoder: NSCoder) {
@@ -198,11 +198,11 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     @available(*, deprecated, message="Use init(navigationController:title:items:) instead", renamed="BTNavigationDropdownMenu(navigationController: UINavigationController?, title: String, items: [AnyObject])")
-    public convenience init(title: String, items: [AnyObject]) {
+    public convenience init(title: String, items: [BTItem]) {
         self.init(navigationController: nil, title: title, items: items)
     }
     
-    public init(navigationController: UINavigationController? = nil, title: String, items: [AnyObject]) {
+    public init(navigationController: UINavigationController? = nil, title: String, items: [BTItem]) {
         
         // Navigation controller
         if let navigationController = navigationController {
@@ -261,7 +261,7 @@ public class BTNavigationDropdownMenu: UIView {
         
         self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
             self?.didSelectItemAtIndexHandler!(indexPath: indexPath)
-            self?.setMenuTitle("\(items[indexPath])")
+            self?.setMenuTitle("\(items[indexPath].title)")
             self?.hideMenu()
             self?.layoutSubviews()
         }
@@ -470,18 +470,18 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     var selectRowAtIndexPathHandler: ((indexPath: Int) -> ())?
     
     // Private properties
-    private var items: [AnyObject]!
+    private var items: [BTItem]!
     private var selectedIndexPath: Int!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, items: [AnyObject], title: String, configuration: BTConfiguration) {
+    init(frame: CGRect, items: [BTItem], title: String, configuration: BTConfiguration) {
         super.init(frame: frame, style: UITableViewStyle.Plain)
         
         self.items = items
-        self.selectedIndexPath = (items as! [String]).indexOf(title)
+        self.selectedIndexPath = items.indexOf() { $0.title == title }
         self.configuration = configuration
         
         // Setup table view
@@ -515,8 +515,12 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)
-        cell.textLabel?.text = self.items[indexPath.row] as? String
+        let item = self.items[indexPath.row]
+        let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration, item: item)
+        
+        cell.imageView?.image = item.image
+        cell.textLabel?.text = item.title
+        
         cell.checkmarkIcon.hidden = (indexPath.row == selectedIndexPath) ? false : true
         if self.configuration.keepSelectedCellColor == true {
             cell.contentView.backgroundColor = (indexPath.row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
@@ -545,12 +549,13 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
 class BTTableViewCell: UITableViewCell {
     let checkmarkIconWidth: CGFloat = 50
     let horizontalMargin: CGFloat = 20
+    let imageMargin: CGFloat = 10
     
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
     var configuration: BTConfiguration!
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String?, configuration: BTConfiguration) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, configuration: BTConfiguration, item: BTItem) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.configuration = configuration
@@ -559,13 +564,21 @@ class BTTableViewCell: UITableViewCell {
         cellContentFrame = CGRectMake(0, 0, (UIApplication.sharedApplication().keyWindow?.frame.width)!, self.configuration.cellHeight)
         self.contentView.backgroundColor = self.configuration.cellBackgroundColor
         self.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        self.imageView?.frame = CGRectMake(horizontalMargin, (cellContentFrame.height - 30)/2, 30, 30)
+        self.imageView?.contentMode = .ScaleAspectFit
+        
         self.textLabel!.textColor = self.configuration.cellTextLabelColor
         self.textLabel!.font = self.configuration.cellTextLabelFont
         self.textLabel!.textAlignment = self.configuration.cellTextLabelAlignment
         if self.textLabel!.textAlignment == .Center {
             self.textLabel!.frame = CGRectMake(0, 0, cellContentFrame.width, cellContentFrame.height)
         } else if self.textLabel!.textAlignment == .Left {
-            self.textLabel!.frame = CGRectMake(horizontalMargin, 0, cellContentFrame.width, cellContentFrame.height)
+            var x = horizontalMargin
+            if let _ = item.image, width = imageView?.frame.size.width {
+                x = x + width + imageMargin
+            }
+            self.textLabel!.frame = CGRectMake(x, 0, cellContentFrame.width, cellContentFrame.height)
         } else {
             self.textLabel!.frame = CGRectMake(-horizontalMargin, 0, cellContentFrame.width, cellContentFrame.height)
         }
@@ -598,6 +611,16 @@ class BTTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         self.bounds = cellContentFrame
         self.contentView.frame = self.bounds
+    }
+}
+
+public struct BTItem {
+    public let image: UIImage?
+    public let title: String
+    
+    public init(image: UIImage?, title: String) {
+        self.image = image
+        self.title = title
     }
 }
 
