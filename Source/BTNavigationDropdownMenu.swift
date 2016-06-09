@@ -471,7 +471,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     // Private properties
     private var items: [AnyObject]!
-    private var selectedIndexPath: Int!
+    private var selectedIndexPath: Int?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
