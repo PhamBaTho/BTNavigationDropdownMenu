@@ -615,8 +615,13 @@ class BTTableViewCell: UITableViewCell {
 }
 
 public struct BTItem {
-    let image: UIImage?
-    let title: String
+    public let image: UIImage?
+    public let title: String
+    
+    public init(image: UIImage?, title: String) {
+        self.image = image
+        self.title = title
+    }
 }
 
 // Content view of table view cell
