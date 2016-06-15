@@ -41,7 +41,7 @@ self.navigationItem.titleView = menuView
 Call BTNavigationDropdownMenu closure to get **the index of selected cell**:
 ```swift
 menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
-            println("Did select item at index: \(indexPath)")
+            print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
 }
 ```
