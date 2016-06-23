@@ -257,7 +257,9 @@ public class BTNavigationDropdownMenu: UIView {
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
         
         // Init table view
-        self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300), items: items, title: title, configuration: self.configuration)
+        let navBarHeight = self.navigationController?.navigationBar.bounds.size.height ?? 0
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height ?? 0
+        self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300 - navBarHeight - statusBarHeight), items: items, title: title, configuration: self.configuration)
         
         self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
             self?.didSelectItemAtIndexHandler!(indexPath: indexPath)
@@ -276,7 +278,12 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
-        window.addSubview(self.menuWrapper)
+        //window.addSubview(self.menuWrapper)
+        if let navController = self.navigationController {
+            navController.view.addSubview(self.menuWrapper)
+        } else {
+            window.addSubview(self.menuWrapper)
+        }
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
