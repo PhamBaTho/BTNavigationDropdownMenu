@@ -202,7 +202,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.init(navigationController: nil, title: title, items: items)
     }
     
-    public init(navigationController: UINavigationController? = nil, title: String, items: [AnyObject]) {
+    public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.sharedApplication().keyWindow!, title: String, items: [AnyObject]) {
         
         // Navigation controller
         if let navigationController = navigationController {
@@ -278,12 +278,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.addSubview(self.topSeparator)
         
         // Add Menu View to container view
-        //window.addSubview(self.menuWrapper)
-        if let navController = self.navigationController {
-            navController.view.addSubview(self.menuWrapper)
-        } else {
-            window.addSubview(self.menuWrapper)
-        }
+        containerView.addSubview(self.menuWrapper)
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
