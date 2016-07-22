@@ -32,8 +32,16 @@ let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
 Create a **new instance** of BTNavigationDropdownMenu:
 ```swift
-let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
+let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
 ```
+or just simple like this:
+```swift
+let menuView = BTNavigationDropdownMenu(title: items[0], items: items)
+```
+By default, `navigationController` is the top most navigation controller and `containerView` is keyWindow. 
+
+(`keyWindow` is recommended for `containerView` because in this way, the black overlay can cover the whole screen. But in some cases, `keyWindow` doesn't work properly, like using with side menu, (e.g. SWRevealViewController), the dropdown menu didn't move along with their parent view controller or navigation controller. To resolve this issue, you can use `self.navigationController!.view` instead.)
+
 Set **title of navigation bar** as menuView:
 ```swift
 self.navigationItem.titleView = menuView
@@ -47,9 +55,11 @@ menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
 ```
 Use `menuView.show()` or `menuView.hide()` if you want to show or hide dropdown menu manually.
 
+Use `menuView.toggle()` to toogle dropdown menu shown/hide.
+
 Use `menuView.isShown` (Boolean type) property to check showing state of dropdown menu.
 
-Use `menuView.toggle()` to toogle dropdown dropdown menu shown/hide. 
+Use `menuView.updateItems(items: [AnyObject])` to update items in dropdown menu if needed.
 
 ### Customization
 Once you have assigned the items and frame for dropdown menu, you can custom the look and the feel of menu. You can override these properties for your favor:
