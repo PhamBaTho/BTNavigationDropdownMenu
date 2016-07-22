@@ -88,6 +88,18 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    // The color of the text inside a selected cell. Default is darkGrayColor()
+    public var selectedCellTextLabelColor: UIColor! {
+        get {
+            return self.configuration.selectedCellTextLabelColor
+        }
+        set(value) {
+            self.configuration.selectedCellTextLabelColor = value
+        }
+    }
+
+    
+    
     // The font of the text inside cell. Default is HelveticaNeue-Bold, size 19
     public var cellTextLabelFont: UIFont! {
         get {
@@ -342,6 +354,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        self.selectedCellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
     }
     
     func showMenu() {
@@ -445,6 +458,7 @@ class BTConfiguration {
     var cellBackgroundColor: UIColor?
     var cellSeparatorColor: UIColor?
     var cellTextLabelColor: UIColor?
+    var selectedCellTextLabelColor: UIColor?
     var cellTextLabelFont: UIFont!
     var navigationBarTitleFont: UIFont!
     var cellTextLabelAlignment: NSTextAlignment!
@@ -477,6 +491,7 @@ class BTConfiguration {
         self.arrowTintColor = UIColor.whiteColor()
         self.cellSeparatorColor = UIColor.darkGrayColor()
         self.cellTextLabelColor = UIColor.darkGrayColor()
+        self.selectedCellTextLabelColor = UIColor.darkGrayColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.navigationBarTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.cellTextLabelAlignment = NSTextAlignment.Left
@@ -557,12 +572,14 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         self.reloadData()
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? BTTableViewCell
         cell?.contentView.backgroundColor = self.configuration.cellSelectionColor
+        cell?.textLabel?.textColor = self.configuration.selectedCellTextLabelColor
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath) as? BTTableViewCell
         cell?.checkmarkIcon.hidden = true
         cell?.contentView.backgroundColor = self.configuration.cellBackgroundColor
+        cell?.textLabel?.textColor = self.configuration.cellTextLabelColor
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
