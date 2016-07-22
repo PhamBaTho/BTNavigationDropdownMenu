@@ -314,6 +314,13 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    public func updateItems(items: [AnyObject]) {
+        if !items.isEmpty {
+            self.tableView.items = items
+            self.tableView.reloadData()
+        }
+    }
+    
     func setupDefaultConfiguration() {
         self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
