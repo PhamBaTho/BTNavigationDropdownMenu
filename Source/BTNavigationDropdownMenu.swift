@@ -38,7 +38,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.menuTitleColor = value
         }
     }
-
+    
     // The height of the cell. Default is 50
     public var cellHeight: NSNumber! {
         get {
@@ -48,7 +48,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.cellHeight = CGFloat(value)
         }
     }
-
+    
     // The color of the cell background. Default is whiteColor()
     public var cellBackgroundColor: UIColor! {
         get {
@@ -56,6 +56,16 @@ public class BTNavigationDropdownMenu: UIView {
         }
         set(color) {
             self.configuration.cellBackgroundColor = color
+        }
+    }
+    
+    // The tint color of the arrow. Default is whiteColor()
+    public var arrowTintColor: UIColor! {
+        get {
+            return self.menuArrow.tintColor
+        }
+        set(color) {
+            self.menuArrow.tintColor = color
         }
     }
     
@@ -85,7 +95,18 @@ public class BTNavigationDropdownMenu: UIView {
         }
         set(value) {
             self.configuration.cellTextLabelFont = value
-            self.menuTitle.font = self.configuration.cellTextLabelFont
+        }
+    }
+    
+    
+    // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 19
+    public var navigationBarTitleFont: UIFont! {
+        get {
+            return self.configuration.navigationBarTitleFont
+        }
+        set(value) {
+            self.configuration.navigationBarTitleFont = value
+            self.menuTitle.font = self.configuration.navigationBarTitleFont
         }
     }
     
@@ -137,14 +158,14 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.animationDuration = value
         }
     }
-
+    
     // The arrow next to navigation title
     public var arrowImage: UIImage! {
         get {
             return self.configuration.arrowImage
         }
         set(value) {
-            self.configuration.arrowImage = value
+            self.configuration.arrowImage = value.imageWithRenderingMode(.AlwaysTemplate)
             self.menuArrow.image = self.configuration.arrowImage
         }
     }
@@ -181,7 +202,7 @@ public class BTNavigationDropdownMenu: UIView {
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
-
+    
     private weak var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
@@ -207,7 +228,7 @@ public class BTNavigationDropdownMenu: UIView {
         }
         
         // Get titleSize
-        let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.cellTextLabelFont])
+        let titleSize = (title as NSString).sizeWithAttributes([NSFontAttributeName:self.configuration.navigationBarTitleFont])
         
         // Set frame
         let frame = CGRectMake(0, 0, titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, self.navigationController!.navigationBar.frame.height)
@@ -224,15 +245,15 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: #selector(BTNavigationDropdownMenu.menuButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(self.menuButton)
-
+        
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = title
         self.menuTitle.textColor = self.menuTitleColor
-        self.menuTitle.font = self.configuration.cellTextLabelFont
+        self.menuTitle.font = self.configuration.navigationBarTitleFont
         self.menuTitle.textAlignment = self.configuration.cellTextLabelAlignment
         self.menuButton.addSubview(self.menuTitle)
-
-        self.menuArrow = UIImageView(image: self.configuration.arrowImage)
+        
+        self.menuArrow = UIImageView(image: self.configuration.arrowImage.imageWithRenderingMode(.AlwaysTemplate))
         self.menuButton.addSubview(self.menuArrow)
         
         let window = UIApplication.sharedApplication().keyWindow!
@@ -300,7 +321,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.hideMenu()
         }
     }
-
+    
     public func toggle() {
         if(self.isShown == true) {
             self.hideMenu();
@@ -425,10 +446,12 @@ class BTConfiguration {
     var cellSeparatorColor: UIColor?
     var cellTextLabelColor: UIColor?
     var cellTextLabelFont: UIFont!
+    var navigationBarTitleFont: UIFont!
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
     var keepSelectedCellColor: Bool!
+    var arrowTintColor: UIColor?
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
     var animationDuration: NSTimeInterval!
@@ -446,14 +469,16 @@ class BTConfiguration {
         let imageBundle = NSBundle(URL: url!)
         let checkMarkImagePath = imageBundle?.pathForResource("checkmark_icon", ofType: "png")
         let arrowImagePath = imageBundle?.pathForResource("arrow_down_icon", ofType: "png")
-
+        
         // Default values
         self.menuTitleColor = UIColor.darkGrayColor()
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.whiteColor()
+        self.arrowTintColor = UIColor.whiteColor()
         self.cellSeparatorColor = UIColor.darkGrayColor()
         self.cellTextLabelColor = UIColor.darkGrayColor()
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
+        self.navigationBarTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
@@ -539,7 +564,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         cell?.checkmarkIcon.hidden = true
         cell?.contentView.backgroundColor = self.configuration.cellBackgroundColor
     }
-
+    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if self.configuration.keepSelectedCellColor == true {
             cell.backgroundColor = self.configuration.cellBackgroundColor
