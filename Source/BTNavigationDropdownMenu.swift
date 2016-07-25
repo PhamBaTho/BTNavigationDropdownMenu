@@ -200,6 +200,10 @@ public class BTNavigationDropdownMenu: UIView {
     public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.sharedApplication().keyWindow!, title: String, items: [AnyObject]) {
         
         // Navigation controller
+        guard let navigationController = navigationController else{
+            super.init(frame: CGRectZero)
+            return
+        }
         if let navigationController = navigationController {
             self.navigationController = navigationController
         } else {
