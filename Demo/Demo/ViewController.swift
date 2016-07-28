@@ -49,6 +49,7 @@ class ViewController: UIViewController, BTNavigationDropdownDelegate {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
         }
         cell?.textLabel?.text = items[indexPath.row]
+        cell?.imageView?.image = UIImage(named: "ic_video")
         return cell!
     }
 }

@@ -509,7 +509,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        if let hitView = super.hitTest(point, withEvent: event) where hitView.isKindOfClass(BTTableCellContentView.self) {
+        if let hitView = super.hitTest(point, withEvent: event) where hitView.isKindOfClass(BTTableCellContentView.self) || hitView.isKindOfClass(UIView.self) {
             return hitView
         }
         return nil;
