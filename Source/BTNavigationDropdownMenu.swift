@@ -27,7 +27,7 @@
 import UIKit
 
 public protocol BTNavigationDropdownDelegate {
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func drowpdownTableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }
 
 // MARK: BTNavigationDropdownMenu
@@ -530,7 +530,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let delegate = self.menuDelegate {
-            return delegate.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            return delegate.drowpdownTableView(tableView, cellForRowAtIndexPath: indexPath)
         }
         
         let cell = BTTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell", configuration: self.configuration)

@@ -43,7 +43,7 @@ class ViewController: UIViewController, BTNavigationDropdownDelegate {
         self.navigationItem.titleView = menuView
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func drowpdownTableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell")
         if cell == nil {
             cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
