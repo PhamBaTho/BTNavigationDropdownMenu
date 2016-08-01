@@ -209,6 +209,8 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    //Set this property to false if you don't want to change the title text when a cell is selected
+    public var shouldChangeTitleText: Bool = true
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
 
@@ -289,7 +291,9 @@ public class BTNavigationDropdownMenu: UIView {
         
         self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
             self?.didSelectItemAtIndexHandler!(indexPath: indexPath)
-            self?.setMenuTitle("\(items[indexPath])")
+            if (self?.shouldChangeTitleText)! {
+                self?.setMenuTitle("\(items[indexPath])")
+            }
             self?.hideMenu()
             self?.layoutSubviews()
         }
