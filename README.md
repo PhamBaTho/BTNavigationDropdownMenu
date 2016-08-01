@@ -72,13 +72,13 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `cellTextLabelColor` **- The color of the text inside cell.** *Default is darkGrayColor()*
 
-`cellTextLabelFont` **- The font of the text inside cell.** *Default is HelveticaNeue-Bold, size 19*
+`cellTextLabelFont` **- The font of the text inside cell.** *Default is HelveticaNeue-Bold, size 17*
+
+`navigationBarTitleFont` **- The font of the navigation bar title.** *Default is HelveticaNeue-Bold, size 17*
 
 `cellTextLabelAlignment` **- The alignment of the text inside cell.** *Default is .Left*
 
 `cellSelectionColor`  **- The color of the cell when the cell is selected.** *Default is lightGrayColor()*
-
-`keepSelectedCellColor` **- The boolean value that decides if selected color of cell is visible when the menu is shown.** *Default is false*
 
 `checkMarkImage`  **- The checkmark icon of the cell.**
 
@@ -91,6 +91,14 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 `maskBackgroundColor`  **- The color of the mask layer.** *Default is blackColor()*
 
 `maskBackgroundOpacity`  **- The opacity of the mask layer.** *Default is 0.3*
+
+`shouldKeepSelectedCellColor` **- The boolean value that decides if selected color of cell is visible when the menu is shown.** *Default is false*
+
+`shouldChangeTitleText` **- The boolean value that decides if you want to change the title text when a cell is selected.** *Default is true*
+
+`selectedCellTextLabelColor`  **- The color of the selected cell text label.** *Default is darkGrayColor()*
+
+`arrowTintColor`  **- The tint color of the arrow.** *Default is whiteColor()*
 
 ## Requirement
 - iOS 8.0+ (CocoaPods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
