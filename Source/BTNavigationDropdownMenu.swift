@@ -228,12 +228,17 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.sharedApplication().keyWindow!, title: String, items: [AnyObject]) {
+        // Key window
+        guard let window = UIApplication.sharedApplication().keyWindow else {
+            super.init(frame: CGRectZero)
+            return
+        }
         
         // Navigation controller
         if let navigationController = navigationController {
             self.navigationController = navigationController
         } else {
-            self.navigationController = UIApplication.sharedApplication().keyWindow?.rootViewController?.topMostViewController?.navigationController
+            self.navigationController = window.rootViewController?.topMostViewController?.navigationController
         }
         
         // Get titleSize
@@ -262,7 +267,6 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow = UIImageView(image: self.configuration.arrowImage.imageWithRenderingMode(.AlwaysTemplate))
         self.menuButton.addSubview(self.menuArrow)
         
-        let window = UIApplication.sharedApplication().keyWindow!
         let menuWrapperBounds = window.bounds
         
         // Set up DropdownMenu
