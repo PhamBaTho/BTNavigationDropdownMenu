@@ -149,9 +149,9 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    public var keepSelectedCellColor: Bool! {
+    // Set this property to false if you don't want to keep selected cell color when the menu is open.
+    public var shouldKeepSelectedCellColor: Bool! {
         get {
-            return self.configuration.keepSelectedCellColor
         }
         set(value) {
             self.configuration.keepSelectedCellColor = value
@@ -469,7 +469,7 @@ class BTConfiguration {
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
-    var keepSelectedCellColor: Bool!
+    var shouldKeepSelectedCellColor: Bool!
     var arrowTintColor: UIColor?
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
@@ -502,7 +502,7 @@ class BTConfiguration {
         self.cellTextLabelAlignment = NSTextAlignment.Left
         self.cellSelectionColor = UIColor.lightGrayColor()
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
-        self.keepSelectedCellColor = false
+        self.shouldKeepSelectedCellColor = false
         self.animationDuration = 0.5
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
@@ -588,7 +588,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if self.configuration.keepSelectedCellColor == true {
+        if self.configuration.shouldKeepSelectedCellColor == true {
             cell.backgroundColor = self.configuration.cellBackgroundColor
             cell.contentView.backgroundColor = (indexPath.row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
         }
