@@ -302,9 +302,12 @@ public class BTNavigationDropdownMenu: UIView {
         self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300 - navBarHeight - statusBarHeight), items: items, title: title, configuration: self.configuration)
         
         self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
-            self?.didSelectItemAtIndexHandler!(indexPath: indexPath)
-            if (self?.shouldChangeTitleText)! {
-                self?.setMenuTitle("\(items[indexPath])")
+            guard let selfie = self else {
+                return
+            }
+            selfie.didSelectItemAtIndexHandler!(indexPath: indexPath)
+            if selfie.shouldChangeTitleText! {
+                selfie.setMenuTitle("\(selfie.tableView.items[indexPath])")
             }
             self?.hideMenu()
             self?.layoutSubviews()
