@@ -38,7 +38,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.menuTitleColor = value
         }
     }
-    
+
     // The height of the cell. Default is 50
     public var cellHeight: NSNumber! {
         get {
@@ -48,7 +48,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.cellHeight = CGFloat(value)
         }
     }
-    
+
     // The color of the cell background. Default is whiteColor()
     public var cellBackgroundColor: UIColor! {
         get {
@@ -97,10 +97,8 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.selectedCellTextLabelColor = value
         }
     }
-
     
-    
-    // The font of the text inside cell. Default is HelveticaNeue-Bold, size 19
+    // The font of the text inside cell. Default is HelveticaNeue-Bold, size 17
     public var cellTextLabelFont: UIFont! {
         get {
             return self.configuration.cellTextLabelFont
@@ -110,8 +108,7 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    
-    // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 19
+    // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 17
     public var navigationBarTitleFont: UIFont! {
         get {
             return self.configuration.navigationBarTitleFont
@@ -170,7 +167,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.configuration.animationDuration = value
         }
     }
-    
+
     // The arrow next to navigation title
     public var arrowImage: UIImage! {
         get {
@@ -214,7 +211,7 @@ public class BTNavigationDropdownMenu: UIView {
     
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
-    
+
     private weak var navigationController: UINavigationController?
     private var configuration = BTConfiguration()
     private var topSeparator: UIView!
@@ -250,14 +247,11 @@ public class BTNavigationDropdownMenu: UIView {
         self.isShown = false
         self.items = items
         
-        // Init properties
-        self.setupDefaultConfiguration()
-        
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: #selector(BTNavigationDropdownMenu.menuButtonTapped(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(self.menuButton)
-        
+
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = title
         self.menuTitle.textColor = self.menuTitleColor
@@ -310,6 +304,9 @@ public class BTNavigationDropdownMenu: UIView {
         
         // By default, hide menu view
         self.menuWrapper.hidden = true
+        
+        // Init properties
+        self.setupDefaultConfiguration()
     }
     
     override public func layoutSubviews() {
@@ -333,7 +330,7 @@ public class BTNavigationDropdownMenu: UIView {
             self.hideMenu()
         }
     }
-    
+
     public func toggle() {
         if(self.isShown == true) {
             self.hideMenu();
@@ -354,7 +351,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
-        self.selectedCellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        self.arrowTintColor = self.configuration.arrowTintColor
     }
     
     func showMenu() {
@@ -483,7 +480,7 @@ class BTConfiguration {
         let imageBundle = NSBundle(URL: url!)
         let checkMarkImagePath = imageBundle?.pathForResource("checkmark_icon", ofType: "png")
         let arrowImagePath = imageBundle?.pathForResource("arrow_down_icon", ofType: "png")
-        
+
         // Default values
         self.menuTitleColor = UIColor.darkGrayColor()
         self.cellHeight = 50
@@ -581,7 +578,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         cell?.contentView.backgroundColor = self.configuration.cellBackgroundColor
         cell?.textLabel?.textColor = self.configuration.cellTextLabelColor
     }
-    
+
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if self.configuration.keepSelectedCellColor == true {
             cell.backgroundColor = self.configuration.cellBackgroundColor
