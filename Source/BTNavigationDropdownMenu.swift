@@ -149,7 +149,7 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // Set this property to false if you don't want to keep selected cell color when the menu is open.
+    // The boolean value that decides if selected color of cell is visible when the menu is shown. Default is false
     public var shouldKeepSelectedCellColor: Bool! {
         get {
             return self.configuration.shouldKeepSelectedCellColor
@@ -210,7 +210,7 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // Set this property to false if you don't want to change the title text when a cell is selected
+    // The boolean value that decides if you want to change the title text when a cell is selected. Default is true
     public var shouldChangeTitleText: Bool! {
         get {
             return self.configuration.shouldChangeTitleText
