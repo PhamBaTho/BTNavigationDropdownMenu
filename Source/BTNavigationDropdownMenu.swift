@@ -152,9 +152,10 @@ public class BTNavigationDropdownMenu: UIView {
     // Set this property to false if you don't want to keep selected cell color when the menu is open.
     public var shouldKeepSelectedCellColor: Bool! {
         get {
+            return self.configuration.shouldKeepSelectedCellColor
         }
         set(value) {
-            self.configuration.keepSelectedCellColor = value
+            self.configuration.shouldKeepSelectedCellColor = value
         }
     }
     
@@ -209,8 +210,16 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    //Set this property to false if you don't want to change the title text when a cell is selected
-    public var shouldChangeTitleText: Bool = true
+    // Set this property to false if you don't want to change the title text when a cell is selected
+    public var shouldChangeTitleText: Bool! {
+        get {
+            return self.configuration.shouldChangeTitleText
+        }
+        set(value) {
+            self.configuration.shouldChangeTitleText = value
+        }
+    }
+    
     public var didSelectItemAtIndexHandler: ((indexPath: Int) -> ())?
     public var isShown: Bool!
 
@@ -284,6 +293,9 @@ public class BTNavigationDropdownMenu: UIView {
         let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
         
+        // Init properties
+        self.setupDefaultConfiguration()
+        
         // Init table view
         let navBarHeight = self.navigationController?.navigationBar.bounds.size.height ?? 0
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height ?? 0
@@ -311,10 +323,7 @@ public class BTNavigationDropdownMenu: UIView {
         containerView.addSubview(self.menuWrapper)
         
         // By default, hide menu view
-        self.menuWrapper.hidden = true
-        
-        // Init properties
-        self.setupDefaultConfiguration()
+        self.menuWrapper.hidden = true        
     }
     
     override public func layoutSubviews() {
@@ -355,10 +364,11 @@ public class BTNavigationDropdownMenu: UIView {
     }
     
     func setupDefaultConfiguration() {
-        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor // Setter
+        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        
         self.arrowTintColor = self.configuration.arrowTintColor
     }
     
@@ -476,6 +486,7 @@ class BTConfiguration {
     var animationDuration: NSTimeInterval!
     var maskBackgroundColor: UIColor!
     var maskBackgroundOpacity: CGFloat!
+    var shouldChangeTitleText: Bool!
     
     init() {
         self.defaultValue()
@@ -508,6 +519,7 @@ class BTConfiguration {
         self.arrowPadding = 15
         self.maskBackgroundColor = UIColor.blackColor()
         self.maskBackgroundOpacity = 0.3
+        self.shouldChangeTitleText = true
     }
 }
 
