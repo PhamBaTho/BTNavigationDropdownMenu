@@ -41,6 +41,12 @@ class ViewController: UIViewController, BTNavigationDropdownDelegate {
         }
         
         self.navigationItem.titleView = menuView
+
+        performSelector(#selector(self.update), withObject: nil, afterDelay: 2)
+    }
+    
+    func update() {
+        menuView.updateItems(["Most Popular", "Latest", "Trending", "Nearest"], animated: true)
     }
     
     func dropdownTableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

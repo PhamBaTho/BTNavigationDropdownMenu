@@ -364,10 +364,10 @@ public class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    public func updateItems(items: [AnyObject]) {
+    public func updateItems(items: [AnyObject], animated: Bool) {
         if !items.isEmpty {
             self.tableView.items = items
-            self.tableView.reloadData()
+            self.tableView.reloadSections(NSIndexSet.init(index: 0), withRowAnimation: animated ? UITableViewRowAnimation.Automatic : UITableViewRowAnimation.None)
         }
     }
     
