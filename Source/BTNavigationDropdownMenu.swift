@@ -30,8 +30,13 @@ public protocol BTNavigationDropdownDelegate {
     func dropdownTableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 }
 
+private protocol BTTableViewDelegate {
+    func tableViewDidTapOnBackground()
+}
+
 // MARK: BTNavigationDropdownMenu
 public class BTNavigationDropdownMenu: UIView {
+    
     
     // The color of menu title. Default is darkGrayColor()
     public var menuTitleColor: UIColor! {
@@ -293,17 +298,14 @@ public class BTNavigationDropdownMenu: UIView {
         self.backgroundView = UIView(frame: menuWrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         self.backgroundView.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight ]
-        
-        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
-        self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
-        
+               
         // Init properties
         self.setupDefaultConfiguration()
         
         // Init table view
         let navBarHeight = self.navigationController?.navigationBar.bounds.size.height ?? 0
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height ?? 0
-        self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300 - navBarHeight - statusBarHeight), items: items, title: title, configuration: self.configuration)
+        self.tableView = BTTableView(frame: CGRectMake(menuWrapperBounds.origin.x, menuWrapperBounds.origin.y + 0.5, menuWrapperBounds.width, menuWrapperBounds.height + 300 - navBarHeight - statusBarHeight), items: items, title: title, configuration: self.configuration, tableDelegate: self)
         self.tableView.menuDelegate = menuDelegate
         
         self.tableView.selectRowAtIndexPathHandler = { [weak self] (indexPath: Int) -> () in
@@ -474,6 +476,12 @@ public class BTNavigationDropdownMenu: UIView {
     }
 }
 
+extension BTNavigationDropdownMenu: BTTableViewDelegate {
+    private func tableViewDidTapOnBackground() {
+        self.hideMenu()
+    }
+}
+
 // MARK: BTConfiguration
 class BTConfiguration {
     var menuTitleColor: UIColor?
@@ -532,12 +540,13 @@ class BTConfiguration {
 }
 
 // MARK: Table View
-class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
     // Public properties
     var configuration: BTConfiguration!
     var selectRowAtIndexPathHandler: ((indexPath: Int) -> ())?
     var menuDelegate: BTNavigationDropdownDelegate!
+    private var tableDelegate: BTTableViewDelegate!
     
     // Private properties
     private var items: [AnyObject]!
@@ -547,12 +556,13 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, items: [AnyObject], title: String, configuration: BTConfiguration) {
+    private init(frame: CGRect, items: [AnyObject], title: String, configuration: BTConfiguration, tableDelegate: BTTableViewDelegate?) {
         super.init(frame: frame, style: UITableViewStyle.Plain)
         
         self.items = items
         self.selectedIndexPath = (items as! [String]).indexOf(title)
         self.configuration = configuration
+        self.tableDelegate = tableDelegate
         
         // Setup table view
         self.delegate = self
@@ -562,13 +572,30 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         //        self.separatorEffect = UIBlurEffect(style: .Light)
         self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.tableFooterView = UIView(frame: CGRectZero)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedOnView(_:)))
+        tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self
+        self.addGestureRecognizer(tapGesture)
+    }
+
+    func tappedOnView(sender: AnyObject) {
+        if let tableDelegate = tableDelegate {
+            tableDelegate.tableViewDidTapOnBackground()
+        }
     }
     
-    override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        if let hitView = super.hitTest(point, withEvent: event) where hitView.isKindOfClass(BTTableCellContentView.self) || hitView.isKindOfClass(UIView.self) {
-            return hitView
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if let view = touch.view where view.isKindOfClass(UITableViewCell.self) {
+            return false
         }
-        return nil;
+        if let view = touch.view?.superview where view.isKindOfClass(UITableViewCell.self) {
+            return false
+        }
+        if let view = touch.view?.superview?.superview where view.isKindOfClass(UITableViewCell.self) {
+            return false
+        }
+        return true
     }
     
     // Table view data source
