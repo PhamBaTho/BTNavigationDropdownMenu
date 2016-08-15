@@ -298,7 +298,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.backgroundView = UIView(frame: menuWrapperBounds)
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         self.backgroundView.autoresizingMask = [ .FlexibleWidth, .FlexibleHeight ]
-               
+        
         // Init properties
         self.setupDefaultConfiguration()
         
