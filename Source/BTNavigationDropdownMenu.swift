@@ -692,14 +692,14 @@ class BTTableCellContentView: UIView {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        let context = UIGraphicsGetCurrentContext()
-        
-        // Set separator color of dropdown menu based on barStyle
-        CGContextSetStrokeColorWithColor(context, self.separatorColor.CGColor)
-        CGContextSetLineWidth(context, 1)
-        CGContextMoveToPoint(context, 0, self.bounds.size.height)
-        CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height)
-        CGContextStrokePath(context)
+        if let context = UIGraphicsGetCurrentContext() {
+            // Set separator color of dropdown menu based on barStyle
+            CGContextSetStrokeColorWithColor(context, self.separatorColor.CGColor)
+            CGContextSetLineWidth(context, 1)
+            CGContextMoveToPoint(context, 0, self.bounds.size.height)
+            CGContextAddLineToPoint(context, self.bounds.size.width, self.bounds.size.height)
+            CGContextStrokePath(context)
+        }
     }
 }
 
