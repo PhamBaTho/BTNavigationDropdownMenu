@@ -350,6 +350,10 @@ open class BTNavigationDropdownMenu: UIView {
             self.hideMenu()
         }
     }
+    
+    open func destroy() {
+        self.menuWrapper?.removeFromSuperview()
+    }
 
     open func toggle() {
         if(self.isShown == true) {
