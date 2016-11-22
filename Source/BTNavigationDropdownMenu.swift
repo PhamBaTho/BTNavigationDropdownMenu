@@ -692,7 +692,7 @@ class BTTableCellContentView: UIView {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        let context = UIGraphicsGetCurrentContext()
+        let context = UIGraphicsGetCurrentContext()!
         
         // Set separator color of dropdown menu based on barStyle
         CGContextSetStrokeColorWithColor(context, self.separatorColor.CGColor)
