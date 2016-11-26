@@ -375,7 +375,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.arrowTintColor = self.configuration.arrowTintColor
     }
     
-    func showMenu() {
+    public func showMenu() {
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         
         self.isShown = true
@@ -417,7 +417,7 @@ public class BTNavigationDropdownMenu: UIView {
         )
     }
     
-    func hideMenu() {
+    public func hideMenu() {
         // Rotate arrow
         self.rotateArrow()
         
