@@ -96,6 +96,8 @@ Once you have assigned the items and frame for dropdown menu, you can custom the
 
 `shouldChangeTitleText` **- The boolean value that decides if you want to change the title text when a cell is selected.** *Default is true*
 
+`menuTitleColor`  **- The color of the title displayed in the menu.** *Default is lightGrayColor()*
+
 `selectedCellTextLabelColor`  **- The color of the selected cell text label.** *Default is darkGrayColor()*
 
 `arrowTintColor`  **- The tint color of the arrow.** *Default is whiteColor()*
