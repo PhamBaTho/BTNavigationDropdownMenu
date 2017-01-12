@@ -366,6 +366,14 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    open func select(_ index: Int){
+        self.tableView.selectedIndexPath = index;
+        self.tableView.reloadData();
+        if self.shouldChangeTitleText!{
+            self.setMenuTitle(self.tableView.items[index] as! String);
+        }
+    }
+    
     func setupDefaultConfiguration() {
         self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
