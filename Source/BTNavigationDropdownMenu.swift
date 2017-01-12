@@ -366,7 +366,7 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    open func select(_ index: Int){
+    open func selectIndex(_ index: Int){
         self.tableView.selectedIndexPath = index;
         self.tableView.reloadData();
         if self.shouldChangeTitleText!{
