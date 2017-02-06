@@ -238,8 +238,29 @@ open class BTNavigationDropdownMenu: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    /// Legacy init converted as a convenience initializer to call the default init
+    ///
+    /// - Parameters:
+    ///   - navigationController: navigation Controller
+    ///   - containerView: container view
+    ///   - title: raw title to display
+    ///   - items: items to select
+    public convenience init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [String]) {
+        
+        self.init(navigationController: navigationController, containerView: containerView, title: BTTitle.title(title), items: items)
+        
+    }
+    
+    
+    /// Default init. This will allow the user to define a raw title or a index where the user can pre-define the index that is selected. This is specially handy for when it's necessary to restore from a saved state
+    ///
+    /// - Parameters:
+    ///   - navigationController: navigation controllre
+    ///   - containerView: container view
+    ///   - title: enum with the title to display
+    ///   - items: items to select
     public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: BTTitle, items: [String]) {
-    //public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [String], defaultIndex: Int? = nil) {
         // Key window
         guard let window = UIApplication.shared.keyWindow else {
             super.init(frame: CGRect.zero)
@@ -267,14 +288,6 @@ open class BTNavigationDropdownMenu: UIView {
         case .title(let title):
             titleToDisplay = title
         }
-        
-        
-        /*if let index = defaultIndex, index < items.count{
-            titleToDisplay = items[index]
-        } else {
-            //titleSize = (title as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
-            titleToDisplay = title
-        }*/
         
         titleSize = (titleToDisplay as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
         
