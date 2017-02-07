@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let items = [MenuItem(title:"Favorites", image: UIImage(named:"favoritesMenuItemButton")!), MenuItem(title:"Ads", image: UIImage(named:"adsMenuItemButton")),MenuItem(title:"Chats", image: UIImage(named:"chatsMenuItemButton")!), MenuItem(title:"Settings", image: UIImage(named:"accountSettingsMenuItemButton")!), MenuItem(title:"Other stuff", image: UIImage(named:"menuButton")!)]
+        let items = [BTNavigationDropdownMenu.MenuItem(title:"Favorites", image: UIImage(named:"favoritesMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Ads", image: UIImage(named:"adsMenuItemButton")),BTNavigationDropdownMenu.MenuItem(title:"Chats", image: UIImage(named:"chatsMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Settings", image: UIImage(named:"accountSettingsMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Other stuff", image: UIImage(named:"menuButton")!)]
         
             
         self.selectedCellLabel.text = items.first?.title
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items as [MenuItem])
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items as [BTNavigationDropdownMenu.MenuItem])
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor.gray
         menuView.cellSeparatorColor = self.navigationController?.navigationBar.barTintColor

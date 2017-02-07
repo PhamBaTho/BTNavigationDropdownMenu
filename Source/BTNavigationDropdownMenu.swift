@@ -27,19 +27,21 @@
 import UIKit
 
 
-public struct MenuItem {
-    var title:String
-    var image:UIImage?
-    
-    init(title: String, image:UIImage?) {
-        self.title = title
-        self.image = image
-    }
-    
-}
+
 
 // MARK: BTNavigationDropdownMenu
 open class BTNavigationDropdownMenu: UIView {
+    
+    public struct MenuItem {
+        var title:String
+        var image:UIImage?
+        
+        init(title: String, image:UIImage?) {
+            self.title = title
+            self.image = image
+        }
+        
+    }
     
     // The color of menu title. Default is darkGrayColor()
     open var menuTitleColor: UIColor! {
@@ -604,14 +606,14 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     var selectRowAtIndexPathHandler: ((_ indexPath: Int) -> ())?
     
     // Private properties
-    fileprivate var items:[MenuItem]!
+    fileprivate var items:[BTNavigationDropdownMenu.MenuItem]!
     fileprivate var selectedIndexPath: Int?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, items: [MenuItem], title: String, configuration: BTConfiguration) {
+    init(frame: CGRect, items: [BTNavigationDropdownMenu.MenuItem], title: String, configuration: BTConfiguration) {
         super.init(frame: frame, style: UITableViewStyle.plain)
         
         self.items = items
