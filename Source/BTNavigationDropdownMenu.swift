@@ -27,8 +27,6 @@
 import UIKit
 
 
-
-
 // MARK: BTNavigationDropdownMenu
 open class BTNavigationDropdownMenu: UIView {
     
@@ -317,8 +315,27 @@ open class BTNavigationDropdownMenu: UIView {
             self.navigationController = window.rootViewController?.topMostViewController?.navigationController
         }
         
+        
         // Get titleSize
-        let titleSize = (title as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
+        
+          // get longest title
+        
+        var titleLength = CGFloat(0)
+        var longestTitle = title
+        
+        for item in items {
+            
+            let titleWidth = (item.title as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont]).width
+            
+            if titleWidth > titleLength {
+                titleLength = titleWidth
+                longestTitle = item.title
+                print("longest title is  \(item.title)")
+            }
+            
+        }
+        
+       let titleSize = (longestTitle as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
         
         // Set frame
         let frame = CGRect(x: 0, y: 0, width: titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, height: self.navigationController!.navigationBar.frame.height)
@@ -617,18 +634,19 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame, style: UITableViewStyle.plain)
         
         self.items = items
-        
+
+        print("BT table view init, title is \(title)")
         var index = 0
         for item in self.items {
             if item.title == title {
                 self.selectedIndexPath = index
+                print("selected index path title is \(item.title)")
                 break
             }
             
             index += 1
         }
         
-       // self.selectedIndexPath = (items as! [String:UIImage?]).index(of: title)
         
         self.configuration = configuration
         
@@ -666,6 +684,9 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = BTTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row].title
  
+       // cell.isSelected = indexPath.row == self.selectedIndexPath! ? true : false
+        
+        
         cell.checkmarkIcon.isHidden = (indexPath.row == selectedIndexPath) ? false : true
         
         // images not supported for text alignment center
@@ -692,6 +713,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
             }
 
         }
+        
+        
 
         return cell
     }

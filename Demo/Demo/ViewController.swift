@@ -20,15 +20,15 @@ class ViewController: UIViewController {
         
             
         self.selectedCellLabel.text = items.first?.title
+        
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items as [BTNavigationDropdownMenu.MenuItem])
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: items.first!.title, items: items as [BTNavigationDropdownMenu.MenuItem])
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor.gray
         menuView.cellSeparatorColor = self.navigationController?.navigationBar.barTintColor
-      
         
         menuView.cellTextLabelHorizontalMargin = 150.0
         
