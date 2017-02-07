@@ -36,7 +36,7 @@ open class BTNavigationDropdownMenu: UIView {
         var title:String
         var image:UIImage?
         
-        init(title: String, image:UIImage?) {
+      public  init(title: String, image:UIImage?) {
             self.title = title
             self.image = image
         }
