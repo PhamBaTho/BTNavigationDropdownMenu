@@ -31,7 +31,7 @@ public struct MenuItem {
     var title:String
     var image:UIImage?
     
-    init(title: String, image:UIImage) {
+    init(title: String, image:UIImage?) {
         self.title = title
         self.image = image
     }
@@ -62,6 +62,18 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
 
+    
+    // the color of the images and the checkmark. Default value is nil. If this value is nil, png images  and checkmark have their original colours
+    open var cellTintColor: UIColor? {
+        get {
+            return self.configuration.cellTintColor
+        }
+        set(color) {
+            self.configuration.cellTintColor = color
+        }
+    }
+    
+    
     // The color of the cell background. Default is whiteColor()
     open var cellBackgroundColor: UIColor! {
         get {
@@ -121,6 +133,44 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    // distance of text label from cell edge.
+    open var cellTextLabelHorizontalMargin: CGFloat! {
+        get {
+            return self.configuration.cellTextLabelHorizontalMargin
+        }
+        set(value) {
+            self.configuration.cellTextLabelHorizontalMargin = value
+        }
+        
+    }
+    
+    
+    // height and width of the image (square shaped)
+    open var cellImageSize: CGFloat! {
+        get {
+            return self.configuration.cellImageSize
+        }
+        
+        set(value) {
+            self.configuration.cellImageSize = value
+        }
+        
+    }
+    
+    
+    // margin between image and text label
+    open var cellLabelImageDistance: CGFloat! {
+        get {
+            return self.configuration.cellLabelImageDistance
+        }
+        
+        set(value) {
+            self.configuration.cellLabelImageDistance = value
+        }
+        
+    }
+    
+
     // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 17
     open var navigationBarTitleFont: UIFont! {
         get {
@@ -494,7 +544,10 @@ class BTConfiguration {
     var navigationBarTitleFont: UIFont!
     var cellTextLabelAlignment: NSTextAlignment!
     var cellTextLabelHorizontalMargin: CGFloat!
+    var cellImageSize:CGFloat!
+    var cellLabelImageDistance: CGFloat!
     var cellSelectionColor: UIColor?
+    var cellTintColor: UIColor?
     var checkMarkImage: UIImage!
     var shouldKeepSelectedCellColor: Bool!
     var arrowTintColor: UIColor?
@@ -528,7 +581,9 @@ class BTConfiguration {
         self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.navigationBarTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
         self.cellTextLabelAlignment = NSTextAlignment.left
-        self.cellTextLabelHorizontalMargin = 20
+        self.cellTextLabelHorizontalMargin = 50
+        self.cellImageSize = 35
+        self.cellLabelImageDistance = 5.0
         self.cellSelectionColor = UIColor.lightGray
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
         self.shouldKeepSelectedCellColor = false
@@ -608,16 +663,34 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = BTTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row].title
-
+ 
         cell.checkmarkIcon.isHidden = (indexPath.row == selectedIndexPath) ? false : true
         
-        cell.imageView?.frame = CGRect(x: 5, y: 5, width: 25, height: self.configuration.cellHeight - 10)
-        cell.imageView?.clipsToBounds = true
-        cell.imageView?.contentMode = .center
-        cell.contentView.addSubview(cell.imageView!)
-        cell.imageView!.image = self.items[indexPath.row].image
-        
-        
+        // images not supported for text alignment center
+        if (self.items[indexPath.row].image != nil)  && self.configuration.cellTextLabelAlignment != .center {
+            
+            let imageOriginX:CGFloat
+            
+            if self.configuration.cellTextLabelAlignment == .left     {
+                imageOriginX = cell.textLabel!.frame.origin.x - self.configuration.cellLabelImageDistance - self.configuration.cellImageSize
+            } else {
+                imageOriginX = cell.textLabel!.frame.origin.x  + cell.textLabel!.frame.size.width + self.configuration.cellLabelImageDistance
+            }
+            
+            
+            cell.imageView?.frame = CGRect(x: imageOriginX, y: (self.configuration.cellHeight - self.configuration.cellImageSize) / 2, width: self.configuration.cellImageSize, height: self.configuration.cellImageSize)
+            cell.imageView?.clipsToBounds = true
+            cell.imageView?.contentMode = .center
+            cell.contentView.addSubview(cell.imageView!)
+            
+            if  let _ = self.configuration.cellTintColor {
+                cell.imageView!.image = self.items[indexPath.row].image!.withRenderingMode(.alwaysTemplate)
+            } else {
+                 cell.imageView!.image = self.items[indexPath.row].image!
+            }
+
+        }
+
         return cell
     }
     
@@ -677,18 +750,29 @@ class BTTableViewCell: UITableViewCell {
         }
 
         
+        self.tintColor = self.configuration.cellTintColor
+        
         // Checkmark icon
         if self.textLabel!.textAlignment == .center {
             self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
         } else if self.textLabel!.textAlignment == .left {
             self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
-        } else {
-            self.checkmarkIcon = UIImageView(frame: CGRect(x: self.configuration.cellTextLabelHorizontalMargin, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
+        } else {// right
+            self.checkmarkIcon = UIImageView(frame: CGRect(x: self.configuration.cellLabelImageDistance + checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
         }
         self.checkmarkIcon.isHidden = true
-        self.checkmarkIcon.image = self.configuration.checkMarkImage
+        
+
+        if let _ = self.configuration.cellTintColor {
+            self.checkmarkIcon.image = self.configuration.checkMarkImage.withRenderingMode(.alwaysTemplate)
+        } else {
+                 self.checkmarkIcon.image = self.configuration.checkMarkImage
+        }
+   
         self.checkmarkIcon.contentMode = UIViewContentMode.scaleAspectFill
         self.contentView.addSubview(self.checkmarkIcon)
+        
+        
         
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
