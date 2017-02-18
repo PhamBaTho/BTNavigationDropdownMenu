@@ -47,8 +47,9 @@ class ViewController: UIViewController {
         menuView.cellTextLabelAlignment = .right// .center // .right // .left
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.4
-        menuView.maskBackgroundColor = UIColor.black
-        menuView.maskBackgroundOpacity = 0.3
+        menuView.backgroundViewMode = .blur
+        menuView.blurStyle = .dark
+        
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath].title
