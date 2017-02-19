@@ -307,6 +307,8 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
+
+    
     open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())?
     open var isShown: Bool!
 
@@ -609,6 +611,14 @@ open class BTNavigationDropdownMenu: UIView {
     func menuButtonTapped(_ sender: UIButton) {
         self.isShown == true ? hideMenu() : showMenu()
     }
+    
+    open func setSelectedItem(at index: Int){
+     
+        let indexPath = IndexPath(row: index, section: 0)
+        self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        self.tableView.tableView(self.tableView, didSelectRowAt: indexPath)
+    }
+    
 }
 
 // MARK: BTConfiguration
