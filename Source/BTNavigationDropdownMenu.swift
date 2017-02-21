@@ -392,7 +392,20 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.clipsToBounds = true
         self.menuWrapper.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
         
-  
+        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
+   
+        
+        // Init background view (under table view)
+        
+        self.backgroundView.frame = menuWrapperBounds
+        
+
+        self.backgroundView.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
+        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
+        self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
+        // Add background view & table view to container view
+        self.menuWrapper.addSubview(self.backgroundView)
+        self.menuWrapper.addSubview(self.tableView)
         
     
         
@@ -415,6 +428,8 @@ open class BTNavigationDropdownMenu: UIView {
             self?.hideMenu()
             self?.layoutSubviews()
         }
+        
+        
         
 
         
@@ -453,24 +468,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
-        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
-         let menuWrapperBounds = window?.bounds
-        
-        // Init background view (under table view)
-        if self.backgroundViewMode == .dim {
-            self.backgroundView = self.getdimView(frame: menuWrapperBounds!)
-            
-        }  else {
-            print("getting blur view")
-            self.backgroundView = self.getBlurView(frame: menuWrapperBounds!)
-        }
-        
-        self.backgroundView.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
-        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
-        self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
-        // Add background view & table view to container view
-        self.menuWrapper.addSubview(self.backgroundView)
-        self.menuWrapper.addSubview(self.tableView)
+     
         
         self.tableView.reloadData()
     }
@@ -522,6 +520,15 @@ open class BTNavigationDropdownMenu: UIView {
         self.tableView.tableHeaderView = headerView
         
         self.topSeparator.backgroundColor = self.configuration.cellSeparatorColor
+        
+        
+        if self.backgroundViewMode == .dim {
+            self.backgroundView = self.getdimView(frame: window!.bounds)
+            
+        }  else {
+            print("getting blur view")
+            self.backgroundView = self.getBlurView(frame: window!.bounds)
+        }
         
         // Rotate arrow
         self.rotateArrow()
