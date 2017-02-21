@@ -15,27 +15,45 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
-        self.selectedCellLabel.text = items.first
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
-        menuView.cellHeight = 50
+        let items = [BTNavigationDropdownMenu.MenuItem(title:"Favorites", image: UIImage(named:"favoritesMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Ads", image: UIImage(named:"adsMenuItemButton")),BTNavigationDropdownMenu.MenuItem(title:"Chats", image: UIImage(named:"chatsMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Settings", image: UIImage(named:"accountSettingsMenuItemButton")!), BTNavigationDropdownMenu.MenuItem(title:"Other stuff", image: UIImage(named:"menuButton")!)]
+        
+            
+        self.selectedCellLabel.text = items.first?.title
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: items.first!.title, items: items as [BTNavigationDropdownMenu.MenuItem], backgroundViewMode: .blur)
+        
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
-        menuView.cellSelectionColor = UIColor(red: 0.0/255.0, green:160.0/255.0, blue:195.0/255.0, alpha: 1.0)
+        menuView.cellSelectionColor = UIColor.gray
+        menuView.cellSeparatorColor = self.navigationController?.navigationBar.barTintColor
+        
+        menuView.cellTextLabelHorizontalMargin = 150.0
+        
+        menuView.cellTintColor = UIColor(red: 105/255, green: 220/255, blue: 95/255, alpha: 1.0)   // light green
+        
+        menuView.arrowTintColor = UIColor(red: 105/255, green: 220/255, blue: 95/255, alpha: 1.0) // light green
+        menuView.arrowPadding =  20.0
+
         menuView.shouldKeepSelectedCellColor = true
-        menuView.cellTextLabelColor = UIColor.whiteColor()
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
-        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
+        menuView.cellTextLabelColor = UIColor(red: 105/255, green: 220/255, blue: 95/255, alpha: 1.0) // light green
+        if #available(iOS 9.0, *) {
+            menuView.cellTextLabelFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.title2)
+        } else {
+           menuView.cellTextLabelFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
+        }
+        menuView.cellTextLabelAlignment = .right// .center // .right // .left
         menuView.arrowPadding = 15
-        menuView.animationDuration = 0.5
-        menuView.maskBackgroundColor = UIColor.blackColor()
-        menuView.maskBackgroundOpacity = 0.3
+        menuView.animationDuration = 0.4
+        
+        
+        
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
-            self.selectedCellLabel.text = items[indexPath]
+            self.selectedCellLabel.text = items[indexPath].title
         }
         
         self.navigationItem.titleView = menuView
