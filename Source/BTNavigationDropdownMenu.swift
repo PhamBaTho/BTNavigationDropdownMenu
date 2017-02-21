@@ -277,25 +277,8 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    // blur style in case background view mode is blur. default is light
-    open var blurStyle: UIBlurEffectStyle{
-        get {
-            return self.configuration.blurStyle
-        }
-        set(value) {
-            self.configuration.blurStyle = value
-        }
-    }
+
     
-    // type of background view. default is Dim
-    open var backgroundViewMode: BackgroundViewMode! {
-        get{
-            return self.configuration.backgroundViewMode
-        }
-        set(value) {
-            self.configuration.backgroundViewMode = value
-        }
-    }
     
     // The boolean value that decides if you want to change the title text when a cell is selected. Default is true
     open var shouldChangeTitleText: Bool! {
@@ -309,7 +292,7 @@ open class BTNavigationDropdownMenu: UIView {
     
 
     
-    open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())?
+    open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())!
     open var isShown: Bool!
 
     fileprivate weak var navigationController: UINavigationController?
@@ -322,12 +305,13 @@ open class BTNavigationDropdownMenu: UIView {
     fileprivate var tableView: BTTableView!
     fileprivate var items: [MenuItem]!
     fileprivate var menuWrapper: UIView!
+    fileprivate var backgroundViewMode: BackgroundViewMode!
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [MenuItem]) {
+    public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [MenuItem], backgroundViewMode: BackgroundViewMode?) {
         // Key window
         guard let window = UIApplication.shared.keyWindow else {
             super.init(frame: CGRect.zero)
@@ -392,23 +376,28 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuWrapper.clipsToBounds = true
         self.menuWrapper.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
         
-        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
-   
         
         // Init background view (under table view)
         
-        self.backgroundView.frame = menuWrapperBounds
+        if backgroundViewMode == .dim {
+             self.backgroundView = self.getdimView(frame: menuWrapperBounds)
+            self.backgroundView.backgroundColor = self.dimBackgroundColor
+            self.backgroundViewMode = .dim
+        }
         
-
+        else if backgroundViewMode == .blur {
+            self.backgroundView = self.getBlurView(frame: menuWrapperBounds)
+            self.backgroundViewMode = .blur
+        }
+       
+      //  self.backgroundView.backgroundColor = self.configuration.dimBackgroundColor
         self.backgroundView.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
+
+ 
         let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
-        // Add background view & table view to container view
-        self.menuWrapper.addSubview(self.backgroundView)
-        self.menuWrapper.addSubview(self.tableView)
-        
-    
-        
+
+
         // Init properties
         self.setupDefaultConfiguration()
         
@@ -430,7 +419,9 @@ open class BTNavigationDropdownMenu: UIView {
         }
         
         
-        
+        // Add background view & table view to container view
+        self.menuWrapper.addSubview(self.backgroundView)
+        self.menuWrapper.addSubview(self.tableView)
 
         
         // Add Line on top
@@ -457,7 +448,7 @@ open class BTNavigationDropdownMenu: UIView {
         
         blurredView.frame = frame
         blurredView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurredView.alpha = 0
+
         return blurredView
         
     }
@@ -468,7 +459,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.sizeToFit()
         self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
-     
+        self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         
         self.tableView.reloadData()
     }
@@ -521,15 +512,7 @@ open class BTNavigationDropdownMenu: UIView {
         
         self.topSeparator.backgroundColor = self.configuration.cellSeparatorColor
         
-        
-        if self.backgroundViewMode == .dim {
-            self.backgroundView = self.getdimView(frame: window!.bounds)
-            
-        }  else {
-            print("getting blur view")
-            self.backgroundView = self.getBlurView(frame: window!.bounds)
-        }
-        
+
         // Rotate arrow
         self.rotateArrow()
         
@@ -653,7 +636,7 @@ class BTConfiguration {
     var dimBackgroundColor: UIColor!
     var dimBackgroundOpacity: CGFloat!
     var blurStyle:UIBlurEffectStyle!
-    var backgroundViewMode:  BTNavigationDropdownMenu.BackgroundViewMode!
+
     var shouldChangeTitleText: Bool!
     
     init() {
@@ -690,8 +673,7 @@ class BTConfiguration {
         self.arrowPadding = 15
         self.dimBackgroundColor = UIColor.black
         self.dimBackgroundOpacity = 0.3
-        self.backgroundViewMode = .dim
-        self.blurStyle = .light
+        self.blurStyle = .dark
         self.shouldChangeTitleText = true
     }
 }

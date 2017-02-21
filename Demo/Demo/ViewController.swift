@@ -25,7 +25,8 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor.darkGray
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: items.first!.title, items: items as [BTNavigationDropdownMenu.MenuItem])
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: items.first!.title, items: items as [BTNavigationDropdownMenu.MenuItem], backgroundViewMode: .blur)
+        
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor.gray
         menuView.cellSeparatorColor = self.navigationController?.navigationBar.barTintColor
@@ -47,8 +48,8 @@ class ViewController: UIViewController {
         menuView.cellTextLabelAlignment = .right// .center // .right // .left
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.4
-        menuView.backgroundViewMode = .blur
-        menuView.blurStyle = .dark
+        
+        
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
