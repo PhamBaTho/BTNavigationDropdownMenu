@@ -91,6 +91,8 @@ First, assign the items and frame for the dropdown menu. Then, customize the loo
 
 `maskBackgroundOpacity`  **- Opacity of the mask layer** *Default is 0.3*
 
+`menuTitleColor`  **- Title color displayed in the menu.** *Default is lightGrayColor()*
+
 `shouldKeepSelectedCellColor` **- Selected cell color visibility when menu is shown** *Default is false*
 
 `shouldChangeTitleText` **- Ability to change the selected title text** *Default is true*
