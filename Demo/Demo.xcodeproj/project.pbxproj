@@ -12,14 +12,14 @@
 		2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6AD1B4C326300C9C49E /* Main.storyboard */; };
 		2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B01B4C326300C9C49E /* Images.xcassets */; };
 		2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */; };
-		6A4D26DF1F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */; };
-		6A4D26E01F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */; };
-		6A4D26E11F09FF0200ECB9E9 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */; };
-		6A4D26E21F09FF0200ECB9E9 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */; };
-		6A4D26E31F09FF0200ECB9E9 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */; };
-		6A4D26E41F09FF0200ECB9E9 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */; };
-		6A4D26E51F09FF0200ECB9E9 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */; };
-		6A4D26E61F09FF0200ECB9E9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */; };
+		6AA9896B1F0A20380036C071 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6AA989621F0A20380036C071 /* BTNavigationDropdownMenu.bundle */; };
+		6AA9896C1F0A20380036C071 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989631F0A20380036C071 /* BTNavigationDropdownMenu.swift */; };
+		6AA9896D1F0A20380036C071 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989641F0A20380036C071 /* BTTitle.swift */; };
+		6AA9896E1F0A20380036C071 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989661F0A20380036C071 /* BTConfiguration.swift */; };
+		6AA9896F1F0A20380036C071 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989671F0A20380036C071 /* BTTableCellContentView.swift */; };
+		6AA989701F0A20380036C071 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989681F0A20380036C071 /* BTTableView.swift */; };
+		6AA989711F0A20380036C071 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA989691F0A20380036C071 /* BTTableViewCell.swift */; };
+		6AA989721F0A20380036C071 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9896A1F0A20380036C071 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +42,14 @@
 		2E44D6B31B4C326300C9C49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E44D6B91B4C326300C9C49E /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E44D6BE1B4C326300C9C49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
-		6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
-		6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
-		6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
-		6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableCellContentView.swift; sourceTree = "<group>"; };
-		6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableView.swift; sourceTree = "<group>"; };
-		6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
-		6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		6AA989621F0A20380036C071 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		6AA989631F0A20380036C071 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		6AA989641F0A20380036C071 /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
+		6AA989661F0A20380036C071 /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
+		6AA989671F0A20380036C071 /* BTTableCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableCellContentView.swift; sourceTree = "<group>"; };
+		6AA989681F0A20380036C071 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableView.swift; sourceTree = "<group>"; };
+		6AA989691F0A20380036C071 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
+		6AA9896A1F0A20380036C071 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				2E44D6A61B4C326300C9C49E /* Demo */,
 				2E44D6BC1B4C326300C9C49E /* DemoTests */,
 				2E44D6A51B4C326300C9C49E /* Products */,
-				6A4D26D41F09FF0200ECB9E9 /* Source */,
+				6AA989611F0A20380036C071 /* Source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,36 +126,28 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6A4D26D41F09FF0200ECB9E9 /* Source */ = {
+		6AA989611F0A20380036C071 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */,
-				6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */,
-				6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */,
-				6A4D26D81F09FF0200ECB9E9 /* Internal */,
+				6AA989621F0A20380036C071 /* BTNavigationDropdownMenu.bundle */,
+				6AA989631F0A20380036C071 /* BTNavigationDropdownMenu.swift */,
+				6AA989641F0A20380036C071 /* BTTitle.swift */,
+				6AA989651F0A20380036C071 /* Internal */,
 			);
 			name = Source;
 			path = ../Source;
 			sourceTree = "<group>";
 		};
-		6A4D26D81F09FF0200ECB9E9 /* Internal */ = {
+		6AA989651F0A20380036C071 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				6A4D26DA1F09FF0200ECB9E9 /* Table View */,
-				6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */,
-				6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */,
+				6AA989661F0A20380036C071 /* BTConfiguration.swift */,
+				6AA989671F0A20380036C071 /* BTTableCellContentView.swift */,
+				6AA989681F0A20380036C071 /* BTTableView.swift */,
+				6AA989691F0A20380036C071 /* BTTableViewCell.swift */,
+				6AA9896A1F0A20380036C071 /* UIViewController+Extension.swift */,
 			);
 			path = Internal;
-			sourceTree = "<group>";
-		};
-		6A4D26DA1F09FF0200ECB9E9 /* Table View */ = {
-			isa = PBXGroup;
-			children = (
-				6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */,
-				6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */,
-				6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */,
-			);
-			path = "Table View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,7 +238,7 @@
 				2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */,
 				2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */,
 				2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */,
-				6A4D26DF1F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle in Resources */,
+				6AA9896B1F0A20380036C071 /* BTNavigationDropdownMenu.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,14 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A4D26E61F09FF0200ECB9E9 /* UIViewController+Extension.swift in Sources */,
-				6A4D26E11F09FF0200ECB9E9 /* BTTitle.swift in Sources */,
-				6A4D26E51F09FF0200ECB9E9 /* BTTableViewCell.swift in Sources */,
-				6A4D26E21F09FF0200ECB9E9 /* BTConfiguration.swift in Sources */,
+				6AA989721F0A20380036C071 /* UIViewController+Extension.swift in Sources */,
+				6AA9896D1F0A20380036C071 /* BTTitle.swift in Sources */,
+				6AA989711F0A20380036C071 /* BTTableViewCell.swift in Sources */,
+				6AA9896E1F0A20380036C071 /* BTConfiguration.swift in Sources */,
 				2E44D6AC1B4C326300C9C49E /* ViewController.swift in Sources */,
-				6A4D26E41F09FF0200ECB9E9 /* BTTableView.swift in Sources */,
-				6A4D26E31F09FF0200ECB9E9 /* BTTableCellContentView.swift in Sources */,
-				6A4D26E01F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift in Sources */,
+				6AA989701F0A20380036C071 /* BTTableView.swift in Sources */,
+				6AA9896F1F0A20380036C071 /* BTTableCellContentView.swift in Sources */,
+				6AA9896C1F0A20380036C071 /* BTNavigationDropdownMenu.swift in Sources */,
 				2E44D6AA1B4C326300C9C49E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
