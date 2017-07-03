@@ -141,8 +141,8 @@
 		6A4D26D81F09FF0200ECB9E9 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */,
 				6A4D26DA1F09FF0200ECB9E9 /* Table View */,
+				6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */,
 				6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */,
 			);
 			path = Internal;
