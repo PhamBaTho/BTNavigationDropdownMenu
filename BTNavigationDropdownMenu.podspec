@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "https://www.facebook.com/phambatho"
   s.platform     = :ios, '8.0'
   s.source       = { :git => "https://github.com/PhamBaTho/BTNavigationDropdownMenu.git", :tag => s.version.to_s }
-  s.source_files  = "Source/**/*.swift"
+  s.source_files  = "Source/**/**/*.swift"
   s.resources = "Source/*.bundle"
   s.requires_arc = true
 end

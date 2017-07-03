@@ -237,29 +237,34 @@ open class BTNavigationDropdownMenu: UIView {
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    /// Legacy init converted as a convenience initializer to call the default init
-    ///
-    /// - Parameters:
-    ///   - navigationController: navigation Controller
-    ///   - containerView: container view
-    ///   - title: raw title to display
-    ///   - items: items to select
+
+    /**
+
+     Legacy init converted as a convenience initializer to call the default init
+
+     - parameters:
+        - navigationController: The present and visible navigation controller.
+        - containerView: The container view. Default is keyWindow.
+        - title: A string to define title to be displayed.
+        - items: The array of items to select
+     */
     public convenience init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [String]) {
         
         self.init(navigationController: navigationController, containerView: containerView, title: BTTitle.title(title), items: items)
-        
     }
     
-    
-    /// Default init. This will allow the user to define a raw title or a index where the user can pre-define the index that is selected. This is specially handy for when it's necessary to restore from a saved state
-    ///
-    /// - Parameters:
-    ///   - navigationController: navigation controllre
-    ///   - containerView: container view
-    ///   - title: enum with the title to display
-    ///   - items: items to select
+    /**
+
+     Default init. This will allow the user to define a string or a index where the user can
+     pre-define as a default selected. This is specially handy for when it's necessary to
+     restore from a saved state
+
+     - parameters:
+        - navigationController: The present and visible navigation controller.
+        - containerView: The container view. Default is keyWindow.
+        - title: An enum to define title to be displayed, can be a string or index of items.
+        - items: The array of items to select
+     */
     public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: BTTitle, items: [String]) {
         // Key window
         guard let window = UIApplication.shared.keyWindow else {

@@ -12,22 +12,14 @@
 		2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6AD1B4C326300C9C49E /* Main.storyboard */; };
 		2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B01B4C326300C9C49E /* Images.xcassets */; };
 		2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */; };
-		2E44D6CC1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
-		2E44D6CD1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
-		2E44D6CE1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */; };
-		2E44D6CF1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */; };
-		51F3975A1E489E670011B2A1 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397591E489E670011B2A1 /* BTConfiguration.swift */; };
-		51F3975B1E489E930011B2A1 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397591E489E670011B2A1 /* BTConfiguration.swift */; };
-		51F3975D1E48A0350011B2A1 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975C1E48A0350011B2A1 /* BTTitle.swift */; };
-		51F3975E1E48A0580011B2A1 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975C1E48A0350011B2A1 /* BTTitle.swift */; };
-		51F397601E48A1A20011B2A1 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975F1E48A1A20011B2A1 /* BTTableView.swift */; };
-		51F397611E48A1FB0011B2A1 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975F1E48A1A20011B2A1 /* BTTableView.swift */; };
-		51F397671E48A28B0011B2A1 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */; };
-		51F397691E48A2A30011B2A1 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */; };
-		51F3976E1E48A2E90011B2A1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3976D1E48A2E90011B2A1 /* UIViewController.swift */; };
-		51F3976F1E48A3090011B2A1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3976D1E48A2E90011B2A1 /* UIViewController.swift */; };
-		51F397701E48A30F0011B2A1 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */; };
-		51F397711E48A3110011B2A1 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */; };
+		6A4D26DF1F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */; };
+		6A4D26E01F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */; };
+		6A4D26E11F09FF0200ECB9E9 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */; };
+		6A4D26E21F09FF0200ECB9E9 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */; };
+		6A4D26E31F09FF0200ECB9E9 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */; };
+		6A4D26E41F09FF0200ECB9E9 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */; };
+		6A4D26E51F09FF0200ECB9E9 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */; };
+		6A4D26E61F09FF0200ECB9E9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,14 +42,14 @@
 		2E44D6B31B4C326300C9C49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E44D6B91B4C326300C9C49E /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E44D6BE1B4C326300C9C49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
-		2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = ../BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
-		51F397591E489E670011B2A1 /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
-		51F3975C1E48A0350011B2A1 /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
-		51F3975F1E48A1A20011B2A1 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTTableView.swift; path = ../BTTableView.swift; sourceTree = "<group>"; };
-		51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
-		51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableCellContentView.swift; sourceTree = "<group>"; };
-		51F3976D1E48A2E90011B2A1 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
+		6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
+		6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
+		6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableCellContentView.swift; sourceTree = "<group>"; };
+		6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableView.swift; sourceTree = "<group>"; };
+		6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
+		6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +75,8 @@
 			children = (
 				2E44D6A61B4C326300C9C49E /* Demo */,
 				2E44D6BC1B4C326300C9C49E /* DemoTests */,
-				2E44D6C91B4C336600C9C49E /* Source */,
 				2E44D6A51B4C326300C9C49E /* Products */,
+				6A4D26D41F09FF0200ECB9E9 /* Source */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,12 +92,12 @@
 		2E44D6A61B4C326300C9C49E /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				2E44D6A71B4C326300C9C49E /* Supporting Files */,
 				2E44D6A91B4C326300C9C49E /* AppDelegate.swift */,
-				2E44D6AB1B4C326300C9C49E /* ViewController.swift */,
-				2E44D6AD1B4C326300C9C49E /* Main.storyboard */,
 				2E44D6B01B4C326300C9C49E /* Images.xcassets */,
 				2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */,
-				2E44D6A71B4C326300C9C49E /* Supporting Files */,
+				2E44D6AD1B4C326300C9C49E /* Main.storyboard */,
+				2E44D6AB1B4C326300C9C49E /* ViewController.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -115,7 +107,7 @@
 			children = (
 				2E44D6A81B4C326300C9C49E /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2E44D6BC1B4C326300C9C49E /* DemoTests */ = {
@@ -131,71 +123,39 @@
 			children = (
 				2E44D6BE1B4C326300C9C49E /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2E44D6C91B4C336600C9C49E /* Source */ = {
+		6A4D26D41F09FF0200ECB9E9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				51F3976B1E48A2C70011B2A1 /* Controller */,
-				51F397591E489E670011B2A1 /* BTConfiguration.swift */,
-				51F3975C1E48A0350011B2A1 /* BTTitle.swift */,
-				51F397621E48A20C0011B2A1 /* View */,
-				51F397631E48A22C0011B2A1 /* Supporting Files */,
+				6A4D26D51F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle */,
+				6A4D26D61F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift */,
+				6A4D26D71F09FF0200ECB9E9 /* BTTitle.swift */,
+				6A4D26D81F09FF0200ECB9E9 /* Internal */,
 			);
 			name = Source;
 			path = ../Source;
 			sourceTree = "<group>";
 		};
-		51F397621E48A20C0011B2A1 /* View */ = {
+		6A4D26D81F09FF0200ECB9E9 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				51F397651E48A2860011B2A1 /* Cell */,
-				51F397641E48A2670011B2A1 /* Table */,
-				2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */,
+				6A4D26D91F09FF0200ECB9E9 /* BTConfiguration.swift */,
+				6A4D26DA1F09FF0200ECB9E9 /* Table View */,
+				6A4D26DE1F09FF0200ECB9E9 /* UIViewController+Extension.swift */,
 			);
-			path = View;
+			path = Internal;
 			sourceTree = "<group>";
 		};
-		51F397631E48A22C0011B2A1 /* Supporting Files */ = {
+		6A4D26DA1F09FF0200ECB9E9 /* Table View */ = {
 			isa = PBXGroup;
 			children = (
-				2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */,
+				6A4D26DB1F09FF0200ECB9E9 /* BTTableCellContentView.swift */,
+				6A4D26DC1F09FF0200ECB9E9 /* BTTableView.swift */,
+				6A4D26DD1F09FF0200ECB9E9 /* BTTableViewCell.swift */,
 			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		51F397641E48A2670011B2A1 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				51F3975F1E48A1A20011B2A1 /* BTTableView.swift */,
-			);
-			name = Table;
-			sourceTree = "<group>";
-		};
-		51F397651E48A2860011B2A1 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */,
-				51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */,
-			);
-			name = Cell;
-			sourceTree = "<group>";
-		};
-		51F3976B1E48A2C70011B2A1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				51F3976C1E48A2DB0011B2A1 /* Extensions */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		51F3976C1E48A2DB0011B2A1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				51F3976D1E48A2E90011B2A1 /* UIViewController.swift */,
-			);
-			path = Extensions;
+			path = "Table View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +246,7 @@
 				2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */,
 				2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */,
 				2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */,
-				2E44D6CC1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */,
+				6A4D26DF1F09FF0200ECB9E9 /* BTNavigationDropdownMenu.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +254,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E44D6CD1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,15 +281,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A4D26E61F09FF0200ECB9E9 /* UIViewController+Extension.swift in Sources */,
+				6A4D26E11F09FF0200ECB9E9 /* BTTitle.swift in Sources */,
+				6A4D26E51F09FF0200ECB9E9 /* BTTableViewCell.swift in Sources */,
+				6A4D26E21F09FF0200ECB9E9 /* BTConfiguration.swift in Sources */,
 				2E44D6AC1B4C326300C9C49E /* ViewController.swift in Sources */,
-				51F397601E48A1A20011B2A1 /* BTTableView.swift in Sources */,
-				51F3976E1E48A2E90011B2A1 /* UIViewController.swift in Sources */,
-				2E44D6CE1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */,
-				51F397691E48A2A30011B2A1 /* BTTableCellContentView.swift in Sources */,
-				51F3975A1E489E670011B2A1 /* BTConfiguration.swift in Sources */,
+				6A4D26E41F09FF0200ECB9E9 /* BTTableView.swift in Sources */,
+				6A4D26E31F09FF0200ECB9E9 /* BTTableCellContentView.swift in Sources */,
+				6A4D26E01F09FF0200ECB9E9 /* BTNavigationDropdownMenu.swift in Sources */,
 				2E44D6AA1B4C326300C9C49E /* AppDelegate.swift in Sources */,
-				51F3975D1E48A0350011B2A1 /* BTTitle.swift in Sources */,
-				51F397671E48A28B0011B2A1 /* BTTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,13 +297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51F3975E1E48A0580011B2A1 /* BTTitle.swift in Sources */,
-				51F3975B1E489E930011B2A1 /* BTConfiguration.swift in Sources */,
-				51F3976F1E48A3090011B2A1 /* UIViewController.swift in Sources */,
-				51F397711E48A3110011B2A1 /* BTTableCellContentView.swift in Sources */,
-				2E44D6CF1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */,
-				51F397611E48A1FB0011B2A1 /* BTTableView.swift in Sources */,
-				51F397701E48A30F0011B2A1 /* BTTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +317,7 @@
 				2E44D6AE1B4C326300C9C49E /* Base */,
 			);
 			name = Main.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */ = {
@@ -373,6 +326,7 @@
 				2E44D6B31B4C326300C9C49E /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -469,7 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = "Demo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phambatho.$(PRODUCT_NAME:rfc1034identifier)";
@@ -482,7 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Demo/Info.plist;
+				INFOPLIST_FILE = "Demo/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phambatho.$(PRODUCT_NAME:rfc1034identifier)";
@@ -500,7 +454,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DemoTests/Info.plist;
+				INFOPLIST_FILE = "DemoTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phambatho.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,7 +468,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = DemoTests/Info.plist;
+				INFOPLIST_FILE = "DemoTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "phambatho.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
