@@ -31,15 +31,18 @@ let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
 Create a **new instance** of BTNavigationDropdownMenu:
 ```swift
-let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
+let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title("Dropdown Menu"), items: items)
 ```
 or like this:
 ```swift
-let menuView = BTNavigationDropdownMenu(title: items[0], items: items)
+let menuView = BTNavigationDropdownMenu(title: BTTitle.index(1), items: items)
 ```
+
+BTTitle is an enum. We can set `BTTitle.title(string)` or `BTTitle.index(Int)` (Note: `BTTitle.index` is the index of defined `items` array).
+
 By default, `navigationController` is the topmost navigation controller and `containerView` is keyWindow. 
 
-(`keyWindow` is recommended for `containerView` because the black overlay can cover the whole screen. In some cases, `keyWindow` doesn't work properly, like using with side menu, (e.g. SWRevealViewController), the dropdown menu doesn't move along with the parent view or navigation controller. To workaround this issue, you can use `self.navigationController!.view`.)
+(`keyWindow` is recommended for `containerView` so that the black overlay can cover the whole screen. In some cases, `keyWindow` doesn't work properly, like using with side menu, (e.g. SWRevealViewController), the dropdown menu doesn't move along with the parent view or navigation controller. To workaround this issue, you can use `self.navigationController!.view`.)
 
 Set **title of navigation bar** as menuView:
 ```swift
