@@ -21,7 +21,10 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items as [AnyObject])
+        //menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title("Dropdown Menu"), items: items)
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.index(2), items: items)
+        // "Old" version
+        //menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor(red: 0.0/255.0, green:160.0/255.0, blue:195.0/255.0, alpha: 1.0)
@@ -33,7 +36,7 @@ class ViewController: UIViewController {
         menuView.animationDuration = 0.5
         menuView.maskBackgroundColor = UIColor.black
         menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> Void in
             print("Did select item at index: \(indexPath)")
             self.selectedCellLabel.text = items[indexPath]
         }
@@ -41,4 +44,3 @@ class ViewController: UIViewController {
         self.navigationItem.titleView = menuView
     }
 }
-

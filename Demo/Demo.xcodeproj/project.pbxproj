@@ -12,11 +12,22 @@
 		2E44D6AF1B4C326300C9C49E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6AD1B4C326300C9C49E /* Main.storyboard */; };
 		2E44D6B11B4C326300C9C49E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B01B4C326300C9C49E /* Images.xcassets */; };
 		2E44D6B41B4C326300C9C49E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6B21B4C326300C9C49E /* LaunchScreen.xib */; };
-		2E44D6C01B4C326300C9C49E /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6BF1B4C326300C9C49E /* DemoTests.swift */; };
 		2E44D6CC1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
 		2E44D6CD1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
 		2E44D6CE1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */; };
 		2E44D6CF1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */; };
+		51F3975A1E489E670011B2A1 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397591E489E670011B2A1 /* BTConfiguration.swift */; };
+		51F3975B1E489E930011B2A1 /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397591E489E670011B2A1 /* BTConfiguration.swift */; };
+		51F3975D1E48A0350011B2A1 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975C1E48A0350011B2A1 /* BTTitle.swift */; };
+		51F3975E1E48A0580011B2A1 /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975C1E48A0350011B2A1 /* BTTitle.swift */; };
+		51F397601E48A1A20011B2A1 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975F1E48A1A20011B2A1 /* BTTableView.swift */; };
+		51F397611E48A1FB0011B2A1 /* BTTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3975F1E48A1A20011B2A1 /* BTTableView.swift */; };
+		51F397671E48A28B0011B2A1 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */; };
+		51F397691E48A2A30011B2A1 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */; };
+		51F3976E1E48A2E90011B2A1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3976D1E48A2E90011B2A1 /* UIViewController.swift */; };
+		51F3976F1E48A3090011B2A1 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3976D1E48A2E90011B2A1 /* UIViewController.swift */; };
+		51F397701E48A30F0011B2A1 /* BTTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */; };
+		51F397711E48A3110011B2A1 /* BTTableCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +50,14 @@
 		2E44D6B31B4C326300C9C49E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		2E44D6B91B4C326300C9C49E /* DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E44D6BE1B4C326300C9C49E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E44D6BF1B4C326300C9C49E /* DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTests.swift; sourceTree = "<group>"; };
 		2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
-		2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTNavigationDropdownMenu.swift; path = ../BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		51F397591E489E670011B2A1 /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
+		51F3975C1E48A0350011B2A1 /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
+		51F3975F1E48A1A20011B2A1 /* BTTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BTTableView.swift; path = ../BTTableView.swift; sourceTree = "<group>"; };
+		51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableViewCell.swift; sourceTree = "<group>"; };
+		51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTableCellContentView.swift; sourceTree = "<group>"; };
+		51F3976D1E48A2E90011B2A1 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +121,6 @@
 		2E44D6BC1B4C326300C9C49E /* DemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				2E44D6BF1B4C326300C9C49E /* DemoTests.swift */,
 				2E44D6BD1B4C326300C9C49E /* Supporting Files */,
 			);
 			path = DemoTests;
@@ -122,11 +137,65 @@
 		2E44D6C91B4C336600C9C49E /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */,
-				2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */,
+				51F3976B1E48A2C70011B2A1 /* Controller */,
+				51F397591E489E670011B2A1 /* BTConfiguration.swift */,
+				51F3975C1E48A0350011B2A1 /* BTTitle.swift */,
+				51F397621E48A20C0011B2A1 /* View */,
+				51F397631E48A22C0011B2A1 /* Supporting Files */,
 			);
 			name = Source;
 			path = ../Source;
+			sourceTree = "<group>";
+		};
+		51F397621E48A20C0011B2A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				51F397651E48A2860011B2A1 /* Cell */,
+				51F397641E48A2670011B2A1 /* Table */,
+				2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		51F397631E48A22C0011B2A1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51F397641E48A2670011B2A1 /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				51F3975F1E48A1A20011B2A1 /* BTTableView.swift */,
+			);
+			name = Table;
+			sourceTree = "<group>";
+		};
+		51F397651E48A2860011B2A1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				51F397661E48A28B0011B2A1 /* BTTableViewCell.swift */,
+				51F397681E48A2A30011B2A1 /* BTTableCellContentView.swift */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		51F3976B1E48A2C70011B2A1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				51F3976C1E48A2DB0011B2A1 /* Extensions */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		51F3976C1E48A2DB0011B2A1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51F3976D1E48A2E90011B2A1 /* UIViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +208,7 @@
 				2E44D6A01B4C326300C9C49E /* Sources */,
 				2E44D6A11B4C326300C9C49E /* Frameworks */,
 				2E44D6A21B4C326300C9C49E /* Resources */,
+				51F397721E48A3BB0011B2A1 /* Run Script Lint */,
 			);
 			buildRules = (
 			);
@@ -230,14 +300,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		51F397721E48A3BB0011B2A1 /* Run Script Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script Lint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2E44D6A01B4C326300C9C49E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2E44D6AC1B4C326300C9C49E /* ViewController.swift in Sources */,
+				51F397601E48A1A20011B2A1 /* BTTableView.swift in Sources */,
+				51F3976E1E48A2E90011B2A1 /* UIViewController.swift in Sources */,
 				2E44D6CE1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */,
+				51F397691E48A2A30011B2A1 /* BTTableCellContentView.swift in Sources */,
+				51F3975A1E489E670011B2A1 /* BTConfiguration.swift in Sources */,
 				2E44D6AA1B4C326300C9C49E /* AppDelegate.swift in Sources */,
+				51F3975D1E48A0350011B2A1 /* BTTitle.swift in Sources */,
+				51F397671E48A28B0011B2A1 /* BTTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,8 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E44D6C01B4C326300C9C49E /* DemoTests.swift in Sources */,
+				51F3975E1E48A0580011B2A1 /* BTTitle.swift in Sources */,
+				51F3975B1E489E930011B2A1 /* BTConfiguration.swift in Sources */,
+				51F3976F1E48A3090011B2A1 /* UIViewController.swift in Sources */,
+				51F397711E48A3110011B2A1 /* BTTableCellContentView.swift in Sources */,
 				2E44D6CF1B4C336600C9C49E /* BTNavigationDropdownMenu.swift in Sources */,
+				51F397611E48A1FB0011B2A1 /* BTTableView.swift in Sources */,
+				51F397701E48A30F0011B2A1 /* BTTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
