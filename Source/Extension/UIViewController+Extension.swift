@@ -23,7 +23,7 @@
 
 import UIKit
 
-extension UIViewController {
+internal extension UIViewController {
     // Get ViewController in top present level
     var topPresentedViewController: UIViewController? {
         var target: UIViewController? = self

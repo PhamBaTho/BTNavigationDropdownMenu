@@ -323,6 +323,7 @@ open class BTNavigationDropdownMenu: UIView {
 
         // Set up DropdownMenu
         self.menuWrapper = UIView(frame: CGRect(x: menuWrapperBounds.origin.x, y: 0, width: menuWrapperBounds.width, height: menuWrapperBounds.height))
+        self.menuWrapper.viewIdentifier = "BTNavigationDropDownMenu-MenuWrapper"
         self.menuWrapper.clipsToBounds = true
         self.menuWrapper.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
 
@@ -362,6 +363,11 @@ open class BTNavigationDropdownMenu: UIView {
         self.topSeparator = UIView(frame: CGRect(x: 0, y: 0, width: menuWrapperBounds.size.width, height: 0.5))
         self.topSeparator.autoresizingMask = UIViewAutoresizing.flexibleWidth
         self.menuWrapper.addSubview(self.topSeparator)
+
+        // Remove MenuWrapper from container view to avoid leaks
+        containerView.subviews
+            .filter({$0.viewIdentifier == "BTNavigationDropDownMenu-MenuWrapper"})
+            .forEach({$0.removeFromSuperview()})
 
         // Add Menu View to container view
         containerView.addSubview(self.menuWrapper)
