@@ -413,13 +413,22 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
 
-    open func setSelected(index: Int) {
+    open func setSelected(index: Int?) {
         self.tableView.selectedIndexPath = index
         self.tableView.reloadData()
 
+        guard let index = index else {
+            self.setMenuTitle("")
+            return
+        }
+        
         if self.shouldChangeTitleText! {
             self.setMenuTitle("\(self.tableView.items[index])")
         }
+    }
+    
+    open func setSelectedByTitle(title: String) {
+        self.setSelected(index: self.items.index(of: title))
     }
 
     func setupDefaultConfiguration() {
