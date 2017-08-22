@@ -280,7 +280,7 @@ open class BTNavigationDropdownMenu: UIView {
         }
 
         // Get titleSize
-        let titleSize: CGSize
+        var titleSize = CGSize.zero
         let titleToDisplay: String
 
         switch title{
@@ -294,7 +294,9 @@ open class BTNavigationDropdownMenu: UIView {
             titleToDisplay = title
         }
 
-        titleSize = (titleToDisplay as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
+        if let maxTitle = items.max(by: {$1.characters.count > $0.characters.count}) {
+            titleSize = (maxTitle as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
+        }
 
         // Set frame
         let frame = CGRect(x: 0, y: 0, width: titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, height: self.navigationController!.navigationBar.frame.height)
@@ -308,7 +310,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: #selector(BTNavigationDropdownMenu.menuButtonTapped(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(self.menuButton)
-
+        
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = titleToDisplay
         self.menuTitle.textColor = self.menuTitleColor
@@ -413,13 +415,22 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
 
-    open func setSelected(index: Int) {
+    open func setSelected(index: Int?) {
         self.tableView.selectedIndexPath = index
         self.tableView.reloadData()
 
+        guard let index = index else {
+            self.setMenuTitle("")
+            return
+        }
+        
         if self.shouldChangeTitleText! {
             self.setMenuTitle("\(self.tableView.items[index])")
         }
+    }
+    
+    open func setSelectedByTitle(title: String) {
+        self.setSelected(index: self.items.index(of: title))
     }
 
     func setupDefaultConfiguration() {
