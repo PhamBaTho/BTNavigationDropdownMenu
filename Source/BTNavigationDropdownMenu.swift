@@ -159,6 +159,16 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
+    // The boolean value that decides if selected color of text cell is visible when the menu is shown. Default is false
+    open var shouldKeepSelectedCellTextColor: Bool! {
+        get {
+            return self.configuration.shouldKeepSelectedCellTextColor
+        }
+        set(value) {
+            self.configuration.shouldKeepSelectedCellTextColor = value
+        }
+    }
+    
     // The animation duration of showing/hiding menu. Default is 0.3
     open var animationDuration: TimeInterval! {
         get {
@@ -483,6 +493,7 @@ class BTConfiguration {
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
     var shouldKeepSelectedCellColor: Bool!
+    var shouldKeepSelectedCellTextColor: Bool!
     var arrowTintColor: UIColor?
     var arrowImage: UIImage!
     var arrowPadding: CGFloat!
@@ -517,6 +528,7 @@ class BTConfiguration {
         self.cellSelectionColor = UIColor.lightGray
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
         self.shouldKeepSelectedCellColor = false
+        self.shouldKeepSelectedCellTextColor = false
         self.animationDuration = 0.5
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
         self.arrowPadding = 15
@@ -606,6 +618,9 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         if self.configuration.shouldKeepSelectedCellColor == true {
             cell.backgroundColor = self.configuration.cellBackgroundColor
             cell.contentView.backgroundColor = ((indexPath as NSIndexPath).row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
+        }
+        if self.configuration.shouldKeepSelectedCellTextColor == true {
+            cell.textLabel?.textColor = ((indexPath as NSIndexPath).row == selectedIndexPath) ? self.configuration.selectedCellTextLabelColor : self.configuration.cellTextLabelColor
         }
     }
 }
