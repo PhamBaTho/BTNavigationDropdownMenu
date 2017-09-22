@@ -2,7 +2,7 @@
 
 [![Pod Version](https://img.shields.io/cocoapods/v/BTNavigationDropdownMenu.svg?style=flat)](http://cocoadocs.org/docsets/BTNavigationDropdownMenu/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/LICENSE)
-![Language](https://img.shields.io/badge/language-Swift-brightgreen.svg?style=flat)
+![swift](https://img.shields.io/badge/swift-4.0-red.svg)
 <!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 
 ## Introduction:
@@ -106,7 +106,7 @@ First, assign the items and frame for the dropdown menu. Then, customize the loo
 
 ## Requirement
 - iOS 8.0+ (CocoaPods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
-- Xcode 8.0+, Swift 3.0+
+- Xcode 9.0+, Swift 4.0
 
 ## Changelog
 See the [CHANGELOG](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/CHANGELOG.md) for details
