@@ -1,6 +1,6 @@
 //
 //  BTConfiguration.swift
-//  BTNavigationDropdownMenu
+//  NavigationDropdownMenu
 //
 //  Created by Pham Ba Tho on 6/30/15.
 //  Copyright (c) 2015 PHAM BA THO. All rights reserved.
@@ -26,199 +26,8 @@
 
 import UIKit
 
-// MARK: BTNavigationDropdownMenu
-open class BTNavigationDropdownMenu: UIView {
-
-    // The color of menu title. Default is darkGrayColor()
-    open var menuTitleColor: UIColor! {
-        get {
-            return self.configuration.menuTitleColor
-        }
-        set(value) {
-            self.configuration.menuTitleColor = value
-        }
-    }
-
-    // The height of the cell. Default is 50
-    open var cellHeight: NSNumber! {
-        get {
-            return self.configuration.cellHeight as NSNumber!
-        }
-        set(value) {
-            self.configuration.cellHeight = CGFloat(truncating: value)
-        }
-    }
-
-    // The color of the cell background. Default is whiteColor()
-    open var cellBackgroundColor: UIColor! {
-        get {
-            return self.configuration.cellBackgroundColor
-        }
-        set(color) {
-            self.configuration.cellBackgroundColor = color
-        }
-    }
-
-    // The tint color of the arrow. Default is whiteColor()
-    open var arrowTintColor: UIColor! {
-        get {
-            return self.menuArrow.tintColor
-        }
-        set(color) {
-            self.menuArrow.tintColor = color
-        }
-    }
-
-    open var cellSeparatorColor: UIColor! {
-        get {
-            return self.configuration.cellSeparatorColor
-        }
-        set(value) {
-            self.configuration.cellSeparatorColor = value
-        }
-    }
-
-    // The color of the text inside cell. Default is darkGrayColor()
-    open var cellTextLabelColor: UIColor! {
-        get {
-            return self.configuration.cellTextLabelColor
-        }
-        set(value) {
-            self.configuration.cellTextLabelColor = value
-        }
-    }
-
-    // The color of the text inside a selected cell. Default is darkGrayColor()
-    open var selectedCellTextLabelColor: UIColor! {
-        get {
-            return self.configuration.selectedCellTextLabelColor
-        }
-        set(value) {
-            self.configuration.selectedCellTextLabelColor = value
-        }
-    }
-
-    // The font of the text inside cell. Default is HelveticaNeue-Bold, size 17
-    open var cellTextLabelFont: UIFont! {
-        get {
-            return self.configuration.cellTextLabelFont
-        }
-        set(value) {
-            self.configuration.cellTextLabelFont = value
-        }
-    }
-
-    // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 17
-    open var navigationBarTitleFont: UIFont! {
-        get {
-            return self.configuration.navigationBarTitleFont
-        }
-        set(value) {
-            self.configuration.navigationBarTitleFont = value
-            self.menuTitle.font = self.configuration.navigationBarTitleFont
-        }
-    }
-
-    // The alignment of the text inside cell. Default is .Left
-    open var cellTextLabelAlignment: NSTextAlignment! {
-        get {
-            return self.configuration.cellTextLabelAlignment
-        }
-        set(value) {
-            self.configuration.cellTextLabelAlignment = value
-        }
-    }
-
-    // The color of the cell when the cell is selected. Default is lightGrayColor()
-    open var cellSelectionColor: UIColor! {
-        get {
-            return self.configuration.cellSelectionColor
-        }
-        set(value) {
-            self.configuration.cellSelectionColor = value
-        }
-    }
-
-    // The checkmark icon of the cell
-    open var checkMarkImage: UIImage! {
-        get {
-            return self.configuration.checkMarkImage
-        }
-        set(value) {
-            self.configuration.checkMarkImage = value
-        }
-    }
-
-    // The boolean value that decides if selected color of cell is visible when the menu is shown. Default is false
-    open var shouldKeepSelectedCellColor: Bool! {
-        get {
-            return self.configuration.shouldKeepSelectedCellColor
-        }
-        set(value) {
-            self.configuration.shouldKeepSelectedCellColor = value
-        }
-    }
-
-    // The animation duration of showing/hiding menu. Default is 0.3
-    open var animationDuration: TimeInterval! {
-        get {
-            return self.configuration.animationDuration
-        }
-        set(value) {
-            self.configuration.animationDuration = value
-        }
-    }
-
-    // The arrow next to navigation title
-    open var arrowImage: UIImage! {
-        get {
-            return self.configuration.arrowImage
-        }
-        set(value) {
-            self.configuration.arrowImage = value.withRenderingMode(.alwaysTemplate)
-            self.menuArrow.image = self.configuration.arrowImage
-        }
-    }
-
-    // The padding between navigation title and arrow
-    open var arrowPadding: CGFloat! {
-        get {
-            return self.configuration.arrowPadding
-        }
-        set(value) {
-            self.configuration.arrowPadding = value
-        }
-    }
-
-    // The color of the mask layer. Default is blackColor()
-    open var maskBackgroundColor: UIColor! {
-        get {
-            return self.configuration.maskBackgroundColor
-        }
-        set(value) {
-            self.configuration.maskBackgroundColor = value
-        }
-    }
-
-    // The opacity of the mask layer. Default is 0.3
-    open var maskBackgroundOpacity: CGFloat! {
-        get {
-            return self.configuration.maskBackgroundOpacity
-        }
-        set(value) {
-            self.configuration.maskBackgroundOpacity = value
-        }
-    }
-
-    // The boolean value that decides if you want to change the title text when a cell is selected. Default is true
-    open var shouldChangeTitleText: Bool! {
-        get {
-            return self.configuration.shouldChangeTitleText
-        }
-        set(value) {
-            self.configuration.shouldChangeTitleText = value
-        }
-    }
+// MARK: NavigationDropdownMenu
+open class NavigationDropdownMenu: UIView {
 
     open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())?
     open var isShown: Bool!
@@ -233,6 +42,9 @@ open class BTNavigationDropdownMenu: UIView {
     fileprivate var tableView: BTTableView!
     fileprivate var items: [String]!
     fileprivate var menuWrapper: UIView!
+    
+    fileprivate var rightLine: UIView!
+    fileprivate var leftLine: UIView!
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -250,7 +62,7 @@ open class BTNavigationDropdownMenu: UIView {
      */
     public convenience init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: String, items: [String]) {
 
-        self.init(navigationController: navigationController, containerView: containerView, title: BTTitle.title(title), items: items)
+        self.init(navigationController: navigationController, containerView: containerView, title: Title.title(title), items: items)
     }
 
     /**
@@ -265,7 +77,7 @@ open class BTNavigationDropdownMenu: UIView {
         - title: An enum to define title to be displayed, can be a string or index of items.
         - items: The array of items to select
      */
-    public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: BTTitle, items: [String]) {
+    public init(navigationController: UINavigationController? = nil, containerView: UIView = UIApplication.shared.keyWindow!, title: Title, items: [String]) {
         // Key window
         guard let window = UIApplication.shared.keyWindow else {
             super.init(frame: CGRect.zero)
@@ -306,7 +118,7 @@ open class BTNavigationDropdownMenu: UIView {
 
         // Init button as navigation title
         self.menuButton = UIButton(frame: frame)
-        self.menuButton.addTarget(self, action: #selector(BTNavigationDropdownMenu.menuButtonTapped(_:)), for: UIControlEvents.touchUpInside)
+        self.menuButton.addTarget(self, action: #selector(NavigationDropdownMenu.menuButtonTapped(_:)), for: UIControlEvents.touchUpInside)
         self.addSubview(self.menuButton)
 
         self.menuTitle = UILabel(frame: frame)
@@ -321,9 +133,19 @@ open class BTNavigationDropdownMenu: UIView {
 
         let menuWrapperBounds = window.bounds
 
+        // Init line
+        self.rightLine = UIView(frame: CGRect(x: frame.width + linePadding, y: (44-lineHeight)/2, width: lineWidth, height: lineHeight))
+        self.rightLine.backgroundColor = lineColor
+        self.rightLine.isHidden = !self.showRightLine
+        self.leftLine = UIView(frame: CGRect(x: -linePadding, y: (44-lineHeight)/2, width: lineWidth, height: lineHeight))
+        self.leftLine.backgroundColor = lineColor
+        self.leftLine.isHidden = !self.showLeftLine
+        self.menuButton.addSubview(rightLine)
+        self.menuButton.addSubview(leftLine)
+        
         // Set up DropdownMenu
         self.menuWrapper = UIView(frame: CGRect(x: menuWrapperBounds.origin.x, y: 0, width: menuWrapperBounds.width, height: menuWrapperBounds.height))
-        self.menuWrapper.viewIdentifier = "BTNavigationDropDownMenu-MenuWrapper"
+        self.menuWrapper.viewIdentifier = "NavigationDropdownMenu-MenuWrapper"
         self.menuWrapper.clipsToBounds = true
         self.menuWrapper.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
 
@@ -332,11 +154,11 @@ open class BTNavigationDropdownMenu: UIView {
         self.backgroundView.backgroundColor = self.configuration.maskBackgroundColor
         self.backgroundView.autoresizingMask = [ .flexibleWidth, .flexibleHeight ]
 
-        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(BTNavigationDropdownMenu.hideMenu));
+        let backgroundTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(NavigationDropdownMenu.hideMenu));
         self.backgroundView.addGestureRecognizer(backgroundTapRecognizer)
 
         // Init properties
-        self.setupDefaultConfiguration()
+        self.setupDefaultBTConfiguration()
 
         // Init table view
         let navBarHeight = self.navigationController?.navigationBar.bounds.size.height ?? 0
@@ -366,7 +188,7 @@ open class BTNavigationDropdownMenu: UIView {
 
         // Remove MenuWrapper from container view to avoid leaks
         containerView.subviews
-            .filter({$0.viewIdentifier == "BTNavigationDropDownMenu-MenuWrapper"})
+            .filter({$0.viewIdentifier == "NavigationDropdownMenu-MenuWrapper"})
             .forEach({$0.removeFromSuperview()})
 
         // Add Menu View to container view
@@ -382,13 +204,16 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.sizeToFit()
         self.menuArrow.sizeToFit()
         
-        let menuTitleWidth = min(self.menuTitle.frame.width, frame.width - self.configuration.arrowPadding -  self.menuArrow.frame.width)
+        let maxMenuTitleWidth = frame.width - self.configuration.arrowPadding -  self.menuArrow.frame.width
+        let menuTitleWidth = min(self.menuTitle.frame.width, maxMenuTitleWidth)
         self.menuTitle.setWidth(width: menuTitleWidth)
-        self.menuTitle.center = CGPoint(x: 0, y: self.frame.size.height/2)
-        self.menuTitle.setX(x: 0)
-        self.menuTitle.textColor = self.configuration.menuTitleColor
+        self.menuTitle.center = CGPoint(x: maxMenuTitleWidth / 2, y: self.frame.size.height/2)
         self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
+        
+        self.rightLine.setX(x: frame.width + linePadding)
+        self.leftLine.setX(x: -linePadding)
+
         self.tableView.reloadData()
     }
 
@@ -428,7 +253,7 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
 
-    func setupDefaultConfiguration() {
+    func setupDefaultBTConfiguration() {
         self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor
@@ -528,5 +353,263 @@ open class BTNavigationDropdownMenu: UIView {
     
     @objc func menuButtonTapped(_ sender: UIButton) {
         self.isShown == true ? hideMenu() : showMenu()
+    }
+}
+
+
+extension NavigationDropdownMenu {
+    // The color of menu title. Default is darkGrayColor()
+    open var menuTitleColor: UIColor! {
+        get {
+            return self.configuration.menuTitleColor
+        }
+        set(value) {
+            self.configuration.menuTitleColor = value
+            self.menuTitle.textColor = self.configuration.menuTitleColor
+        }
+    }
+    
+    // The height of the cell. Default is 50
+    open var cellHeight: NSNumber! {
+        get {
+            return self.configuration.cellHeight as NSNumber!
+        }
+        set(value) {
+            self.configuration.cellHeight = CGFloat(truncating: value)
+        }
+    }
+    
+    // The color of the cell background. Default is whiteColor()
+    open var cellBackgroundColor: UIColor! {
+        get {
+            return self.configuration.cellBackgroundColor
+        }
+        set(color) {
+            self.configuration.cellBackgroundColor = color
+        }
+    }
+    
+    // The tint color of the arrow. Default is whiteColor()
+    open var arrowTintColor: UIColor! {
+        get {
+            return self.menuArrow.tintColor
+        }
+        set(color) {
+            self.menuArrow.tintColor = color
+        }
+    }
+    
+    open var cellSeparatorColor: UIColor! {
+        get {
+            return self.configuration.cellSeparatorColor
+        }
+        set(value) {
+            self.configuration.cellSeparatorColor = value
+        }
+    }
+    
+    // The color of the text inside cell. Default is darkGrayColor()
+    open var cellTextLabelColor: UIColor! {
+        get {
+            return self.configuration.cellTextLabelColor
+        }
+        set(value) {
+            self.configuration.cellTextLabelColor = value
+        }
+    }
+    
+    // The color of the text inside a selected cell. Default is darkGrayColor()
+    open var selectedCellTextLabelColor: UIColor! {
+        get {
+            return self.configuration.selectedCellTextLabelColor
+        }
+        set(value) {
+            self.configuration.selectedCellTextLabelColor = value
+        }
+    }
+    
+    // The font of the text inside cell. Default is HelveticaNeue-Bold, size 17
+    open var cellTextLabelFont: UIFont! {
+        get {
+            return self.configuration.cellTextLabelFont
+        }
+        set(value) {
+            self.configuration.cellTextLabelFont = value
+        }
+    }
+    
+    // The font of the navigation bar title. Default is HelveticaNeue-Bold, size 17
+    open var navigationBarTitleFont: UIFont! {
+        get {
+            return self.configuration.navigationBarTitleFont
+        }
+        set(value) {
+            self.configuration.navigationBarTitleFont = value
+            self.menuTitle.font = self.configuration.navigationBarTitleFont
+        }
+    }
+    
+    // The alignment of the text inside cell. Default is .Left
+    open var cellTextLabelAlignment: NSTextAlignment! {
+        get {
+            return self.configuration.cellTextLabelAlignment
+        }
+        set(value) {
+            self.configuration.cellTextLabelAlignment = value
+        }
+    }
+    
+    // The color of the cell when the cell is selected. Default is lightGrayColor()
+    open var cellSelectionColor: UIColor! {
+        get {
+            return self.configuration.cellSelectionColor
+        }
+        set(value) {
+            self.configuration.cellSelectionColor = value
+        }
+    }
+    
+    // The checkmark icon of the cell
+    open var checkMarkImage: UIImage! {
+        get {
+            return self.configuration.checkMarkImage
+        }
+        set(value) {
+            self.configuration.checkMarkImage = value
+        }
+    }
+    
+    // The boolean value that decides if selected color of cell is visible when the menu is shown. Default is false
+    open var shouldKeepSelectedCellColor: Bool! {
+        get {
+            return self.configuration.shouldKeepSelectedCellColor
+        }
+        set(value) {
+            self.configuration.shouldKeepSelectedCellColor = value
+        }
+    }
+    
+    // The animation duration of showing/hiding menu. Default is 0.3
+    open var animationDuration: TimeInterval! {
+        get {
+            return self.configuration.animationDuration
+        }
+        set(value) {
+            self.configuration.animationDuration = value
+        }
+    }
+    
+    // The arrow next to navigation title
+    open var arrowImage: UIImage! {
+        get {
+            return self.configuration.arrowImage
+        }
+        set(value) {
+            self.configuration.arrowImage = value.withRenderingMode(.alwaysTemplate)
+            self.menuArrow.image = self.configuration.arrowImage
+        }
+    }
+    
+    // The padding between navigation title and arrow
+    open var arrowPadding: CGFloat! {
+        get {
+            return self.configuration.arrowPadding
+        }
+        set(value) {
+            self.configuration.arrowPadding = value
+        }
+    }
+    
+    // The color of the mask layer. Default is blackColor()
+    open var maskBackgroundColor: UIColor! {
+        get {
+            return self.configuration.maskBackgroundColor
+        }
+        set(value) {
+            self.configuration.maskBackgroundColor = value
+        }
+    }
+    
+    // The opacity of the mask layer. Default is 0.3
+    open var maskBackgroundOpacity: CGFloat! {
+        get {
+            return self.configuration.maskBackgroundOpacity
+        }
+        set(value) {
+            self.configuration.maskBackgroundOpacity = value
+        }
+    }
+    
+    // The boolean value that decides if you want to change the title text when a cell is selected. Default is true
+    open var shouldChangeTitleText: Bool! {
+        get {
+            return self.configuration.shouldChangeTitleText
+        }
+        set(value) {
+            self.configuration.shouldChangeTitleText = value
+        }
+    }
+    open var lineHeight: CGFloat! {
+        get {
+            return self.configuration.lineHeight
+        }
+        set(value) {
+            self.configuration.lineHeight = value
+            self.rightLine.setHeight(height: value)
+            self.rightLine.setY(y: (44-value)/2)
+            self.leftLine.setHeight(height: value)
+            self.leftLine.setY(y: (44-value)/2)
+        }
+    }
+    
+    open var lineColor: UIColor! {
+        get {
+            return self.configuration.lineColor
+        }
+        set(value) {
+            self.configuration.lineColor = value
+            self.rightLine.backgroundColor = value
+            self.leftLine.backgroundColor = value
+        }
+    }
+    
+    open var linePadding: CGFloat! {
+        get {
+            return self.configuration.linePadding
+        }
+        set(value) {
+            self.configuration.linePadding = value
+        }
+    }
+    
+    open var lineWidth: CGFloat! {
+        get {
+            return self.configuration.lineWidth
+        }
+        set(value) {
+            self.configuration.lineWidth = value
+            self.rightLine.setWidth(width: value)
+            self.leftLine.setWidth(width: value)
+        }
+    }
+    
+    open var showLeftLine: Bool! {
+        get {
+            return self.configuration.showLeftLine
+        }
+        set(value) {
+            self.configuration.showLeftLine = value
+            self.leftLine.isHidden = !value
+        }
+    }
+    
+    open var showRightLine: Bool! {
+        get {
+            return self.configuration.showLeftLine
+        }
+        set(value) {
+            self.configuration.showLeftLine = value
+            self.rightLine.isHidden = !value
+        }
     }
 }

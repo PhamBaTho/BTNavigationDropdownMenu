@@ -1,5 +1,5 @@
 //
-//  BTTitle.swift
+//  Title.swift
 //
 //  Copyright (c) 2017 PHAM BA THO (phambatho@gmail.com). All rights reserved.
 //
@@ -30,9 +30,9 @@ import Foundation
  - parameters:
     - title: Set navigation title as string.
     - index: Set navigation title as index of items.
-             Items is defined from BTNavigationDropdownMenu initialization.
+             Items is defined from NavigationDropdownMenu initialization.
  */
-public enum BTTitle {
+public enum Title {
     case title(String)
     case index(Int)
 }

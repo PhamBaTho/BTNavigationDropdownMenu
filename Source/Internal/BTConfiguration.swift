@@ -43,6 +43,12 @@ final class BTConfiguration {
     var maskBackgroundColor: UIColor!
     var maskBackgroundOpacity: CGFloat!
     var shouldChangeTitleText: Bool!
+    var lineHeight: CGFloat!
+    var lineColor: UIColor!
+    var linePadding: CGFloat!
+    var lineWidth: CGFloat!
+    var showLeftLine: Bool!
+    var showRightLine: Bool!
     
     init() {
         self.defaultValue()
@@ -76,5 +82,12 @@ final class BTConfiguration {
         self.maskBackgroundColor = UIColor.black
         self.maskBackgroundOpacity = 0.3
         self.shouldChangeTitleText = true
+        
+        self.lineHeight = 16
+        self.lineColor = UIColor.white
+        self.linePadding = 0
+        self.lineWidth = 1.5
+        self.showLeftLine = false
+        self.showRightLine = false
     }
 }

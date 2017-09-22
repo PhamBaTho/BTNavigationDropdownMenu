@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B11A6361F0C12F500CB4A0B /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B11A62C1F0C12F500CB4A0B /* BTNavigationDropdownMenu.bundle */; };
-		0B11A6371F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11A62D1F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift */; };
+		0B11A6371F0C12F500CB4A0B /* NavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11A62D1F0C12F500CB4A0B /* NavigationDropdownMenu.swift */; };
 		0B11A6381F0C12F500CB4A0B /* BTTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11A62E1F0C12F500CB4A0B /* BTTitle.swift */; };
 		0B11A6391F0C12F500CB4A0B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11A6301F0C12F500CB4A0B /* UIViewController+Extension.swift */; };
 		0B11A63A1F0C12F500CB4A0B /* BTConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11A6321F0C12F500CB4A0B /* BTConfiguration.swift */; };
@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		0B11A62C1F0C12F500CB4A0B /* BTNavigationDropdownMenu.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BTNavigationDropdownMenu.bundle; sourceTree = "<group>"; };
-		0B11A62D1F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTNavigationDropdownMenu.swift; sourceTree = "<group>"; };
+		0B11A62D1F0C12F500CB4A0B /* NavigationDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDropdownMenu.swift; sourceTree = "<group>"; };
 		0B11A62E1F0C12F500CB4A0B /* BTTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTTitle.swift; sourceTree = "<group>"; };
 		0B11A6301F0C12F500CB4A0B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0B11A6321F0C12F500CB4A0B /* BTConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTConfiguration.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				0B11A62C1F0C12F500CB4A0B /* BTNavigationDropdownMenu.bundle */,
-				0B11A62D1F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift */,
+				0B11A62D1F0C12F500CB4A0B /* NavigationDropdownMenu.swift */,
 				0B11A62E1F0C12F500CB4A0B /* BTTitle.swift */,
 				0B11A62F1F0C12F500CB4A0B /* Extension */,
 				0B11A6311F0C12F500CB4A0B /* Internal */,
@@ -287,7 +287,7 @@
 				0B11A63A1F0C12F500CB4A0B /* BTConfiguration.swift in Sources */,
 				0B11A6381F0C12F500CB4A0B /* BTTitle.swift in Sources */,
 				2E44D6AC1B4C326300C9C49E /* ViewController.swift in Sources */,
-				0B11A6371F0C12F500CB4A0B /* BTNavigationDropdownMenu.swift in Sources */,
+				0B11A6371F0C12F500CB4A0B /* NavigationDropdownMenu.swift in Sources */,
 				0B11A6391F0C12F500CB4A0B /* UIViewController+Extension.swift in Sources */,
 				0B11A63F1F0C131A00CB4A0B /* UIView+Extension.swift in Sources */,
 				0B11A63D1F0C12F500CB4A0B /* BTTableViewCell.swift in Sources */,
