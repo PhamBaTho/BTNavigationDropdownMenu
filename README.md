@@ -15,13 +15,13 @@ This elegant **Swift** dropdown menu appears underneath the navigation bar to di
 
 ```ruby
 use_frameworks!
-pod 'BTNavigationDropdownMenu'
+pod 'NavigationDropdownMenu', '~> 4.0.0'
 ```
 Go ahead and **import** BTNavigationDropdownMenu into your own Swift files 
 ```swift
-import BTNavigationDropdownMenu
+import NavigationDropdownMenu
 ```
-Note: This library supports for **Xcode 8.3 Swift 3.1** and embedded frameworks.
+Note: This library supports for **Xcode 9 Swift 4** and embedded frameworks.
 
 ## Usage:
 ### Instantiate
