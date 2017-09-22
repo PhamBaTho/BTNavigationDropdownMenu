@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s8W-fO-vqO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s8W-fO-vqO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -38,7 +43,10 @@
                             <constraint firstAttribute="centerX" secondItem="Jc6-f8-1fo" secondAttribute="centerX" id="gO1-IZ-wQ5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="B2m-EM-oU4"/>
+                    <navigationItem key="navigationItem" id="B2m-EM-oU4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="rk8-dd-CLS"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="O81-Ga-qvj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="selectedCellLabel" destination="Jc6-f8-1fo" id="old-2u-sHY"/>
                     </connections>
@@ -54,7 +62,6 @@
                     <tabBarItem key="tabBarItem" systemItem="featured" id="60w-9J-6f0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yvl-Sk-d0l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

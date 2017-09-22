@@ -24,8 +24,8 @@
 import UIKit
 
 class BTTableViewCell: UITableViewCell {
-    let checkmarkIconWidth: CGFloat = 50
-    let horizontalMargin: CGFloat = 20
+    let checkmarkIconWidth: CGFloat = 25
+    let horizontalMargin: CGFloat = 10
     
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
@@ -43,22 +43,25 @@ class BTTableViewCell: UITableViewCell {
         self.textLabel!.textColor = self.configuration.cellTextLabelColor
         self.textLabel!.font = self.configuration.cellTextLabelFont
         self.textLabel!.textAlignment = self.configuration.cellTextLabelAlignment
-        if self.textLabel!.textAlignment == .center {
-            self.textLabel!.frame = CGRect(x: 0, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
-        } else if self.textLabel!.textAlignment == .left {
-            self.textLabel!.frame = CGRect(x: horizontalMargin, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
-        } else {
-            self.textLabel!.frame = CGRect(x: -horizontalMargin, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
-        }
+        
+        self.textLabel!.frame = CGRect(x: horizontalMargin, y: 0, width: cellContentFrame.width - horizontalMargin * 3 - checkmarkIconWidth, height: cellContentFrame.height)
+//        if self.textLabel!.textAlignment == .center {
+//            self.textLabel!.frame = CGRect(x: 0, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
+//        } else if self.textLabel!.textAlignment == .left {
+//            self.textLabel!.frame = CGRect(x: horizontalMargin, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
+//        } else {
+//            self.textLabel!.frame = CGRect(x: -horizontalMargin, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
+//        }
         
         // Checkmark icon
-        if self.textLabel!.textAlignment == .center {
-            self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
-        } else if self.textLabel!.textAlignment == .left {
-            self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
-        } else {
-            self.checkmarkIcon = UIImageView(frame: CGRect(x: horizontalMargin, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
-        }
+        self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth - horizontalMargin, y: (cellContentFrame.height - checkmarkIconWidth)/2, width: checkmarkIconWidth, height: checkmarkIconWidth))
+//        if self.textLabel!.textAlignment == .center {
+//            self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
+//        } else if self.textLabel!.textAlignment == .left {
+//            self.checkmarkIcon = UIImageView(frame: CGRect(x: cellContentFrame.width - checkmarkIconWidth, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
+//        } else {
+//            self.checkmarkIcon = UIImageView(frame: CGRect(x: horizontalMargin, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
+//        }
         self.checkmarkIcon.isHidden = true
         self.checkmarkIcon.image = self.configuration.checkMarkImage
         self.checkmarkIcon.contentMode = UIViewContentMode.scaleAspectFill

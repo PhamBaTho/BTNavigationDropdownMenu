@@ -45,7 +45,7 @@ open class BTNavigationDropdownMenu: UIView {
             return self.configuration.cellHeight as NSNumber!
         }
         set(value) {
-            self.configuration.cellHeight = CGFloat(value)
+            self.configuration.cellHeight = CGFloat(truncating: value)
         }
     }
 
@@ -294,7 +294,7 @@ open class BTNavigationDropdownMenu: UIView {
             titleToDisplay = title
         }
 
-        titleSize = (titleToDisplay as NSString).size(attributes: [NSFontAttributeName:self.configuration.navigationBarTitleFont])
+        titleSize = (titleToDisplay as NSString).size(withAttributes: [NSAttributedStringKey.font:self.configuration.navigationBarTitleFont])
 
         // Set frame
         let frame = CGRect(x: 0, y: 0, width: titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, height: self.navigationController!.navigationBar.frame.height)
@@ -377,10 +377,16 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     override open func layoutSubviews() {
+        self.menuButton.frame = frame
+        
         self.menuTitle.sizeToFit()
-        self.menuTitle.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
-        self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.sizeToFit()
+        
+        let menuTitleWidth = min(self.menuTitle.frame.width, frame.width - self.configuration.arrowPadding -  self.menuArrow.frame.width)
+        self.menuTitle.setWidth(width: menuTitleWidth)
+        self.menuTitle.center = CGPoint(x: 0, y: self.frame.size.height/2)
+        self.menuTitle.setX(x: 0)
+        self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         self.tableView.reloadData()
@@ -423,10 +429,10 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     func setupDefaultConfiguration() {
-        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        self.menuTitleColor = self.navigationController?.navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor
         self.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
-        self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
-        self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSForegroundColorAttributeName] as? UIColor
+        self.cellSeparatorColor = self.navigationController?.navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor
+        self.cellTextLabelColor = self.navigationController?.navigationBar.titleTextAttributes?[NSAttributedStringKey.foregroundColor] as? UIColor
 
         self.arrowTintColor = self.configuration.arrowTintColor
     }
@@ -473,7 +479,7 @@ open class BTNavigationDropdownMenu: UIView {
         )
     }
 
-    func hideMenu() {
+    @objc func hideMenu() {
         // Rotate arrow
         self.rotateArrow()
 
@@ -520,7 +526,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.text = title
     }
     
-    func menuButtonTapped(_ sender: UIButton) {
+    @objc func menuButtonTapped(_ sender: UIButton) {
         self.isShown == true ? hideMenu() : showMenu()
     }
 }
