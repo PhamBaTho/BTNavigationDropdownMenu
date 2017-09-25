@@ -11,13 +11,13 @@ This elegant **Swift** dropdown menu appears underneath the navigation bar to di
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/Demo.gif)
 
 ## Installation:
-**BTNavigationDropdownMenu** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+**NavigationDropdownMenu** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 use_frameworks!
 pod 'NavigationDropdownMenu', '~> 4.0.0'
 ```
-Go ahead and **import** BTNavigationDropdownMenu into your own Swift files 
+Go ahead and **import** NavigationDropdownMenu into your own Swift files 
 ```swift
 import NavigationDropdownMenu
 ```
@@ -29,16 +29,16 @@ Start by creating an Array that contains strings as **elements of a dropdown lis
 ```swift
 let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
 ```
-Create a **new instance** of BTNavigationDropdownMenu:
+Create a **new instance** of NavigationDropdownMenu:
 ```swift
-let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title("Dropdown Menu"), items: items)
+let menuView = NavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: Title.title("Dropdown Menu"), items: items)
 ```
 or like this:
 ```swift
-let menuView = BTNavigationDropdownMenu(title: BTTitle.index(1), items: items)
+let menuView = NavigationDropdownMenu(title: Title.index(1), items: items)
 ```
 
-BTTitle is an enum. We can set `BTTitle.title(string)` or `BTTitle.index(Int)` (Note: `BTTitle.index` is the index of defined `items` array).
+Title is an enum. We can set `Title.title(string)` or `Title.index(Int)` (Note: `Title.index` is the index of defined `items` array).
 
 By default, `navigationController` is the topmost navigation controller and `containerView` is keyWindow. 
 
@@ -48,7 +48,7 @@ Set **title of navigation bar** as menuView:
 ```swift
 self.navigationItem.titleView = menuView
 ```
-Call BTNavigationDropdownMenu closure to get **the index of selected cell**:
+Call NavigationDropdownMenu closure to get **the index of selected cell**:
 ```swift
 menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
