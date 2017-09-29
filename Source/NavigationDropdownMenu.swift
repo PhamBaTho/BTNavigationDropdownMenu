@@ -199,7 +199,7 @@ open class NavigationDropdownMenu: UIView {
     }
 
     override open func layoutSubviews() {
-        self.menuButton.frame = frame
+        self.menuButton.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         
         self.menuTitle.sizeToFit()
         self.menuArrow.sizeToFit()
