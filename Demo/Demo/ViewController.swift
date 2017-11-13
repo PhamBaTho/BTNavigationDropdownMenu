@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.4
         
-        
+        menuView.delegate = self
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
@@ -60,3 +60,14 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: BTNavigationDropdownMenuDelegate {
+    
+    func menuDidShow() {
+        print("menu did show")
+    }
+    
+    func menuDidHide() {
+        print("menu did hide")
+    }
+    
+}

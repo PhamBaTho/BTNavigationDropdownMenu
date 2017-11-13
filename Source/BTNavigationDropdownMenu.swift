@@ -27,6 +27,13 @@
 import UIKit
 
 
+public protocol BTNavigationDropdownMenuDelegate {
+    
+    func menuDidShow()
+    func menuDidHide()
+    
+}
+
 // MARK: BTNavigationDropdownMenu
 open class BTNavigationDropdownMenu: UIView {
     
@@ -307,6 +314,8 @@ open class BTNavigationDropdownMenu: UIView {
     fileprivate var menuWrapper: UIView!
     fileprivate var backgroundViewMode: BackgroundViewMode!
     
+    public var delegate: BTNavigationDropdownMenuDelegate?
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -530,6 +539,8 @@ open class BTNavigationDropdownMenu: UIView {
         
         self.menuWrapper.superview?.bringSubview(toFront: self.menuWrapper)
         
+        self.delegate?.menuDidShow()
+        
         UIView.animate(
             withDuration: self.configuration.animationDuration * 1.5,
             delay: 0,
@@ -559,7 +570,7 @@ open class BTNavigationDropdownMenu: UIView {
         } else {
             self.backgroundView.alpha = 1.0
         }
-        
+        self.delegate?.menuDidHide()
         UIView.animate(
             withDuration: self.configuration.animationDuration * 1.5,
             delay: 0,
