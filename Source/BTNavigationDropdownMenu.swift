@@ -284,7 +284,14 @@ open class BTNavigationDropdownMenu: UIView {
         }
     }
     
-    
+    open var blurStyle: UIBlurEffectStyle! {
+        get {
+            return self.configuration.blurStyle
+        }
+        set(value) {
+            self.configuration.blurStyle = value
+        }
+    }
     
     
     // The boolean value that decides if you want to change the title text when a cell is selected. Default is true

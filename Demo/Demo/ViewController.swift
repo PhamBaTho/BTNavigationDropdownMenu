@@ -49,6 +49,7 @@ class ViewController: UIViewController {
         menuView.arrowPadding = 15
         menuView.animationDuration = 0.4
         
+        menuView.blurStyle = .light
         menuView.delegate = self
         
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
