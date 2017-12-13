@@ -4,7 +4,8 @@
 ![swift](https://img.shields.io/badge/swift-4.0-red.svg)
 <!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 
-## What is new
+## 我的更新 
+>## What is new
 * support Swift 4.0
 * fix the problem that when title is too long will not display normally
 
