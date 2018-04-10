@@ -20,7 +20,7 @@
 		B4085CF3207CB39A009BB7BF /* BTNavigationDropdownMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = B4085CF1207CB39A009BB7BF /* BTNavigationDropdownMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4085CF6207CB39A009BB7BF /* BTNavigationDropdownMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4085CEF207CB39A009BB7BF /* BTNavigationDropdownMenu.framework */; };
 		B4085CF7207CB39A009BB7BF /* BTNavigationDropdownMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4085CEF207CB39A009BB7BF /* BTNavigationDropdownMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B4085CFC207CB3AD009BB7BF /* BTNavigationDropdownMenu.bundle in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
+		B4085CFC207CB3AD009BB7BF /* BTNavigationDropdownMenu.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2E44D6CA1B4C336600C9C49E /* BTNavigationDropdownMenu.bundle */; };
 		B4085CFD207CB3AD009BB7BF /* BTNavigationDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E44D6CB1B4C336600C9C49E /* BTNavigationDropdownMenu.swift */; };
 /* End PBXBuildFile section */
 
@@ -317,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4085CFC207CB3AD009BB7BF /* BTNavigationDropdownMenu.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +347,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4085CFC207CB3AD009BB7BF /* BTNavigationDropdownMenu.bundle in Sources */,
 				B4085CFD207CB3AD009BB7BF /* BTNavigationDropdownMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
