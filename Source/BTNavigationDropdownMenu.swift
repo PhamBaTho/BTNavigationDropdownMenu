@@ -25,7 +25,7 @@
 //  SOFTWARE.
 
 import UIKit
-
+import DYBadge
 
 public protocol BTNavigationDropdownMenuDelegate {
     
@@ -40,6 +40,7 @@ open class BTNavigationDropdownMenu: UIView {
     public struct MenuItem {
         var title:String
         var image:UIImage?
+        var badgeString: String?
         
         public  init(title: String, image:UIImage?) {
             self.title = title
@@ -614,6 +615,16 @@ open class BTNavigationDropdownMenu: UIView {
         self.tableView.tableView(self.tableView, didSelectRowAt: indexPath)
     }
     
+    public func updateBadge(text: String, at index: Int) {
+        
+        let ip = IndexPath(row: index, section: 0)
+        self.items[index].badgeString = text
+        let cell = self.tableView.cellForRow(at: ip) as! BTTableViewCell
+        if let badge = cell.imageView?.getBadge() {
+            badge.badgeString = text
+        }
+    }
+    
 }
 
 // MARK: BTConfiguration
@@ -781,8 +792,15 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
             }
             
         }
-        
-        
+        // badge
+        let badgeFrame = CGRect(x: 0, y: 0, width: 8.0, height: 8.0)
+        let badge = DYBadge(frame: badgeFrame)
+        if let badgeString = self.items[indexPath.row].badgeString {
+            badge.badgeString = badgeString
+        }
+        if let _ =  cell.imageView?.image {
+            cell.imageView!.addSubview(badge)
+        }
         
         return cell
     }
