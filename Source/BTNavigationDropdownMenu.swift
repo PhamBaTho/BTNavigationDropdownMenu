@@ -798,6 +798,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
             
             cell.badge.xOffset = imageOriginX + cell.imageView!.frame.size.width - 7.0
             cell.badge.yOffset = cell.imageView!.frame.origin.y + 3.0
+            
+            print("x offset : \(cell.badge.xOffset), y offset : \(cell.badge.yOffset)")
 
             cell.badge.badgeString  = self.items[indexPath.row].badgeString
 
