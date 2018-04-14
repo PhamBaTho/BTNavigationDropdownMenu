@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DYBadge'
-  s.version          = '1.0.3'
-  s.summary          = 'Pop up badge, written in Swift 4. Add as subview to any UIView object'
+  s.version          = '1.1'
+  s.summary          = 'Pop up badge, written in Swift. Add as subview to any UIView object.'
   s.swift_version = '4.0'
 
 # This description is used to generate tags and improve search results.

@@ -37,10 +37,10 @@ public protocol BTNavigationDropdownMenuDelegate {
 // MARK: BTNavigationDropdownMenu
 open class BTNavigationDropdownMenu: UIView {
     
-    public struct MenuItem {
+    public class MenuItem {
         var title:String
         var image:UIImage?
-        var badgeString: String?
+        public var badgeString: String?
         
         public  init(title: String, image:UIImage?) {
             self.title = title
@@ -302,7 +302,7 @@ open class BTNavigationDropdownMenu: UIView {
     fileprivate var menuArrow: UIImageView!
     fileprivate var backgroundView: UIView!
     fileprivate var tableView: BTTableView!
-    fileprivate var items: [MenuItem]!
+    public var items: [MenuItem]!
     fileprivate var menuWrapper: UIView!
     fileprivate var backgroundViewMode: BackgroundViewMode!
     
@@ -616,13 +616,9 @@ open class BTNavigationDropdownMenu: UIView {
     }
     
     public func updateBadge(text: String, at index: Int) {
-        
-        let ip = IndexPath(row: index, section: 0)
+
         self.items[index].badgeString = text
-        let cell = self.tableView.cellForRow(at: ip) as! BTTableViewCell
-        if let badge = cell.imageView?.getBadge() {
-            badge.badgeString = text
-        }
+
     }
     
 }
@@ -760,12 +756,12 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
         let cell = BTTableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[indexPath.row].title
         
         // cell.isSelected = indexPath.row == self.selectedIndexPath! ? true : false
-        
-        
+
         cell.checkmarkIcon.isHidden = (indexPath.row == selectedIndexPath) ? false : true
         
         // images not supported for text alignment center
@@ -791,17 +787,24 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
                 cell.imageView!.image = self.items[indexPath.row].image!
             }
             
-        }
-        // badge
-        let badgeFrame = CGRect(x: 0, y: 0, width: 8.0, height: 8.0)
-        let badge = DYBadge(frame: badgeFrame)
-        if let badgeString = self.items[indexPath.row].badgeString {
-            badge.badgeString = badgeString
-        }
-        if let _ =  cell.imageView?.image {
-            cell.imageView!.addSubview(badge)
-        }
+            
+            // badge
+         
+            let badgeFrame = CGRect(x: 0, y: 0, width: 8.0, height: 8.0)
+            cell.badge = DYBadge(frame: badgeFrame)
+            cell.badge.font = UIFont(name: "Helvetica Neue", size: 10.0)!
         
+            cell.contentView.addSubview(cell.badge)
+            
+            cell.badge.xOffset = imageOriginX + cell.imageView!.frame.size.width - 7.0
+            cell.badge.yOffset = cell.imageView!.frame.origin.y + 3.0
+
+            cell.badge.badgeString  = self.items[indexPath.row].badgeString
+
+
+        }
+     
+
         return cell
     }
     
@@ -838,7 +841,7 @@ class BTTableViewCell: UITableViewCell {
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
     var configuration: BTConfiguration!
-    
+    var badge: DYBadge!
     
     init(style: UITableViewCellStyle, reuseIdentifier: String?, configuration: BTConfiguration) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -883,8 +886,7 @@ class BTTableViewCell: UITableViewCell {
         self.checkmarkIcon.contentMode = UIViewContentMode.scaleAspectFill
         self.contentView.addSubview(self.checkmarkIcon)
         
-        
-        
+
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
         if let cellSeparatorColor = self.configuration.cellSeparatorColor {

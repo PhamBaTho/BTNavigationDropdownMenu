@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButtonItem: UIBarButtonItem!
     
+       @IBOutlet weak var dogImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +31,7 @@ class ViewController: UIViewController {
         firstBadge.badgeColor = UIColor.red
         firstBadge.badgeFont = UIFont(name: "Helvetica Neue", size: 11.0)!
         firstBadge.yOffset = -5.0
+        firstBadge.xOffset = self.firstButton.frame.size.width - 3.0
         self.firstButton.addSubview(firstBadge)
 
         
@@ -41,11 +44,11 @@ class ViewController: UIViewController {
       let secondBadge = DYBadge(frame: frame)
         secondBadge.badgeColor = self.view.tintColor
         filterButton.addSubview(secondBadge)
-        secondBadge.xOffset = -15.0
+        secondBadge.xOffset = filterButton.frame.size.width
         secondBadge.yOffset = -5.0
         filterButton.addSubview(secondBadge)
         self.secondButtonItem.customView = filterButton
-        
+
     }
 
     override func didReceiveMemoryWarning() {

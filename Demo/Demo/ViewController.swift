@@ -52,9 +52,10 @@ class ViewController: UIViewController {
         
         menuView.delegate = self
         
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-            self.selectedCellLabel.text = items[indexPath].title
+        menuView.didSelectItemAtIndexHandler = {(index: Int) -> () in
+            print("Did select item at index: \(index)")
+            self.selectedCellLabel.text = items[index].title
+            self.menuView.updateBadge(text: "\(index + 1)", at: index)
         }
         
         self.navigationItem.titleView = menuView

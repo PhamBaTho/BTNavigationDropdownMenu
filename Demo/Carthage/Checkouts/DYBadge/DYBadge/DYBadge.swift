@@ -126,13 +126,10 @@ public class DYBadge: UILabel {
         sizeLabel.font = self.badgeFont
         sizeLabel.sizeToFit()
         let badgeSize = sizeLabel.frame.size
-        
-        let positionX = self.superview?.bounds.size.width ?? 0.0
-        let positionY = self.superview?.bounds.origin.y ?? 0.0
-        
+
         self.transform = CGAffineTransform.identity
         
-        let frame = CGRect(x: positionX + self.xOffset, y: positionY + self.yOffset, width: badgeSize.width + 8.0, height: badgeSize.height + 2.0)
+        let frame = CGRect(x: 0.0 + self.xOffset, y: 0.0 + self.yOffset, width: badgeSize.width + 8.0, height: badgeSize.height + 2.0)
         
         if animated {
             UIView.animate(withDuration: 0.1) {
@@ -265,6 +262,15 @@ public extension UIButton {
         )
     }
     
+    
+    /// Create a UIButton with an image and title - the title is placed underneath the image
+    ///
+    /// - Parameters:
+    ///   - image: a UIImage object
+    ///    - title: the title, placed underneath the image.
+    ///    - font: the font of the title
+    ///  -  frame: the frame of the button's image view. the tint color
+    /// - Returns: a UIButton
     public class func createImageTitleButton(image: UIImage, title: String, font: UIFont, frame: CGRect, tintColor: UIColor)->UIButton {
         
         let button = UIButton(frame: frame)

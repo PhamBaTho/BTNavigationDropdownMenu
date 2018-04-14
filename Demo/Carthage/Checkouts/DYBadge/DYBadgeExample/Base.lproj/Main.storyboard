@@ -45,7 +45,7 @@
                                     <action selector="sliderValueDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="fmV-qB-chA"/>
                                 </connections>
                             </slider>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="IMG_0022" translatesAutoresizingMaskIntoConstraints="NO" id="Lxn-ST-C9K">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="IMG_0022" translatesAutoresizingMaskIntoConstraints="NO" id="Lxn-ST-C9K">
                                 <rect key="frame" x="16" y="148" width="349" height="415"/>
                             </imageView>
                         </subviews>
@@ -70,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="dogImageView" destination="Lxn-ST-C9K" id="xrh-Ld-oZK"/>
                         <outlet property="firstButton" destination="Zhq-tW-eej" id="oO0-Om-Xi8"/>
                         <outlet property="firstSlider" destination="hKM-DM-0el" id="21p-8f-7k6"/>
                         <outlet property="secondButtonItem" destination="ekg-8S-CUe" id="0Te-9M-AdH"/>
