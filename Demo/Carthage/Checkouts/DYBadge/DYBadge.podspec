@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'DYBadge'
-  s.version          = '2.0'
+  s.version          = '2.0.1'
   s.summary          = 'Pop up badge, written in Swift. Add as subview to any UIView object.'
   s.swift_version = '4.0'
 
@@ -36,6 +36,6 @@ Pod::Spec.new do |s|
   #   'DYBadge' => ['DYBadge/Assets/*.png']
   # }
 
-  s.public_header_files = 'DYBadgeExample/DYBadge/**/*.h'
+  s.public_header_files = 'DYBadge/**/*.h'
 
 end

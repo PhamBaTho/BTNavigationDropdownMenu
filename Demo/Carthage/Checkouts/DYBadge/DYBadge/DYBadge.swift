@@ -46,16 +46,6 @@ import UIKit
         }
     }
     
-    /// The font of the badge text
-// open var badgeFont: UIFont = UIFont(name: "Helvetica Neue", size: 10.0)! {
-//        didSet {
-//            print("setting font")
-//            self.font = badgeFont
-//            self.setBadgeSizeAndFrame(animated: false)
-//        }
-//    }
-    
-
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -83,7 +73,6 @@ import UIKit
     
     private func setupBadge() {
 
-     //   self.font = self.badgeFont
         self.textAlignment = .center
                 
         self.setBadgeSizeAndFrame(animated: false)

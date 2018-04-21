@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "BTNavigationDropdownMenu"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "The elegent navigation dropdown menu"
   s.description  = <<-DESC
                    The elegant **dropdown menu**, written in **Swift**, appears underneath **navigation bar** to display a list of related items when a user click on the navigation title.
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/PhamBaTho/BTNavigationDropdownMenu.git", :tag => s.version.to_s }
   s.source_files  = "Source/*.swift"
   s.resources = "Source/*.bundle"
-  s.requires_arc = true
-  s.dependency 'DYBadge', '~> 2.0'
+  s.requires_arc = true 
+  s.dependency 'DYBadge'
 end

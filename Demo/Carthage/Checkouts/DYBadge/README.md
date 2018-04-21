@@ -8,7 +8,7 @@
 
  DYBadge (written in Swift) is a UILabel subclass that can be added as subview to any UIView and its subclasses (except for UIImageView). If the string value of the badge changes from nil (or "nullish") to a valid string value at runtime the badge will appear with a pop up effect. If it switches back to a "nullish" value, it will shrink and disappear.
 The class also includes a UIButton  class function (extension) to create a button with an image and a title, which is positioned underneath the image. 
-**in version 2.0, the xOffset and yOffset values have been removed, as well as badgeFont, badgeColor and badgeTextColor. Simply use the UILabel properties to set these values (don't use badge.text directly!).**
+**since version 2.0, the xOffset and yOffset values have been removed, as well as badgeFont, badgeColor and badgeTextColor. Simply use the UILabel properties to set these values (don't use badge.text directly!).**
 
 ## Example
 
@@ -107,6 +107,8 @@ Check out the following examples.
 ![DYBadgeButton example](./gitResources/DYBadgeExample2-small.gif "Badge Button example 2") 
 
 ## Change log
+#### [Version 2.0.1](https://github.com/DominikButz/DYBadge/releases/tag/2.0.1)
+source file path correction in podspec file.
 #### [Version 2.0](https://github.com/DominikButz/DYBadge/releases/tag/2.0)
 xOffset and yOffset values have been removed, as well as badgeFont, badgeColor and badgeTextColor. Simply use the UILabel properties (font, color, backgroundColor) to set these values.
 #### [Version 1.1.1](https://github.com/DominikButz/DYBadge/releases/tag/1.1.1)
