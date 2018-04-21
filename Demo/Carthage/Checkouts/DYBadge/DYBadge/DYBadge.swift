@@ -8,10 +8,10 @@
 
 import UIKit
 
-public class DYBadge: UILabel {
+@IBDesignable public class DYBadge: UILabel {
 
     /// The text of the badge
-    open var badgeString:String? {
+   @IBInspectable open var badgeString:String? {
         didSet{
             
             let wasNullishBefore = self.isNullish(self.text)
@@ -47,39 +47,16 @@ public class DYBadge: UILabel {
     }
     
     /// The font of the badge text
-    open var badgeFont: UIFont = UIFont(name: "Helvetica Neue", size: 9.0)! {
-        didSet {
-            self.font = badgeFont
-            self.setBadgeSizeAndFrame(animated: false)
-        }
-    }
+// open var badgeFont: UIFont = UIFont(name: "Helvetica Neue", size: 10.0)! {
+//        didSet {
+//            print("setting font")
+//            self.font = badgeFont
+//            self.setBadgeSizeAndFrame(animated: false)
+//        }
+//    }
     
-    /// The background color of the badge
-    open var badgeColor: UIColor = UIColor.red {
-        didSet {
-            self.backgroundColor = badgeColor
-        }
-    }
-    /// The text color of the badge
-    open var badgeTextColor: UIColor = UIColor.white {
-        didSet {
-            self.textColor = badgeTextColor
-        }
-    }
-    
-    /// Position x offset of the badge.
-    open var xOffset: CGFloat = 0.0 {
-        didSet {
-            self.setBadgeSizeAndFrame(animated: false)
-        }
-    }
-    
-    /// Position y offset of the badge.
-    open var yOffset: CGFloat = 0.0 {
-        didSet {
-            self.setBadgeSizeAndFrame(animated: false)
-        }
-    }
+
+
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -87,6 +64,11 @@ public class DYBadge: UILabel {
         // Drawing code
     }
     */
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+
+        self.setupBadge()
+    }
     
     
     public required init?(coder aDecoder: NSCoder) {
@@ -100,14 +82,10 @@ public class DYBadge: UILabel {
     }
     
     private func setupBadge() {
-        
-    
-        self.font = self.badgeFont
+
+     //   self.font = self.badgeFont
         self.textAlignment = .center
-        
-        self.backgroundColor = self.badgeColor
-        self.textColor = self.badgeTextColor
-        
+                
         self.setBadgeSizeAndFrame(animated: false)
         
         self.isHidden = self.isNullish(badgeString)
@@ -123,23 +101,21 @@ public class DYBadge: UILabel {
         
         let sizeLabel = UILabel()
         sizeLabel.text = self.badgeString!
-        sizeLabel.font = self.badgeFont
+        sizeLabel.font = self.font
         sizeLabel.sizeToFit()
         let badgeSize = sizeLabel.frame.size
 
         self.transform = CGAffineTransform.identity
         
-        let frame = CGRect(x: 0.0 + self.xOffset, y: 0.0 + self.yOffset, width: badgeSize.width + 8.0, height: badgeSize.height + 2.0)
+        let frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: badgeSize.width + 8.0, height: badgeSize.height + 2.0)
         
         if animated {
             UIView.animate(withDuration: 0.1) {
-                self.frame = frame
-                self.layer.cornerRadius = self.bounds.height / 2.0
+                self.set(frame: frame)
             }
         } else {
-            
-            self.frame = frame
-            self.layer.cornerRadius = self.bounds.height / 2.0
+           
+            self.set(frame: frame)
             
         }
         
@@ -147,18 +123,25 @@ public class DYBadge: UILabel {
         
     }
     
+    private func set(frame: CGRect) {
+        
+        self.frame = frame
+        self.layer.cornerRadius = self.bounds.height / 2.0
+        
+    }
+    
     
     private func animateBadgeTransform(shouldHide: Bool, transform: CGAffineTransform) {
         
-        let springValue:CGFloat = shouldHide ? 0.0 : 0.4
+        let springValue:CGFloat = shouldHide ? 0 : 0.4
         
         if shouldHide == false {
             
             self.isHidden = false
             
         }
-        
-        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: springValue, initialSpringVelocity: 0.0, options: [], animations: {
+
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: springValue, initialSpringVelocity: 0, options: [], animations: {
             self.transform = transform
             
         }) { (completed) in

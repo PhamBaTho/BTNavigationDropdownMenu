@@ -618,6 +618,9 @@ open class BTNavigationDropdownMenu: UIView {
     public func updateBadge(text: String, at index: Int) {
 
         self.items[index].badgeString = text
+        
+       let cell =  self.tableView.cellForRow(at: IndexPath(row: index, section: 0)) as! BTTableViewCell
+       cell.badge.badgeString = text
 
     }
     
@@ -790,16 +793,13 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
             
             // badge
          
-            let badgeFrame = CGRect(x: 0, y: 0, width: 8.0, height: 8.0)
+            let badgeFrame = CGRect(x: imageOriginX + cell.imageView!.frame.size.width - 7.0, y: cell.imageView!.frame.origin.y + 3.0, width: 8.0, height: 8.0)
             cell.badge = DYBadge(frame: badgeFrame)
-            cell.badge.font = UIFont(name: "Helvetica Neue", size: 10.0)!
-        
+            cell.badge.font = UIFont(name: "HelveticaNeue-Bold", size: 10.0)!
+            cell.badge.textColor = UIColor.white
+            cell.badge.backgroundColor = UIColor.red
+
             cell.contentView.addSubview(cell.badge)
-            
-            cell.badge.xOffset = imageOriginX + cell.imageView!.frame.size.width - 7.0
-            cell.badge.yOffset = cell.imageView!.frame.origin.y + 3.0
-            
-            print("x offset : \(cell.badge.xOffset), y offset : \(cell.badge.yOffset)")
 
             cell.badge.badgeString  = self.items[indexPath.row].badgeString
 

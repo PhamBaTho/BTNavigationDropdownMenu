@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButtonItem: UIBarButtonItem!
     
-       @IBOutlet weak var dogImageView: UIImageView!
+   @IBOutlet weak var dogImageView: UIImageView!
+    
+    @IBOutlet weak var dogBadge: DYBadge!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,29 +27,36 @@ class ViewController: UIViewController {
         self.firstSlider.isContinuous = false
           self.firstSlider.value = 0
         
-        let frame = CGRect(x: 0, y: 0, width: 8.0, height: 5.0)
+        let frame = CGRect(x: self.firstButton.frame.size.width - 3.0, y: -5.0, width: 8.0, height: 5.0)
         let firstBadge = DYBadge(frame: frame)
         
-        firstBadge.badgeColor = UIColor.red
-        firstBadge.badgeFont = UIFont(name: "Helvetica Neue", size: 11.0)!
-        firstBadge.yOffset = -5.0
-        firstBadge.xOffset = self.firstButton.frame.size.width - 3.0
+      let font = UIFont(name: "HelveticaNeue-Bold", size: 10.0)!
+       
+       firstBadge.font = font
+        firstBadge.backgroundColor = UIColor.red
+        firstBadge.textColor = UIColor.white
+
         self.firstButton.addSubview(firstBadge)
 
         
         self.secondSlider.isContinuous = false
-        let buttonFrame =  CGRect(x: 0, y: 0, width: 25.0, height: 26.0)
-        let font = UIFont(name: "Helvetica Neue", size: 11.0)!
-        let color = self.view.tintColor
-        let filterButton  = UIButton.createImageTitleButton(image: #imageLiteral(resourceName: "filterButton"), title: "Filter", font: font, frame: buttonFrame, tintColor: color!)
         
-      let secondBadge = DYBadge(frame: frame)
-        secondBadge.badgeColor = self.view.tintColor
+        let buttonFrame =  CGRect(x: 0, y: 0, width: 25.0, height: 26.0)
+    
+        let filterButton  = UIButton.createImageTitleButton(image: #imageLiteral(resourceName: "filterButton"), title: "Filter", font: font, frame: buttonFrame, tintColor: self.view.tintColor)
+        
+        let secondBadgeFrame =  CGRect(x: buttonFrame.size.width, y: -5.0, width: 8.0, height: 5.0)
+        
+      let secondBadge = DYBadge(frame: secondBadgeFrame)
+        secondBadge.backgroundColor = self.view.tintColor
+        secondBadge.textColor = UIColor.white
+        secondBadge.font = font
         filterButton.addSubview(secondBadge)
-        secondBadge.xOffset = filterButton.frame.size.width
-        secondBadge.yOffset = -5.0
-        filterButton.addSubview(secondBadge)
+
         self.secondButtonItem.customView = filterButton
+        
+        // dog badge
+       self.dogBadge.badgeString = "0"
 
     }
 
@@ -64,8 +73,10 @@ class ViewController: UIViewController {
             print("first slider value")
             if let badge  = self.firstButton.getBadge() {
                 print("badge first button found")
-                badge.badgeString = intValue != 0 ? "\(intValue)" : nil
+                badge.badgeString = "\(intValue)"
             }
+            
+            self.dogBadge.badgeString = intValue > 0 ?  "update" : "0"
 
         } else {
             // second slider
