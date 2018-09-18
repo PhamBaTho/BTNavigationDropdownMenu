@@ -1,3 +1,7 @@
+**I WILL BE BACK NEXT WEEK (LATE SEP 2018) WITH XCODE 10 AND SWIFT 4.2 SUPPORTED. STAY TUNED. APOLOGIZE FOR ANY INCONVINIENCE CAUSED.**
+
+---
+
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/BTNavigationDropdownLogo.png)
 
 [![Pod Version](https://img.shields.io/cocoapods/v/BTNavigationDropdownMenu.svg?style=flat)](http://cocoadocs.org/docsets/BTNavigationDropdownMenu/)
