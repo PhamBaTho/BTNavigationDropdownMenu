@@ -1,4 +1,4 @@
-**I WILL BE BACK NEXT WEEK (LATE SEP 2018) WITH XCODE 10 AND SWIFT 4.2 SUPPORTED. STAY TUNED. APOLOGIZE FOR ANY INCONVINIENCE CAUSED.**
+### Support Xcode 10 and Swift 4.2 now.
 
 ---
 
@@ -25,7 +25,6 @@ Go ahead and **import** BTNavigationDropdownMenu into your own Swift files
 ```swift
 import BTNavigationDropdownMenu
 ```
-Note: This library supports for **Xcode 8.3 Swift 3.1** and embedded frameworks.
 
 ## Usage:
 ### Instantiate
