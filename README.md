@@ -9,12 +9,13 @@
 ![Language](https://img.shields.io/badge/language-Swift-brightgreen.svg?style=flat)
 <!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 
-## Introduction:
+## Introduction
 This elegant **Swift** dropdown menu appears underneath the navigation bar to display a list of related items when a user clicks on the navigation title.
 
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/Demo.gif)
 
-## Installation:
+## Installation
+### CocoaPods
 **BTNavigationDropdownMenu** is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
@@ -26,7 +27,25 @@ Go ahead and **import** BTNavigationDropdownMenu into your own Swift files
 import BTNavigationDropdownMenu
 ```
 
-## Usage:
+## Carthage
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](https://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate BTNavigationDropdownMenu into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "PhamBaTho/BTNavigationDropdownMenu" ~> 0.5
+```
+
+Run `carthage update` to build the framework and drag the built `BTNavigationDropdownMenu.framework` into your Xcode project.
+
+## Usage
 ### Instantiate
 Start by creating an Array that contains strings as **elements of a dropdown list**:
 ```swift
