@@ -24,6 +24,7 @@
 import UIKit
 
 final class BTConfiguration {
+    var bounces: Bool!
     var menuTitleColor: UIColor?
     var cellHeight: CGFloat!
     var cellBackgroundColor: UIColor?
@@ -57,6 +58,7 @@ final class BTConfiguration {
         let arrowImagePath = imageBundle?.path(forResource: "arrow_down_icon", ofType: "png")
         
         // Default values
+        self.bounces = true
         self.menuTitleColor = UIColor.darkGray
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.white

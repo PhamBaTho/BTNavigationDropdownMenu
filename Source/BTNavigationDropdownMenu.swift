@@ -29,6 +29,15 @@ import UIKit
 // MARK: BTNavigationDropdownMenu
 open class BTNavigationDropdownMenu: UIView {
 
+    open var bounces: Bool {
+        get {
+            return self.configuration.bounces
+        }
+        set(value) {
+            self.configuration.bounces = value
+        }
+    }
+    
     // The color of menu title. Default is darkGrayColor()
     open var menuTitleColor: UIColor! {
         get {
@@ -460,11 +469,21 @@ open class BTNavigationDropdownMenu: UIView {
 
         self.menuWrapper.superview?.bringSubviewToFront(self.menuWrapper)
 
+        var animationDuration: Double = self.configuration.animationDuration
+        var damping: CGFloat = 1.0
+        var velocity: CGFloat = 1.0
+        
+        if self.bounces {
+            animationDuration *= 1.5
+            damping = 0.7
+            velocity = 0.5
+        }
+        
         UIView.animate(
-            withDuration: self.configuration.animationDuration * 1.5,
+            withDuration: animationDuration,
             delay: 0,
-            usingSpringWithDamping: 0.7,
-            initialSpringVelocity: 0.5,
+            usingSpringWithDamping: damping,
+            initialSpringVelocity: velocity,
             options: [],
             animations: {
                 self.tableView.frame.origin.y = CGFloat(-300)
