@@ -1,12 +1,12 @@
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/BTNavigationDropdownLogo.png)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/LICENSE)
-![swift](https://img.shields.io/badge/swift-4.0-red.svg)
+![swift](https://img.shields.io/badge/swift-5.0-red.svg)
 <!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 
 ## 我的更新 
 >## What is new
-* support Swift 4.0
+* support Swift 5.0
 * fix the problem that when title is too long will not display normally
 
 ## Introduction:
@@ -19,13 +19,13 @@ This elegant **Swift** dropdown menu appears underneath the navigation bar to di
 
 ```ruby
 use_frameworks!
-pod 'NavigationDropdownMenu', '~> 4.0.0'
+pod 'NavigationDropdownMenu', '~> 5.0.0'
 ```
 Go ahead and **import** NavigationDropdownMenu into your own Swift files 
 ```swift
 import NavigationDropdownMenu
 ```
-Note: This library supports for **Xcode 9 Swift 4** and embedded frameworks.
+Note: This library supports for **Xcode 10.2 Swift 5** and embedded frameworks.
 
 ## Usage:
 ### Instantiate
