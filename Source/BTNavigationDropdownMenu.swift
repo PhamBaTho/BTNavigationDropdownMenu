@@ -406,6 +406,13 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     override open func layoutSubviews() {
+        let titleToDisplay = self.menuTitle.text ?? ""
+        let titleSize = (titleToDisplay as NSString).size(withAttributes: [NSAttributedString.Key.font:self.configuration.navigationBarTitleFont])
+        let frame = CGRect(x: 0, y: 0, width: titleSize.width + (self.configuration.arrowPadding + self.configuration.arrowImage.size.width)*2, height: self.navigationController!.navigationBar.frame.height)
+
+
+        self.frame = frame
+
         self.menuTitle.sizeToFit()
         self.menuTitle.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
         self.menuTitle.textColor = self.configuration.menuTitleColor
@@ -413,6 +420,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuArrow.center = CGPoint(x: self.menuTitle.frame.maxX + self.configuration.arrowPadding, y: self.frame.size.height/2)
         self.menuImage.sizeToFit()
         self.menuImage.center = CGPoint(x: self.menuTitle.frame.minX - ((self.menuImage.image?.size.width ?? 0) / 2), y: self.frame.size.height/2)
+        self.menuButton.frame = frame
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
         self.tableView.reloadData()
     }
@@ -446,7 +454,6 @@ open class BTNavigationDropdownMenu: UIView {
 
     open func updateItemImages(_ images: [UIImage]?) {
         self.tableView.itemImages = images
-        self.tableView.reloadData()
     }
 
     open func setSelected(index: Int) {
@@ -554,11 +561,11 @@ open class BTNavigationDropdownMenu: UIView {
             }
         })
     }
-    
+
     func setMenuTitle(_ title: String) {
         self.menuTitle.text = title
     }
-    
+
     func setMenuImage(_ image: UIImage) {
         self.menuImage.image = image
     }
