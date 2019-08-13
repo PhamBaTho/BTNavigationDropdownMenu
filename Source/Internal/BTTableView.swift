@@ -31,16 +31,18 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     // Private properties
     var items: [String] = []
+    var itemImages: [UIImage]? = nil
     var selectedIndexPath: Int?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect, items: [String], title: String, configuration: BTConfiguration) {
+    init(frame: CGRect, items: [String], itemImages: [UIImage]? = nil, title: String, configuration: BTConfiguration) {
         super.init(frame: frame, style: UITableView.Style.plain)
         
         self.items = items
+        self.itemImages = itemImages
         self.selectedIndexPath = items.index(of: title)
         self.configuration = configuration
         
@@ -78,6 +80,8 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         let cell = BTTableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "Cell", configuration: self.configuration)
         cell.textLabel?.text = self.items[(indexPath as NSIndexPath).row]
         cell.checkmarkIcon.isHidden = ((indexPath as NSIndexPath).row == selectedIndexPath) ? false : true
+        cell.icon.image = self.itemImages?[indexPath.row]
+
         return cell
     }
     

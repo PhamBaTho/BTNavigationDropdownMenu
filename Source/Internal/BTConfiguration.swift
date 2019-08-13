@@ -34,6 +34,7 @@ final class BTConfiguration {
     var navigationBarTitleFont: UIFont!
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
+    var iconImage: UIImage!
     var checkMarkImage: UIImage!
     var shouldKeepSelectedCellColor: Bool!
     var arrowTintColor: UIColor?
@@ -43,6 +44,7 @@ final class BTConfiguration {
     var maskBackgroundColor: UIColor!
     var maskBackgroundOpacity: CGFloat!
     var shouldChangeTitleText: Bool!
+    var shouldChangeTitleImage: Bool!
     
     init() {
         self.defaultValue()
@@ -69,6 +71,7 @@ final class BTConfiguration {
         self.cellTextLabelAlignment = NSTextAlignment.left
         self.cellSelectionColor = UIColor.lightGray
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
+        self.iconImage = UIImage(contentsOfFile: checkMarkImagePath!)
         self.shouldKeepSelectedCellColor = false
         self.animationDuration = 0.5
         self.arrowImage = UIImage(contentsOfFile: arrowImagePath!)
@@ -76,5 +79,6 @@ final class BTConfiguration {
         self.maskBackgroundColor = UIColor.black
         self.maskBackgroundOpacity = 0.3
         self.shouldChangeTitleText = true
+        self.shouldChangeTitleImage = false
     }
 }
