@@ -106,6 +106,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         if self.configuration.shouldKeepSelectedCellColor == true {
             cell.backgroundColor = self.configuration.cellBackgroundColor
             cell.contentView.backgroundColor = ((indexPath as NSIndexPath).row == selectedIndexPath) ? self.configuration.cellSelectionColor : self.configuration.cellBackgroundColor
+            cell.textLabel?.textColor = ((indexPath as NSIndexPath).row == selectedIndexPath) ? self.configuration.selectedCellTextLabelColor : self.configuration.cellTextLabelColor
         }
     }
 }
