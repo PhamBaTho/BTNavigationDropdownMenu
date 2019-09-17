@@ -27,6 +27,7 @@ class BTTableViewCell: UITableViewCell {
     let checkmarkIconWidth: CGFloat = 50
     let horizontalMargin: CGFloat = 20
     
+    var icon: UIImageView!
     var checkmarkIcon: UIImageView!
     var cellContentFrame: CGRect!
     var configuration: BTConfiguration!
@@ -64,6 +65,16 @@ class BTTableViewCell: UITableViewCell {
         self.checkmarkIcon.contentMode = UIView.ContentMode.scaleAspectFill
         self.contentView.addSubview(self.checkmarkIcon)
         
+        self.icon = UIImageView(frame: CGRect(x: horizontalMargin - 15, y: (cellContentFrame.height - 30)/2, width: 30, height: 30))
+        self.icon.contentMode = UIView.ContentMode.scaleAspectFill
+        self.contentView.addSubview(self.icon)
+        if let image = self.configuration.iconImage {
+            self.icon.image = image
+            if self.textLabel!.textAlignment == .left {
+                self.textLabel!.frame = CGRect(x: self.icon.frame.maxX, y: 0, width: cellContentFrame.width, height: cellContentFrame.height)
+            }
+        }
+
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
         if let cellSeparatorColor = self.configuration.cellSeparatorColor {
