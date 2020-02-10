@@ -41,7 +41,7 @@ class BTTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame, style: UITableView.Style.plain)
         
         self.items = items
-        self.selectedIndexPath = items.index(of: title)
+        self.selectedIndexPath = items.firstIndex(of: title)
         self.configuration = configuration
         
         // Setup table view
