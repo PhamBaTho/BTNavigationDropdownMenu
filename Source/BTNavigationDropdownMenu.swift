@@ -308,7 +308,6 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuButton = UIButton(frame: frame)
         self.menuButton.addTarget(self, action: #selector(BTNavigationDropdownMenu.menuButtonTapped(_:)), for: UIControl.Event.touchUpInside)
         self.addSubview(self.menuButton)
-
         self.menuTitle = UILabel(frame: frame)
         self.menuTitle.text = titleToDisplay
         self.menuTitle.textColor = self.menuTitleColor
@@ -374,6 +373,32 @@ open class BTNavigationDropdownMenu: UIView {
 
         // By default, hide menu view
         self.menuWrapper.isHidden = true
+    }
+
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        guard superview?.translatesAutoresizingMaskIntoConstraints == false else {
+            return
+        }
+        self.menuButton.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 9.0, *) {
+            NSLayoutConstraint.activate([self.menuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                                         self.menuButton.topAnchor.constraint(equalTo: self.topAnchor),
+                                         self.menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                                         self.menuButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
+        } else {
+            let views = ["menuButton": self.menuButton]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[menuButton]-0-|",
+                                                                       options: [],
+                                                                       metrics: nil,
+                                                                       views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[menuButton]-0-|",
+                                                                     options: [],
+                                                                     metrics: nil,
+                                                                     views: views)
+            NSLayoutConstraint.activate(horizontalConstraints)
+            NSLayoutConstraint.activate(verticalConstraints)
+        }
     }
 
     override open func layoutSubviews() {
@@ -515,11 +540,11 @@ open class BTNavigationDropdownMenu: UIView {
             }
         })
     }
-    
+
     func setMenuTitle(_ title: String) {
         self.menuTitle.text = title
     }
-    
+
     @objc func menuButtonTapped(_ sender: UIButton) {
         self.isShown == true ? hideMenu() : showMenu()
     }
