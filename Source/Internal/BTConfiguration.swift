@@ -25,6 +25,8 @@ import UIKit
 
 final class BTConfiguration {
     var menuTitleColor: UIColor?
+    var menuTitleMaxWidth: CGFloat?
+    var menuTitleBreakModel : NSLineBreakMode!
     var cellHeight: CGFloat!
     var cellBackgroundColor: UIColor?
     var cellSeparatorColor: UIColor?
@@ -58,6 +60,7 @@ final class BTConfiguration {
         
         // Default values
         self.menuTitleColor = UIColor.darkGray
+        self.menuTitleBreakModel = .byTruncatingMiddle
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.white
         self.arrowTintColor = UIColor.white
