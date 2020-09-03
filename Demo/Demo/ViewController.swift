@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let items = ["一二三四五六七八九十一二三四","一二三四五六七八九十一二三","一二三四五六七八九十一二", "一二三四五六七八九十一", "一二三四五六七八九十", "一二三四五六七八九", "一二三四五六七八"]
+        let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
         self.selectedCellLabel.text = items.first
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.0/255.0, green:180/255.0, blue:220/255.0, alpha: 1.0)
