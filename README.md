@@ -1,4 +1,4 @@
-### Support Xcode 10 and Swift 4.2 now.
+### Swift 5 is coming soon.
 
 ---
 
