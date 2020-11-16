@@ -10,7 +10,7 @@
 <!--[![Build Status](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu.svg?branch=master)](https://travis-ci.org/PhamBaTho/BTNavigationDropdownMenu)-->
 
 ## Introduction
-This elegant **Swift** dropdown menu appears underneath the navigation bar to display a list of related items when a user clicks on the navigation title.
+The elegant yet functional dropdown menu, written in Swift, appears underneath the navigation bar to display a list of defined items when a user clicks on the navigation title.
 
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/Demo.gif)
 
