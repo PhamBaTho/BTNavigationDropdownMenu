@@ -60,7 +60,7 @@ BTTitle is an enum. We can set `BTTitle.title(string)` or `BTTitle.index(Int)` (
 
 By default, `navigationController` is the topmost navigation controller and `containerView` is keyWindow. 
 
-(`keyWindow` is recommended for `containerView` so that the black overlay can cover the whole screen. In some cases, `keyWindow` doesn't work properly, like using with side menu, (e.g. SWRevealViewController), the dropdown menu doesn't move along with the parent view or navigation controller. To workaround this issue, you can use `self.navigationController!.view`.)
+(`keyWindow` is recommended for `containerView` so that the black overlay can cover the whole screen. In some cases, `keyWindow` doesn't work properly, like using with side menu (e.g. SWRevealViewController), the dropdown menu doesn't move along with the parent view or navigation controller. To workaround this issue, you can use `self.navigationController!.view`.)
 
 Set **title of navigation bar** as menuView:
 ```swift
@@ -84,43 +84,27 @@ menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
 ### Customization
 First, assign the items and frame for the dropdown menu. Then, customize the look and feel of the menu by overriding these properties:
 
-`cellHeight` **- Cell height** *Default is 50*
-
-`cellBackgroundColor` **- Cell background color** *Default is whiteColor()*
-
-`cellSeparatorColor` **- Cell separator color** *Default is darkGrayColor()*
-
-`cellTextLabelColor` **- Text color inside of the cell** *Default is darkGrayColor()*
-
-`cellTextLabelFont` **- Font inside the cell** *Default is bold system font, size 17*
-
-`navigationBarTitleFont` **- Navigation bar title font** *Default is vold system font, size 17*
-
-`cellTextLabelAlignment` **- Text alignment inside of the cell** *Default is .Left*
-
-`cellSelectionColor`  **- Selected color of the cell** *Default is lightGrayColor()*
-
-`checkMarkImage`  **- Checkmark icon for the cell.**
-
-`animationDuration`  **- Animation duration for showing/hiding of the menu** *Default is 0.5s*
-
-`arrowImage`  **- Arrow next to the navigation title**
-
-`arrowPadding`  **- Padding between the navigation title and arrow.** *Default is 15*
-
-`maskBackgroundColor`  **- Mask layer color** *Default is blackColor()*
-
-`maskBackgroundOpacity`  **- Opacity of the mask layer** *Default is 0.3*
-
-`menuTitleColor`  **- Title color displayed in the menu.** *Default is lightGrayColor()*
-
-`shouldKeepSelectedCellColor` **- Selected cell color visibility when menu is shown** *Default is false*
-
-`shouldChangeTitleText` **- Ability to change the selected title text** *Default is true*
-
-`selectedCellTextLabelColor`  **- Selected cell text label color** *Default is darkGrayColor()*
-
-`arrowTintColor`  **- Tint color of the arrow.** *Default is whiteColor()*
+| Name | Description | Default value |
+|---|---|:---:|
+| `navigationBarTitleFont` |  Navigation bar title font | System font, bold, size 17 |
+| `cellHeight` | Cell height | 50 |
+| `arrowImage` | Arrow next to the navigation title | Provided image |
+| `arrowPadding` | Padding between the navigation title and arrow | 15 |
+| `cellBackgroundColor` | Cell background color | UIColor.white |
+| `cellSeparatorColor` | Cell separator color | UIColor.darkGray |
+| `cellTextLabelColor` | Text color inside of the cell | UIColor.darkGray |
+| `cellTextLabelFont` | Text font inside the cell | System font, bold, size 17 |
+| `cellTextLabelAlignment` | Text alignment inside of the cell | NSTextAlignment.left |
+| `cellSelectionColor` | Selected color of the cell | UIColor.lightGray |
+| `checkMarkImage` | Checkmark icon for the cell | Provided image |
+| `animationDuration` | Animation duration for showing/hiding of the menu | 0.3 |
+| `maskBackgroundColor` | Mask layer color | UIColor.black |
+| `maskBackgroundOpacity` | Opacity of the mask layer | 0.3 |
+| `menuTitleColor` | Title color displayed in the menu | UIColor.lightGray |
+| `shouldKeepSelectedCellColor` | Selected cell color visibility when menu is shown | false |
+| `shouldChangeTitleText` | Ability to change the selected title text | true |
+| `selectedCellTextLabelColor` | Selected cell text label color | UIColor.darkGray |
+| `arrowTintColor` | Tint color of the arrow | UIColor.white |
 
 ## Requirement
 - iOS 9.0+
