@@ -1,7 +1,3 @@
-### Swift 5 is coming soon.
-
----
-
 ![alt tag](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/Assets/BTNavigationDropdownLogo.png)
 
 [![Pod Version](https://img.shields.io/cocoapods/v/BTNavigationDropdownMenu.svg?style=flat)](http://cocoadocs.org/docsets/BTNavigationDropdownMenu/)
@@ -40,7 +36,7 @@ $ brew install carthage
 To integrate BTNavigationDropdownMenu into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "PhamBaTho/BTNavigationDropdownMenu" ~> 0.5
+github "PhamBaTho/BTNavigationDropdownMenu" ~> 0.7
 ```
 
 Run `carthage update` to build the framework and drag the built `BTNavigationDropdownMenu.framework` into your Xcode project.
@@ -96,9 +92,9 @@ First, assign the items and frame for the dropdown menu. Then, customize the loo
 
 `cellTextLabelColor` **- Text color inside of the cell** *Default is darkGrayColor()*
 
-`cellTextLabelFont` **- Font inside the cell** *Default is HelveticaNeue-Bold, size 17*
+`cellTextLabelFont` **- Font inside the cell** *Default is bold system font, size 17*
 
-`navigationBarTitleFont` **- Navigation bar title font** *Default is HelveticaNeue-Bold, size 17*
+`navigationBarTitleFont` **- Navigation bar title font** *Default is vold system font, size 17*
 
 `cellTextLabelAlignment` **- Text alignment inside of the cell** *Default is .Left*
 
@@ -127,8 +123,7 @@ First, assign the items and frame for the dropdown menu. Then, customize the loo
 `arrowTintColor`  **- Tint color of the arrow.** *Default is whiteColor()*
 
 ## Requirement
-- iOS 8.0+ (CocoaPods with Swift support will only work on iOS 8.0+. Alternatively, you will have to import library manually to your project)
-- Xcode 8.0+, Swift 3.0+
+- iOS 9.0+
 
 ## Changelog
 See the [CHANGELOG](https://github.com/PhamBaTho/BTNavigationDropdownMenu/blob/master/CHANGELOG.md) for details

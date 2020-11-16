@@ -1,18 +1,16 @@
 Pod::Spec.new do |s|
   s.name         = "BTNavigationDropdownMenu"
-  s.version      = "0.5"
+  s.version      = "0.7"
   s.summary      = "The elegent navigation dropdown menu"
-  s.description  = <<-DESC
-                   The elegant **dropdown menu**, written in **Swift**, appears underneath **navigation bar** to display a list of related items when a user click on the navigation title.
-                   DESC
+  s.description  = "The elegant yet functional dropdown menu, written in Swift, appears underneath the navigation bar to display a list of defined items when a user clicks on the navigation title."
   s.homepage     = "https://github.com/PhamBaTho/BTNavigationDropdownMenu"
   s.screenshots  = "https://raw.githubusercontent.com/PhamBaTho/BTNavigationDropdownMenu/master/Assets/Demo.png"
   s.license      = "MIT"
-  s.author             = { "Pham Ba Tho" => "phambatho@gmail.com" }
-  s.social_media_url   = "https://www.facebook.com/phambatho"
-  s.platform     = :ios, '8.0'
+  s.author       = { "Tho Pham" => "phambatho@gmail.com" }
+  s.platform     = :ios, '9.0'
   s.source       = { :git => "https://github.com/PhamBaTho/BTNavigationDropdownMenu.git", :tag => s.version.to_s }
   s.source_files  = "Source/**/*.swift"
   s.resources = "Source/*.bundle"
   s.requires_arc = true
+  s.swift_versions = ['4.0', '4.2', '5.0']
 end
