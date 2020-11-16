@@ -31,7 +31,7 @@ final class BTConfiguration {
     var cellTextLabelColor: UIColor?
     var selectedCellTextLabelColor: UIColor?
     var cellTextLabelFont: UIFont!
-    var navigationBarTitleFont: UIFont!
+    var navigationBarTitleFont: UIFont
     var cellTextLabelAlignment: NSTextAlignment!
     var cellSelectionColor: UIColor?
     var checkMarkImage: UIImage!
@@ -45,18 +45,14 @@ final class BTConfiguration {
     var shouldChangeTitleText: Bool!
     
     init() {
-        self.defaultValue()
-    }
-    
-    func defaultValue() {
         // Path for image
         let bundle = Bundle(for: BTConfiguration.self)
         let url = bundle.url(forResource: "BTNavigationDropdownMenu", withExtension: "bundle")
         let imageBundle = Bundle(url: url!)
         let checkMarkImagePath = imageBundle?.path(forResource: "checkmark_icon", ofType: "png")
         let arrowImagePath = imageBundle?.path(forResource: "arrow_down_icon", ofType: "png")
-        
-        // Default values
+
+        // Set default values
         self.menuTitleColor = UIColor.darkGray
         self.cellHeight = 50
         self.cellBackgroundColor = UIColor.white
@@ -64,8 +60,8 @@ final class BTConfiguration {
         self.cellSeparatorColor = UIColor.darkGray
         self.cellTextLabelColor = UIColor.darkGray
         self.selectedCellTextLabelColor = UIColor.darkGray
-        self.cellTextLabelFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
-        self.navigationBarTitleFont = UIFont(name: "HelveticaNeue-Bold", size: 17)
+        self.cellTextLabelFont = UIFont.systemFont(ofSize: 17, weight: .bold)
+        self.navigationBarTitleFont = UIFont.systemFont(ofSize: 17, weight: .bold)
         self.cellTextLabelAlignment = NSTextAlignment.left
         self.cellSelectionColor = UIColor.lightGray
         self.checkMarkImage = UIImage(contentsOfFile: checkMarkImagePath!)
