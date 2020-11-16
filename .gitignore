@@ -1,5 +1,9 @@
-## Build generated
+# Mac OS X
 .DS_Store
+
+# Xcode
+
+## Build generated
 build/
 DerivedData
 
@@ -18,3 +22,6 @@ xcuserdata
 *.xccheckout
 *.moved-aside
 *.xcuserstate
+
+# Carthage
+Carthage/Build
