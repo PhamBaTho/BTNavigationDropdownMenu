@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s8W-fO-vqO">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="s8W-fO-vqO">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -54,7 +51,7 @@
                     <tabBarItem key="tabBarItem" systemItem="featured" id="60w-9J-6f0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yvl-Sk-d0l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -78,18 +75,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a good day 😉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgC-KD-R5q">
-                                <rect key="frame" x="46" y="320" width="283" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <color key="textColor" red="1" green="0.6344769294" blue="0.20655745989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for checking this out! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6IJ-Yp-TKo">
+                                <rect key="frame" x="20" y="321" width="335" height="25.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="21"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="88J-NI-ZI0">
+                                <rect key="frame" x="20" y="354.5" width="335" height="40"/>
+                                <string key="text">Feel free to share or contribute 
+if you find this library useful.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.93729967950000004" green="0.93729967950000004" blue="0.93729967950000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kgC-KD-R5q" firstAttribute="leading" secondItem="nN6-1u-YNS" secondAttribute="leadingMargin" constant="30" id="8Fx-2i-PG8"/>
-                            <constraint firstItem="kgC-KD-R5q" firstAttribute="centerY" secondItem="nN6-1u-YNS" secondAttribute="centerY" id="9MX-hI-TaL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kgC-KD-R5q" secondAttribute="trailing" constant="30" id="ypy-aN-iIa"/>
+                            <constraint firstItem="88J-NI-ZI0" firstAttribute="trailing" secondItem="6IJ-Yp-TKo" secondAttribute="trailing" id="JUL-os-kgt"/>
+                            <constraint firstItem="6IJ-Yp-TKo" firstAttribute="leading" secondItem="nN6-1u-YNS" secondAttribute="leading" constant="20" id="TSG-3U-wa0"/>
+                            <constraint firstItem="88J-NI-ZI0" firstAttribute="top" secondItem="6IJ-Yp-TKo" secondAttribute="bottom" constant="8" id="ZLR-RA-LsI"/>
+                            <constraint firstItem="88J-NI-ZI0" firstAttribute="leading" secondItem="6IJ-Yp-TKo" secondAttribute="leading" id="dFc-Pk-QKV"/>
+                            <constraint firstAttribute="trailing" secondItem="6IJ-Yp-TKo" secondAttribute="trailing" constant="20" id="dh7-gL-at7"/>
+                            <constraint firstItem="6IJ-Yp-TKo" firstAttribute="centerY" secondItem="nN6-1u-YNS" secondAttribute="centerY" id="dop-lm-3g6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="BSz-Fb-oZd"/>

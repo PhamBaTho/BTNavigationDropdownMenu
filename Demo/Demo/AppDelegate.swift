@@ -15,8 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Set white status bar
-        UIApplication.shared.setStatusBarStyle(UIStatusBarStyle.lightContent, animated: true)
         return true
     }
 
