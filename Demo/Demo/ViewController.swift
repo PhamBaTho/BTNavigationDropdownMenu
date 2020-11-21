@@ -23,12 +23,18 @@ class ViewController: UIViewController {
 
         // "Old" version
         // menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Dropdown Menu", items: items)
+       
+        
 
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.index(2), items: items)
 
         // Another way to initialize:
         // menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: BTTitle.title("Dropdown Menu"), items: items)
-
+        
+        let maxString = String(repeating: "一", count: 11)
+        let maxTitleSize = (maxString as NSString).size(withAttributes: [NSAttributedString.Key.font:menuView.navigationBarTitleFont])
+        menuView.menuTitleMaxWidth = maxTitleSize.width
+        menuView.menuTitleBreakModel = .byTruncatingMiddle
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = self.navigationController?.navigationBar.barTintColor
         menuView.cellSelectionColor = UIColor(red: 0.0/255.0, green:160.0/255.0, blue:195.0/255.0, alpha: 1.0)

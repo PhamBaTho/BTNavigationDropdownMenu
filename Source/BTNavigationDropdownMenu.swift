@@ -38,6 +38,25 @@ open class BTNavigationDropdownMenu: UIView {
             self.configuration.menuTitleColor = value
         }
     }
+    
+    open var menuTitleMaxWidth: CGFloat? {
+        get {
+            return self.configuration.menuTitleMaxWidth
+        }
+        set(value) {
+            self.configuration.menuTitleMaxWidth = value
+        }
+    }
+    
+    open var menuTitleBreakModel: NSLineBreakMode {
+        get {
+            return self.configuration.menuTitleBreakModel
+        }
+        set(value) {
+            self.configuration.menuTitleBreakModel = value
+        }
+    }
+    
 
     // The height of the cell. Default is 50
     open var cellHeight: NSNumber {
@@ -314,6 +333,7 @@ open class BTNavigationDropdownMenu: UIView {
         self.menuTitle.textColor = self.menuTitleColor
         self.menuTitle.font = self.configuration.navigationBarTitleFont
         self.menuTitle.textAlignment = self.configuration.cellTextLabelAlignment
+        self.menuTitle.lineBreakMode = self.configuration.menuTitleBreakModel
         self.menuButton.addSubview(self.menuTitle)
 
         self.menuArrow = UIImageView(image: self.configuration.arrowImage.withRenderingMode(.alwaysTemplate))
@@ -378,7 +398,16 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     override open func layoutSubviews() {
-        self.menuTitle.sizeToFit()
+        let fitsSize = self.menuTitle.sizeThatFits(CGSize.zero)
+        var menuWidth = fitsSize.width
+        if let menuTitleMaxWidth = self.menuTitleMaxWidth {
+            menuWidth = CGFloat.minimum(fitsSize.width, menuTitleMaxWidth)
+            let menuSize = CGSize(width: menuWidth, height: fitsSize.height)
+            self.menuTitle.frame.size.height = menuSize.height
+            self.menuTitle.frame.size.width = menuSize.width
+        } else {
+            self.menuTitle.sizeToFit()
+        }
         self.menuTitle.center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
         self.menuTitle.textColor = self.configuration.menuTitleColor
         self.menuArrow.sizeToFit()
