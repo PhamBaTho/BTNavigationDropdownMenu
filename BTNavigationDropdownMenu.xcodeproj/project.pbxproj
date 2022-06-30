@@ -86,7 +86,8 @@
 				AA8E37DC21830B69009609E6 /* BTNavigationDropdownMenu.bundle */,
 				AA8E37DD21830B69009609E6 /* Info.plist */,
 			);
-			path = Source;
+			name = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		AA8E37D421830B69009609E6 /* Extension */ = {
