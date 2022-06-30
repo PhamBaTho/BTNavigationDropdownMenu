@@ -53,7 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				AA8E37CD21830B69009609E6 /* Assets */,
-				AA8E37D121830B69009609E6 /* Source */,
+				AA8E37D121830B69009609E6 /* Sources */,
 				AA07A5982182FC7000C097DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,7 +76,7 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		AA8E37D121830B69009609E6 /* Source */ = {
+		AA8E37D121830B69009609E6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				AA8E37D221830B69009609E6 /* BTNavigationDropdownMenu.swift */,
@@ -86,7 +86,7 @@
 				AA8E37DC21830B69009609E6 /* BTNavigationDropdownMenu.bundle */,
 				AA8E37DD21830B69009609E6 /* Info.plist */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		AA8E37D421830B69009609E6 /* Extension */ = {
@@ -335,9 +335,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,9 +360,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "$(SRCROOT)/Source/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
