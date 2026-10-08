@@ -46,7 +46,11 @@ final class BTConfiguration {
     
     init() {
         // Path for image
-        let bundle = Bundle(for: BTConfiguration.self)
+        var bundle = Bundle(for: BTConfiguration.self)
+        // Get own resources bundle for SPM case
+        if let packageBundle = bundle.url(forResource: "BTNavigationDropdownMenu_BTNavigationDropdownMenu", withExtension: "bundle").flatMap({ Bundle(url: $0) }) {
+            bundle = packageBundle
+        }
         let url = bundle.url(forResource: "BTNavigationDropdownMenu", withExtension: "bundle")
         let imageBundle = Bundle(url: url!)
         let checkMarkImagePath = imageBundle?.path(forResource: "checkmark_icon", ofType: "png")
